@@ -32,3 +32,6 @@ emergency|emergency.target           |紧急Shell
 `init 5` 就是切换到图形化界面  
 `init 6` 就是重启  
 
+### 运行级别
+
+&emsp;&emsp;到底什么是运行级呢？简单的说，运行级就是操作系统当前正在运行的功能级别。这个级别从0到6 ，具有不同的功能。你也可以在/etc/inittab中查看它的英文介绍。
