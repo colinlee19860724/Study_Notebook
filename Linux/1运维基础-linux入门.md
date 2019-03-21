@@ -3,12 +3,12 @@
 ## 如何获取帮助
 &emsp;&emsp;获取帮助的能力决定了技术的能力！  
 &emsp;&emsp;**多层次的帮助：**  
-> whatis  
-> command --help  
-> man and info  
-> /usr/share/doc/  
-> Red Hat documentation  
-> 其它网站和搜索  
+* whatis  
+* command --help  
+* man and info  
+* /usr/share/doc/  
+* Red Hat documentation  
+* 其它网站和搜索  
 
 
 ## systemd初始化进程
