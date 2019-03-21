@@ -2,12 +2,16 @@
 
 &ensp;&ensp;&ensp;&ensp;用于记录学习笔记，以及收集的学习资源，主要包含Linux和Python，其中各个目录存放的内容为：
 
-* `Concept`：原理概念性总结，比如DNS原理
-* `Python`：Python编程相关知识，从基础语法到进阶、网络编程
+* `Concept`：原理概念性总结、学习心得体会等
 * `Linux`：与Linux操作系统配置、管理有关的内容
+* `Python`：Python编程相关知识，从基础语法到进阶、网络编程
 * `Web`：web相关，比如Apache、nginx、Samba等
 * `Shell`：shell脚本编程
 * `Photo`：文档中的插图，关键过程截图等
 
-> 如果您喜欢我的文章，请扫描下面的二维码进行打赏  
-![微信收款码](https://github.com/colinlee19860724/Study_Notebook/blob/master/Photo/colinlee_weixin.JPG?raw=true)![支付宝收款码](https://github.com/colinlee19860724/Study_Notebook/blob/master/Photo/colinlee_zhifubao.JPG?raw=true)
+**我要小额赞助，鼓励作者写出更好的文章\>\>**请点击下面的链接后扫描二维码进行打赏:  
+
+[`支付宝收款码`](Photo/colinlee_zhifubao.JPG) 
+[`微信收款码`](Photo/colinlee_weixin.JPG)
+
+[脑图](http://note.youdao.com/noteshare?id=e9810b81dbe6baa81fe0f5893447a589&sub=07F4F5C0E29C4A149437C23A99AD38B9)
