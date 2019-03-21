@@ -13,5 +13,4 @@
 
 [`支付宝收款码`](Photo/colinlee_zhifubao.JPG)    [`微信收款码`](Photo/colinlee_weixin.JPG)
 
-<img src="Photo/colinlee_zhifubao.JPG" width="200" align=center />
-<img src="Photo/colinlee_weixin.JPG" width="200" align=center />
+<img src="Photo/colinlee_zhifubao.JPG" width="200" align=center /> &nbsp; <img src="Photo/colinlee_weixin.JPG" width="200" align=center />
