@@ -4,16 +4,16 @@
 &emsp;&emsp;Linux操作系统的开机过程是这样的，即从BIOS开始，然后进入Boot Loader，再加载系统内核，然后内核进行初始化，最后启动初始化进程。初始化进程作为Linux系统的第一个进程，它需要完成Linux系统中相关的初始化工作，为用户提供合适的工作环境。红帽RHEL 7系统已经替换掉了熟悉的初始化进程服务System V init，正式采用全新的systemd初始化进程服务。systemd初始化进程服务采用了并发启动机制，开机速度得到了不小的提升。  
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;systemd与System V init的区别以及作用  
-|System V init运行级别|systemd目标名称  |作用
-|:-:|--|--
-|0|runlevel0.target, poweroff.target  |关机
-|1|runlevel1.target, rescue.target    |单用户模式
-|2|runlevel2.target, multi-user.target|等同于级别3
-|3|runlevel3.target, multi-user.target|多用户的文本界面
-|4|runlevel4.target, multi-user.target|等同于级别3
-|5|runlevel5.target, graphical.target |多用户的图形界面
-|6|runlevel6.target, reboot.target    |重启
-|emergency|emergency.target           |紧急Shell
+|System V init运行级别|systemd目标名称  |作用|
+|:-:|--|--|
+|0|runlevel0.target, poweroff.target  |关机|
+|1|runlevel1.target, rescue.target    |单用户模式|
+|2|runlevel2.target, multi-user.target|等同于级别3|
+|3|runlevel3.target, multi-user.target|多用户的文本界面|
+|4|runlevel4.target, multi-user.target|等同于级别3|
+|5|runlevel5.target, graphical.target |多用户的图形界面|
+|6|runlevel6.target, reboot.target    |重启|
+|emergency|emergency.target           |紧急Shell|
 
 ### System V init运行级别
 &emsp;&emsp;init命令是Linux下的进程初始化工具，init进程是所有Linux进程的父进程，它的进程号为1。init命令是Linux操作系统中不可缺少的程序之一，init进程是Linux内核引导运行的，是系统中的第一个进程。  
