@@ -5,7 +5,7 @@
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;systemd与System V init的区别以及作用
 System V init运行级别|systemd目标名称  |作用
-:--:|--|--
+:-:|--|--
 0|runlevel0.target, poweroff.target  |关机
 1|runlevel1.target, rescue.target    |单用户模式
 2|runlevel2.target, multi-user.target|等同于级别3
