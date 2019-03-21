@@ -9,6 +9,6 @@
 * `Shell`：shell脚本编程
 * `Photo`：文档中的插图，关键过程截图等
 
-**`我要小额赞助，鼓励作者写出更好的文章-->`** 请扫描下面的二维码进行打赏:  
+**`来点小额赞助，鼓励作者写出更好的文章-->`** 请扫描下面的二维码打赏:  
 
-<img src="Photo/colinlee_zhifubao.JPG" width="200" align=center /> &nbsp; <img src="Photo/colinlee_weixin.JPG" width="200" align=center />
+<img alt="支付宝收款码" src="Photo/colinlee_zhifubao.JPG" width="200" align=bottom /> &nbsp; <img alt="微信支付收款码" src="Photo/colinlee_weixin.JPG" width="200" align=bottom />
