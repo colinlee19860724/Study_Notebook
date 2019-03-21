@@ -12,3 +12,6 @@
 `我要小额赞助，鼓励作者写出更好的文章->`请点击下面的链接后扫描二维码进行打赏:  
 
 [`支付宝收款码`](Photo/colinlee_zhifubao.JPG)    [`微信收款码`](Photo/colinlee_weixin.JPG)
+
+<img src="Photo/colinlee_zhifubao.JPG" width="200" align=center />
+<img src="Photo/colinlee_weixin.JPG" width="200" align=center />
