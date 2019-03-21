@@ -9,9 +9,7 @@
 * `Shell`：shell脚本编程
 * `Photo`：文档中的插图，关键过程截图等
 
-**我要小额赞助，鼓励作者写出更好的文章\>\>**请点击下面的链接后扫描二维码进行打赏:  
+`我要小额赞助，鼓励作者写出更好的文章->`请点击下面的链接后扫描二维码进行打赏:  
 
-[`支付宝收款码`](Photo/colinlee_zhifubao.JPG) 
+[`支付宝收款码`](Photo/colinlee_zhifubao.JPG)   
 [`微信收款码`](Photo/colinlee_weixin.JPG)
-
-[脑图](http://note.youdao.com/noteshare?id=e9810b81dbe6baa81fe0f5893447a589&sub=07F4F5C0E29C4A149437C23A99AD38B9)
