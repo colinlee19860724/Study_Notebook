@@ -1,5 +1,16 @@
 # Linux入门
 
+## 如何获取帮助
+&emsp;&emsp;获取帮助的能力决定了技术的能力！  
+&emsp;&emsp;**多层次的帮助：**  
+> whatis  
+> command --help  
+> man and info  
+> /usr/share/doc/  
+> Red Hat documentation  
+> 其它网站和搜索  
+
+
 ## systemd初始化进程
 &emsp;&emsp;Linux操作系统的开机过程是这样的，即从BIOS开始，然后进入Boot Loader，再加载系统内核，然后内核进行初始化，最后启动初始化进程。初始化进程作为Linux系统的第一个进程，它需要完成Linux系统中相关的初始化工作，为用户提供合适的工作环境。红帽RHEL 7系统已经替换掉了熟悉的初始化进程服务System V init，正式采用全新的systemd初始化进程服务。systemd初始化进程服务采用了并发启动机制，开机速度得到了不小的提升。  
 
@@ -35,3 +46,34 @@ emergency|emergency.target           |紧急Shell
 ### 运行级别
 
 &emsp;&emsp;到底什么是运行级呢？简单的说，运行级就是操作系统当前正在运行的功能级别。这个级别从0到6 ，具有不同的功能。你也可以在/etc/inittab中查看它的英文介绍。
+
+## 必知必会的命令
+1. 如何查看当前使用的shell
+
+```bash
+[root@CentOS7 ~]# echo ${SHELL}  
+/bin/bash
+```
+
+1. 如何查看本机所有的shell： `cat /etc/shells`  
+
+```bash
+[root@centos7 lxl]# cat /etc/shells 
+/bin/sh
+/bin/bash
+/usr/bin/sh
+/usr/bin/bash
+/bin/tcsh
+/bin/csh
+``` 
+
+1. 判断内部还是外部命令：`tpye COMMAND`
+
+```bash
+[root@centos7 lxl]# type man
+man is /bin/man  # 这是一个外部命令
+[root@centos7 lxl]# type ls
+ls is aliased to `ls --color=auto'  # 这是一个别名
+[root@centos7 lxl]# type cd
+cd is a shell builtin  #这是一个内部命令
+```
