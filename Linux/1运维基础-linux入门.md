@@ -3,7 +3,7 @@
 ## systemd初始化进程
 &emsp;&emsp;Linux操作系统的开机过程是这样的，即从BIOS开始，然后进入Boot Loader，再加载系统内核，然后内核进行初始化，最后启动初始化进程。初始化进程作为Linux系统的第一个进程，它需要完成Linux系统中相关的初始化工作，为用户提供合适的工作环境。红帽RHEL 7系统已经替换掉了熟悉的初始化进程服务System V init，正式采用全新的systemd初始化进程服务。systemd初始化进程服务采用了并发启动机制，开机速度得到了不小的提升。  
 
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;systemd与System V init的区别以及作用
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;systemd与System V init的区别以及作用  
 System V init运行级别|systemd目标名称  |作用
 :-:|--|--
 0|runlevel0.target, poweroff.target  |关机
