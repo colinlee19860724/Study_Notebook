@@ -5,15 +5,15 @@
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;systemd与System V init的区别以及作用
 System V init运行级别|systemd目标名称  |作用
-:------------------:|--------------- |---
+:--:|--|--
 0|runlevel0.target, poweroff.target  |关机
-1|runlevel1.target, rescue.target	 |单用户模式
+1|runlevel1.target, rescue.target    |单用户模式
 2|runlevel2.target, multi-user.target|等同于级别3
 3|runlevel3.target, multi-user.target|多用户的文本界面
 4|runlevel4.target, multi-user.target|等同于级别3
 5|runlevel5.target, graphical.target |多用户的图形界面
-6|runlevel6.target, reboot.target	 |重启
-emergency|emergency.target	     |紧急Shell
+6|runlevel6.target, reboot.target    |重启
+emergency|emergency.target           |紧急Shell
 
 ### System V init运行级别
 &emsp;&emsp;init命令是Linux下的进程初始化工具，init进程是所有Linux进程的父进程，它的进程号为1。init命令是Linux操作系统中不可缺少的程序之一，init进程是Linux内核引导运行的，是系统中的第一个进程。  
@@ -25,7 +25,7 @@ emergency|emergency.target	     |紧急Shell
 `init 6` 就是重启  
 
 ### systemd初始化进程服务
-如果想要将系统默认的运行目标修改为“多用户，无图形”模式，可直接用ln命令把多用户模式目标文件连接到/etc/systemd/system/目录：
+&emsp;&emsp;如果想要将系统默认的运行目标修改为“多用户，无图形”模式，可直接用ln命令把多用户模式目标文件连接到/etc/systemd/system/目录：
 
 ```bash 
 [root@centos7 ~]# ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target 
