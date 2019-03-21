@@ -8,3 +8,6 @@
 * `Web`：web相关，比如Apache、nginx、Samba等
 * `Shell`：shell脚本编程
 * `Photo`：文档中的插图，关键过程截图等
+
+> 如果您喜欢我的文章，请扫描下面的二维码进行打赏  
+![微信收款码](https://github.com/colinlee19860724/Study_Notebook/blob/master/Photo/colinlee_weixin.JPG?raw=true)![支付宝收款码](https://github.com/colinlee19860724/Study_Notebook/blob/master/Photo/colinlee_zhifubao.JPG?raw=true)
