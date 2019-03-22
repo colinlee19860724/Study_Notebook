@@ -1,8 +1,22 @@
 # Linux入门
 
+## Linux发行版
+* `slackware`：SUSE Linux Enterprise Server (SLES)  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;OpenSuse桌面  
+* `debian`：ubuntu，mint  
+* `RedHat`：RHEL: RedHat Enterprise Linux  
+&emsp;&emsp;&emsp;&emsp;每18个月发行一个新版本  
+&emsp;&emsp;&emsp;&emsp;CentOS：兼容RHEL的格式  
+&emsp;&emsp;&emsp;&emsp;中标麒麟：中标软件  
+&emsp;&emsp;&emsp;&emsp;Fedora：每6个月发行一个新版本  
+* `ArchLinux`：轻量简洁  
+* `Gentoo`：极致性能，不提供传统意义的安装程序  
+* `LFS`：Linux From scratch 自制Linux  
+* `Android`：kernel+busybox（工具集）+java虚拟机  
+* `Linux分支参考网站`：[http://futurist.se/gldt/](http://futurist.se/gldt/)  
+
 ## 如何获取帮助
-&emsp;&emsp;获取帮助的能力决定了技术的能力！  
-&emsp;&emsp;**多层次的帮助：**  
+&emsp;&emsp;获取帮助的能力决定了技术的能力！可从以下几个方面获取多层次的帮助：  
 * whatis  
 * command --help  
 * man and info  
@@ -48,17 +62,15 @@ emergency|emergency.target           |紧急Shell
 &emsp;&emsp;到底什么是运行级呢？简单的说，运行级就是操作系统当前正在运行的功能级别。这个级别从0到6 ，具有不同的功能。你也可以在/etc/inittab中查看它的英文介绍。
 
 ## 必知必会的命令
-1. 如何查看当前使用的shell
-
+1. 如何查看当前使用的shell:
 ```bash
 [root@CentOS7 ~]# echo ${SHELL}  
 /bin/bash
 ```
 
-1. 如何查看本机所有的shell： `cat /etc/shells`  
-
+2. 如何查看本机所有的shell：`cat /etc/shells`  
 ```bash
-[root@centos7 lxl]# cat /etc/shells 
+[root@centos7 ~]# cat /etc/shells 
 /bin/sh
 /bin/bash
 /usr/bin/sh
@@ -67,13 +79,31 @@ emergency|emergency.target           |紧急Shell
 /bin/csh
 ``` 
 
-1. 判断内部还是外部命令：`tpye COMMAND`
-
+3. 判断内部还是外部命令：`tpye COMMAND`
 ```bash
-[root@centos7 lxl]# type man
+[root@centos7 ~]# type man
 man is /bin/man  # 这是一个外部命令
-[root@centos7 lxl]# type ls
-ls is aliased to `ls --color=auto'  # 这是一个别名
-[root@centos7 lxl]# type cd
+[root@centos7 ~]# type ls
+ls is aliased to `ls --color=auto`  # 这是一个别名命令
+[root@centos7 ~]# type cd
 cd is a shell builtin  #这是一个内部命令
+```
+4. 查看登陆当前系统的用户：`whoami`
+```bash
+[root@centos7 ~]# whoami
+root
+```
+
+5. 查看当前所有系统登录的⽤户：`who`
+```bash
+[root@centos7 ~]# who
+lxl      pts/0        2019-03-21 14:46 (192.168.20.1)
+```
+
+6. 显⽰系统当前使⽤登录会话及所做操作：`w`
+```bash
+[root@centos7 ~]# w
+ 20:53:48 up  6:08,  2 users,  load average: 0.00, 0.01, 0.05
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+lxl      pts/0    192.168.20.1     14:46    4.00s  0.41s  0.29s sshd: lxl [priv]
 ```
