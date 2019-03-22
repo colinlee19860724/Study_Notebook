@@ -1,19 +1,18 @@
 # Linux入门
 
 ## Linux发行版
-* `slackware`：SUSE Linux Enterprise Server (SLES)  
+* __slackware__：SUSE Linux Enterprise Server (SLES)  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;OpenSuse桌面  
-* `debian`：ubuntu，mint  
-* `RedHat`：RHEL: RedHat Enterprise Linux  
-&emsp;&emsp;&emsp;&emsp;每18个月发行一个新版本  
-&emsp;&emsp;&emsp;&emsp;CentOS：兼容RHEL的格式  
-&emsp;&emsp;&emsp;&emsp;中标麒麟：中标软件  
-&emsp;&emsp;&emsp;&emsp;Fedora：每6个月发行一个新版本  
-* `ArchLinux`：轻量简洁  
-* `Gentoo`：极致性能，不提供传统意义的安装程序  
-* `LFS`：Linux From scratch 自制Linux  
-* `Android`：kernel+busybox（工具集）+java虚拟机  
-* `Linux分支参考网站`：[http://futurist.se/gldt/](http://futurist.se/gldt/)  
+* __debian__：ubuntu，mint  
+* __RedHat__：RHEL: RedHat Enterprise Linux&emsp;每18个月发行一个新版本  
+&emsp;&emsp;&emsp;&emsp;&emsp;CentOS：兼容RHEL的格式  
+&emsp;&emsp;&emsp;&emsp;&emsp;中标麒麟：中标软件  
+&emsp;&emsp;&emsp;&emsp;&emsp;Fedora：每6个月发行一个新版本  
+* __ArchLinux__：轻量简洁  
+* __Gentoo__：极致性能，不提供传统意义的安装程序  
+* __LFS__：Linux From scratch 自制Linux  
+* __Android__：kernel+busybox（工具集）+java虚拟机  
+* __Linux分支参考网站__：[http://futurist.se/gldt/](http://futurist.se/gldt/)  
 
 ## 如何获取帮助
 &emsp;&emsp;获取帮助的能力决定了技术的能力！可从以下几个方面获取多层次的帮助：  
