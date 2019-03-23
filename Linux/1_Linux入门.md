@@ -1,13 +1,22 @@
 # Linux入门
 
+* __操作系统__
+* __Linux相关介绍__
+* __Linux哲学思想__
+* __获取Linux__
+* __虚拟机__
+* __Bash__
+* __简单命令__
+* __帮助用法__
+
 ## Linux发行版
 * __slackware__：SUSE Linux Enterprise Server (SLES)  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;OpenSuse桌面  
+&emsp;&emsp;&emsp;&emsp;&emsp;OpenSuse桌面  
 * __debian__：ubuntu，mint  
 * __RedHat__：RHEL: RedHat Enterprise Linux&emsp;每18个月发行一个新版本  
-&emsp;&emsp;&emsp;&emsp;&emsp;CentOS：兼容RHEL的格式  
-&emsp;&emsp;&emsp;&emsp;&emsp;中标麒麟：中标软件  
-&emsp;&emsp;&emsp;&emsp;&emsp;Fedora：每6个月发行一个新版本  
+&emsp;&emsp;&emsp;&emsp;CentOS：兼容RHEL的格式  
+&emsp;&emsp;&emsp;&emsp;中标麒麟：中标软件  
+&emsp;&emsp;&emsp;&emsp;Fedora：每6个月发行一个新版本  
 * __ArchLinux__：轻量简洁  
 * __Gentoo__：极致性能，不提供传统意义的安装程序  
 * __LFS__：Linux From scratch 自制Linux  
@@ -41,7 +50,7 @@ System V init运行级别|systemd目标名称  |作用
 emergency|emergency.target           |紧急Shell
 
 ### systemd初始化进程服务
-&emsp;&emsp;如果想要将系统默认的运行目标修改为“多用户，无图形”模式，可直接用ln命令把多用户模式目标文件连接到/etc/systemd/system/目录：
+&emsp;&emsp;如果想要将系统默认的运行目标修改为“多用户，无图形”模式，可直接用ln命令把多用户模式目标文件连接到/etc/systemd/system/default.target：
 
 ```bash 
 [root@centos7 ~]# ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target 
