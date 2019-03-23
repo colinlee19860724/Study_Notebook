@@ -19,8 +19,8 @@
 * __API：Application Programming Interface__  
 &emsp;&emsp;API 定义了源代码和库之间的接口，因此同样的源代码可以在支持这个 API 的任何系统中编译  
 * __POSIX: Portable Operating System Interface__  
-&emsp;&emsp;IEEE 在操作系统上定义的一系列 API 标准
-&emsp;&emsp;POSIX 兼容的程序可在其它 POSIXX 操作系统编译执行
+&emsp;&emsp;IEEE 在操作系统上定义的一系列 API 标准  
+&emsp;&emsp;POSIX 兼容的程序可在其它 POSIXX 操作系统编译执行  
 * __运行程序格式：__  
 &emsp;&emsp;Windows: EXE, .dll(dynamic link library), .lib  
 &emsp;&emsp;Linux: ELF, .so(shared object), .a  
@@ -28,11 +28,22 @@
 ---
 ## 用户和内核空间
 * 用户空间：User space  
-&emsp;&emsp;用户程序的运行空间。为了安全，它们是隔离的，即使用户的程序崩溃，内核也不受影响
-&emsp;&emsp;只能执行简单的运算，不能直接调用系统资源，必须通过系统接口（ system call），才能向内核发出指令
+&emsp;&emsp;用户程序的运行空间。为了安全，它们是隔离的，即使用户的程序崩溃，内核也不受影响，只能执行简单的运算，不能直接调用系统资源，必须通过系统接口（ system call），才能向内核发出指令。  
+* 内核空间：Kernel space  
+&emsp;&emsp;是 Linux 内核的运行空间，可以执行任意命令，调用系统的一切资源。  
+
+<img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/用户和内核空间.png" width="500" align=middle />
+
+示例：
+```c
+str = "www.magedu.com" // 用户空间
+x = x + 100 // 用户空间
+file.write(str) // 切换到内核空间
+y = x + 200 // 切换回用户空间
+```
+&emsp;&emsp;第一行和第二行都是简单的赋值运算，在 User space 执行。第三行需要写入文件，就要切换到 Kernel space ，因为用户不能直接写文件，必须通过内核安排。第四行又是赋值运算，就切换回 User space 。  
 
 
-<img alt="sl_train" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/用户和内核空间.png" width="500" align=center />
 
 ---
 ## Linux发行版
