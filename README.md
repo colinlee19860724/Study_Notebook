@@ -10,6 +10,6 @@
 * `Photo`：文档中的插图，关键过程截图等
 * `Asset`：文档中涉及的文件
 
-**来点小额赞助，鼓励作者写出更好的文章-->** `请扫描下面的二维码打赏:`  
+**来点小额赞助，鼓励作者写出更好的文章-->** **`请扫描下面的二维码打赏:`**  
 
 <img alt="支付宝收款码" src="Photo/colinlee_zhifubao.JPG" width="200" align=bottom /> &ensp;&ensp;&ensp;&ensp; <img alt="微信支付收款码" src="Photo/colinlee_weixin.JPG" width="200" align=bottom />
