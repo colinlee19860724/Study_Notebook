@@ -14,7 +14,7 @@
 
 ---
 ## 开发接口标准
-* ABI: Application Binary Interface  
+* `ABI: Application Binary Interface`  
 ABI 描述了应用程序与OS之间的底层接口,允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行  
 * API：Application Programming Interface  
 API 定义了源代码和库之间的接口，因此同样的源代码可以在支持这个 API 的任何系统中编译  
