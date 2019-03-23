@@ -15,15 +15,15 @@
 ---
 ## 开发接口标准
 * __ABI: Application Binary Interface__  
-ABI 描述了应用程序与OS之间的底层接口,允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行  
+&emsp;&emsp;ABI 描述了应用程序与OS之间的底层接口,允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行  
 * __API：Application Programming Interface__  
-API 定义了源代码和库之间的接口，因此同样的源代码可以在支持这个 API 的任何系统中编译  
+&emsp;&emsp;API 定义了源代码和库之间的接口，因此同样的源代码可以在支持这个 API 的任何系统中编译  
 * __POSIX: Portable Operating System Interface__  
-IEEE 在操作系统上定义的一系列 API 标准
-POSIX 兼容的程序可在其它 POSIXX 操作系统编译执行
+&emsp;&emsp;IEEE 在操作系统上定义的一系列 API 标准
+&emsp;&emsp;POSIX 兼容的程序可在其它 POSIXX 操作系统编译执行
 * __运行程序格式：__  
-Windows: EXE, .dll(dynamic link library), .lib  
-Linux: ELF, .so(shared object), .a  
+&emsp;&emsp;Windows: EXE, .dll(dynamic link library), .lib  
+&emsp;&emsp;Linux: ELF, .so(shared object), .a  
 
 ---
 ## 用户和内核空间
