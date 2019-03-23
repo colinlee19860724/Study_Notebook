@@ -1,3 +1,6 @@
+
+[TOC]
+
 # Linux入门
 
 * __操作系统__
@@ -9,6 +12,29 @@
 * __简单命令__
 * __帮助用法__
 
+---
+## 开发接口标准
+* ABI: Application Binary Interface  
+ABI 描述了应用程序与OS之间的底层接口,允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行  
+* API：Application Programming Interface  
+API 定义了源代码和库之间的接口，因此同样的源代码可以在支持这个 API 的任何系统中编译  
+* POSIX: Portable Operating System Interface
+IEEE 在操作系统上定义的一系列 API 标准
+POSIX 兼容的程序可在其它 POSIXX 操作系统编译执行
+* 运行程序格式：
+Windows: EXE, .dll(dynamic link library), .lib
+Linux: ELF, .so(shared object), .a
+
+---
+## 
+* 用户空间：User space  
+&emsp;&emsp;用户程序的运行空间。为了安全，它们是隔离的，即使用户的程序崩溃，内核也不受影响
+&emsp;&emsp;只能执行简单的运算，不能直接调用系统资源，必须通过系统接口（ system call），才能向内核发出指令
+
+
+
+
+---
 ## Linux发行版
 * __slackware__：SUSE Linux Enterprise Server (SLES)  
 &emsp;&emsp;&emsp;&emsp;&emsp;OpenSuse桌面  
@@ -23,6 +49,8 @@
 * __Android__：kernel+busybox（工具集）+java虚拟机  
 * __Linux分支参考网站__：[http://futurist.se/gldt/](http://futurist.se/gldt/)  
 
+
+---
 ## 如何获取帮助
 &emsp;&emsp;获取帮助的能力决定了技术的能力！可从以下几个方面获取多层次的帮助：  
 * whatis  
@@ -33,6 +61,7 @@
 * 其它网站和搜索  
 
 
+---
 ## systemd初始化进程
 &emsp;&emsp;Linux操作系统的开机过程是这样的，即从BIOS开始，然后进入Boot Loader，再加载系统内核，然后内核进行初始化，最后启动初始化进程。初始化进程作为Linux系统的第一个进程，它需要完成Linux系统中相关的初始化工作，为用户提供合适的工作环境。红帽RHEL 7系统已经替换掉了熟悉的初始化进程服务System V init，正式采用全新的systemd初始化进程服务。systemd初始化进程服务采用了并发启动机制，开机速度得到了不小的提升。  
 
@@ -53,7 +82,7 @@ emergency|emergency.target           |紧急Shell
 &emsp;&emsp;如果想要将系统默认的运行目标修改为“多用户，无图形”模式，可直接用ln命令把多用户模式目标文件连接到/etc/systemd/system/default.target：
 
 ```bash 
-[root@centos7 ~]# ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target 
+ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target 
 ```
 
 ### System V init运行级别
@@ -69,7 +98,9 @@ emergency|emergency.target           |紧急Shell
 
 &emsp;&emsp;到底什么是运行级呢？简单的说，运行级就是操作系统当前正在运行的功能级别。这个级别从0到6 ，具有不同的功能。你也可以在/etc/inittab中查看它的英文介绍。
 
-## 必知必会的命令
+
+---
+## 系统管理必知必会的操作和命令
 1. 如何查看当前使用的shell:
 ```bash
 [root@CentOS7 ~]# echo ${SHELL}  
@@ -115,3 +146,6 @@ lxl      pts/0        2019-03-21 14:46 (192.168.20.1)
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 lxl      pts/0    192.168.20.1     14:46    4.00s  0.41s  0.29s sshd: lxl [priv]
 ```
+
+
+`hexdump - display file contents in ascii, decimal, hexadecimal, or octal`
