@@ -18,21 +18,21 @@
 ABI 描述了应用程序与OS之间的底层接口,允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行  
 * API：Application Programming Interface  
 API 定义了源代码和库之间的接口，因此同样的源代码可以在支持这个 API 的任何系统中编译  
-* POSIX: Portable Operating System Interface
+* POSIX: Portable Operating System Interface  
 IEEE 在操作系统上定义的一系列 API 标准
 POSIX 兼容的程序可在其它 POSIXX 操作系统编译执行
-* 运行程序格式：
-Windows: EXE, .dll(dynamic link library), .lib
-Linux: ELF, .so(shared object), .a
+* 运行程序格式：  
+Windows: EXE, .dll(dynamic link library), .lib  
+Linux: ELF, .so(shared object), .a  
 
 ---
-## 
+## 用户和内核空间
 * 用户空间：User space  
 &emsp;&emsp;用户程序的运行空间。为了安全，它们是隔离的，即使用户的程序崩溃，内核也不受影响
 &emsp;&emsp;只能执行简单的运算，不能直接调用系统资源，必须通过系统接口（ system call），才能向内核发出指令
 
 
-
+<img alt="sl_train" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/sl_train.png" width="500" align=center />
 
 ---
 ## Linux发行版
