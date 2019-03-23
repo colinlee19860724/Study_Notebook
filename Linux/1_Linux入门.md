@@ -13,6 +13,23 @@
 * __帮助用法__
 
 ---
+## 开源 Open Source
+__软件分类__：  
+1. 商业  
+1. 共享  
+1. 自由 free  
+
+__开源__： 把软件程序与源代码文件一起打包提供给用户，让用户在不受限制地使用某个软件功能的基础上还可以按需进行修改，或编制成衍生产品再发布出去。用户具有使用自由、修改自由、重新发布自由以及创建衍生品的自由。开源软件最重要的特性有下面这些。  
+1. 低风险：使用闭源软件无疑把命运交付给他人，一旦封闭的源代码没有人来维护，你将进退维谷；而且相较于商业软件公司，开源社区很少存在倒闭的问题。  
+1. 高品质：相较于闭源软件产品，开源项目通常是由开源社区来研发及维护的，参与编写、维护、测试的用户量众多，一般的 bug 还没有等爆发就已经被修补。
+1. 低成本：开源工作者都是在幕后默默且无偿地付出劳动成果，为美好的世界贡献一份力量，因此使用开源社区推动的软件项目可以节省大量的人力、物力和财力。
+1. 更透明：没有哪个笨蛋会把木马、后门等放到开放的源代码中，这样无疑是把自己的罪行暴露在阳光之下。  
+
+&emsp;&emsp;世界上的开源许可证，大概有上百种，常用的有6个，下面一图读懂主要的开源协议：  
+
+<img alt="一图读懂主要的开源协议" src="../Photo/一图读懂主要的开源协议.png" width="500" align=middle />
+
+---
 ## 开发接口标准
 * __ABI: Application Binary Interface__  
 &emsp;&emsp;ABI 描述了应用程序与OS之间的底层接口,允许编译好的目标代码在使用兼容ABI的系统中无需改动就能运行  
@@ -27,9 +44,9 @@
 
 ---
 ## 用户和内核空间
-* 用户空间：User space  
+* __用户空间：User space__  
 &emsp;&emsp;用户程序的运行空间。为了安全，它们是隔离的，即使用户的程序崩溃，内核也不受影响，只能执行简单的运算，不能直接调用系统资源，必须通过系统接口（ system call），才能向内核发出指令。  
-* 内核空间：Kernel space  
+* __内核空间：Kernel space__  
 &emsp;&emsp;是 Linux 内核的运行空间，可以执行任意命令，调用系统的一切资源。  
 
 <img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/用户和内核空间.png" width="500" align=middle />
@@ -37,21 +54,37 @@
 示例：
 ```c
 str = "www.magedu.com" // 用户空间
-x = x + 100 // 用户空间
-file.write(str) // 切换到内核空间
-y = x + 200 // 切换回用户空间
+x = x + 100            // 用户空间
+y = x + 200            // 切换回用户空间
 ```
 &emsp;&emsp;第一行和第二行都是简单的赋值运算，在 User space 执行。第三行需要写入文件，就要切换到 Kernel space ，因为用户不能直接写文件，必须通过内核安排。第四行又是赋值运算，就切换回 User space 。  
 
-
-
 ---
-## Linux发行版
+## Linux版本
+### 内核版本
+&emsp;&emsp;查看内核(kernel)版本命令：`uname -r`或`cat /proc/version`  
+&emsp;&emsp;linux内核版本有两种：__稳定版__（次版本为偶数）和 __开发版__（次版本为奇数）。  
+&emsp;&emsp;版本号：__主版本.次版本.释出版本-修改版本__  
+&emsp;&emsp;如：__3.10.0-957.el7.x86_64__  
+> __注：__  
+> __主版本、次版本__：一般用头两个数字描述内核系列，主版本号和次版本号标志着重要的功能变动  
+> __释出版本__：在主次版本架构不变的情况下，新增的功能累积到一定程度后释出的内核版本  
+> __修改版本__：表示较小的功能变更，修改一些 bug 等  
+> __el__ 表示 Enterprise Linux，7表示 Centos7  
+> __x86_64__ 表示 CPU 结构，即64位  
+
+&emsp;&emsp;Linux 内核版本发布网站（The Linux Kernel Archives）：[https://www.kernel.org/](https://www.kernel.org/)
+
+### 发行版本
+&emsp;&emsp;查看发行（distribution）版本命令：`cat /etc/redhat-release`  
+&emsp;&emsp;Linux 发行版的名称和版本号是由发行版的维护者决定的  
+&emsp;&emsp;主要的 Linux 发行版如下：  
+
 * __slackware__：SUSE Linux Enterprise Server (SLES)  
 &emsp;&emsp;&emsp;&emsp;&emsp;OpenSuse桌面  
 * __debian__：ubuntu，mint  
 * __RedHat__：RHEL: RedHat Enterprise Linux&emsp;每18个月发行一个新版本  
-&emsp;&emsp;&emsp;&emsp;CentOS：兼容RHEL的格式  
+&emsp;&emsp;&emsp;&emsp;CentOS：兼容RHEL的格式，国内下载源  
 &emsp;&emsp;&emsp;&emsp;中标麒麟：中标软件  
 &emsp;&emsp;&emsp;&emsp;Fedora：每6个月发行一个新版本  
 * __ArchLinux__：轻量简洁  
@@ -59,7 +92,8 @@ y = x + 200 // 切换回用户空间
 * __LFS__：Linux From scratch 自制Linux  
 * __Android__：kernel+busybox（工具集）+java虚拟机  
 * __Linux分支参考网站__：[http://futurist.se/gldt/](http://futurist.se/gldt/)  
-
+* __阿里巴巴开源镜像站__：[https://opsx.alibaba.com/mirror](https://opsx.alibaba.com/mirror)
+* __网易开源镜像站__：[http://mirrors.163.com/](http://mirrors.163.com/)
 
 ---
 ## 如何获取帮助
@@ -70,6 +104,7 @@ y = x + 200 // 切换回用户空间
 * /usr/share/doc/  
 * Red Hat documentation  
 * 其它网站和搜索  
+
 
 
 ---
@@ -111,7 +146,7 @@ ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target
 
 
 ---
-## 系统管理必知必会的操作和命令
+## 必知必会的操作和命令
 1. 如何查看当前使用的shell:
 ```bash
 [root@CentOS7 ~]# echo ${SHELL}  
@@ -136,7 +171,7 @@ man is /bin/man  # 这是一个外部命令
 [root@centos7 ~]# type ls
 ls is aliased to `ls --color=auto`  # 这是一个别名命令
 [root@centos7 ~]# type cd
-cd is a shell builtin  #这是一个内部命令
+cd is a shell builtin  # 这是一个内部命令
 ```
 4. 查看登陆当前系统的用户：`whoami`
 ```bash
