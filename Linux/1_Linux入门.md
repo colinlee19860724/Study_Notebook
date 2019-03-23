@@ -27,7 +27,7 @@
 
 &emsp;&emsp;世界上的开源许可证，大概有上百种，常用的有6个，下面一图读懂主要的开源协议：  
 
-<img alt="一图读懂主要的开源协议" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/一图读懂主要的开源协议.png" width="500" align=middle />
+<img alt="一图读懂主要的开源协议" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/一图读懂主要的开源协议.png" width="700" align=middle />
 
 ---
 ## 开发接口标准
