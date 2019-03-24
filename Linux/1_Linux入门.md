@@ -46,7 +46,7 @@
 * __内核空间：Kernel space__  
 &emsp;&emsp;是 Linux 内核的运行空间，可以执行任意命令，调用系统的一切资源。  
 
-<img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/kernelSpaceAndUserSpace.png" width="500" align=middle />
+<img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/kernelSpaceAndUserSpaces.png" width="500" align=middle />
 
 示例：
 ```c
