@@ -46,7 +46,7 @@
 * __内核空间：Kernel space__  
 &emsp;&emsp;是 Linux 内核的运行空间，可以执行任意命令，调用系统的一切资源。  
 
-<img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/kernelSpaceAnduserSpace.png" width="500" align=middle />
+<img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/kernelSpaceAndUserSpace.png" width="500" align=middle />
 
 示例：
 ```c
@@ -146,7 +146,10 @@ ln -sf /lib/systemd/system/multi-user.target/etc/systemd/system/default.target
 ```bash
 [root@CentOS7 ~]# echo ${SHELL}  
 /bin/bash
-```2. 如何查看本机所有的 shell：`cat /etc/shells````bash
+```
+
+2. 如何查看本机所有的 shell：`cat /etc/shells`
+```bash
 [root@centos7 ~]# cat /etc/shells 
 /bin/sh
 /bin/bash
@@ -154,28 +157,44 @@ ln -sf /lib/systemd/system/multi-user.target/etc/systemd/system/default.target
 /usr/bin/bash
 /bin/tcsh
 /bin/csh
-```3. 判断内部还是外部命令：`tpye COMMAND````bash
+```
+
+3. 判断内部还是外部命令：`tpye COMMAND`
+```bash
 [root@centos7 ~]# type man
 man is /bin/man                     # 这是一个外部命令
 [root@centos7 ~]# type ls
 ls is aliased to `ls --color=auto`  # 这是一个别名命令
 [root@centos7 ~]# type cd
 cd is a shell builtin               # 这是一个内部命令
-```4. 查看登陆当前系统的用户：`whoami````bash
+```
+
+4. 查看登陆当前系统的用户：`whoami`
+```bash
 [root@centos7 ~]# whoami
 root
-```5. 查看当前所有系统登录的？户：`who````bash
+```
+
+5. 查看当前所有系统登录的用户：`who`
+```bash
 [root@centos7 ~]# who
 lxl      pts/0        2019-03-21 14:46 (192.168.20.1)
-```6. 显？系统当前使？登录会话及所做操作：`w````bash
+```
+
+6. 显示系统当前使用登录会话及所做操作：`w`
+```bash
 [root@centos7 ~]# w
  20:53:48 up  6:08,  2 users,  load average: 0.00, 0.01, 0.05
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
 lxl      pts/0    192.168.20.1     14:46    4.00s  0.41s  0.29s sshd: lxl [priv]
-```7. 通过用户名查看用户的 UID、GID：`id````bash
+```
+
+7. 通过用户名查看用户的 UID、GID：`id`
+```bash
 [root@centos7 ~]# id root
 uid=0 (root) gid=0 (root) groups=0 (root)
-```8. 查看文件的具体存储信息和时间等信息：`stat FILENAME````bash
+```8. 查看文件的具体存储信息和时间等信息：`stat FILENAME`
+```bash
 [root@centos7 ~]# stat anaconda-ks.cfg 
   File: ‘anaconda-ks.cfg’
   Size: 1959      	Blocks: 8          IO Block: 4096   regular file
