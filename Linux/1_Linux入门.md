@@ -3,12 +3,12 @@
 # Linux 入门
 
 ## 开源 Open 
-* __软件分类__：  
+- __软件分类__：  
   1. 商业  
   2. 共享  
   3. 自由 free  
 
-* __开源__： 把软件程序与源代码文件一起打包提供给用户，让用户在不受限制地使用某个软件功能的基础上还可以按需进行修改，或编制成衍生产品再发布出去。用户具有使用自由、修改自由、重新发布自由以及创建衍生品的自由。开源软件最重要的特性有下面这些。  
+- __开源__： 把软件程序与源代码文件一起打包提供给用户，让用户在不受限制地使用某个软件功能的基础上还可以按需进行修改，或编制成衍生产品再发布出去。用户具有使用自由、修改自由、重新发布自由以及创建衍生品的自由。开源软件最重要的特性有下面这些。  
   1. __低风险__：使用闭源软件无疑把命运交付给他人，一旦封闭的源代码没有人来维护，你将进退维谷；而且相较于商业软件公司，开源社区很少存在倒闭的问题。  
   2. __高品质__：相较于闭源软件产品，开源项目通常是由开源社区来研发及维护的，参与编写、维护、测试的用户量众多，一般的bug还没有等爆发就已经被修补。
   3. __低成本__：开源工作者都是在幕后默默且无偿地付出劳动成果，为美好的世界贡献一份力量，因此使用开源社区推动的软件项目可以节省大量的人力、物力和财力。
@@ -20,30 +20,30 @@
 
 ---
 ## Linux 哲学思想
-* 一切皆文件（包括硬件）
-* 小型，单一用途的程序
-* 链接程序，共同完成复杂的任务
-* 避免令人困惑的用户界面
-* 配置数据存储在文本中
+- 一切皆文件（包括硬件）
+- 小型，单一用途的程序
+- 链接程序，共同完成复杂的任务
+- 避免令人困惑的用户界面
+- 配置数据存储在文本中
 
 ---
 ## 开发接口标准
-* __ABI: Application Binary Interface__  
+- __ABI: Application Binary Interface__  
 &emsp;&emsp;ABI 描述了应用程序与 OS 之间的底层接口，允许编译好的目标代码在使用兼容 ABI 的系统中无需改动就能运行  
-* __API：Application Programming Interface__  
+- __API：Application Programming Interface__  
 &emsp;&emsp;API 定义了源代码和库之间的接口，因此同样的源代码可以在支持这个 API 的任何系统中编译  
-* __POSIX: Portable Operating System Interface__  
+- __POSIX: Portable Operating System Interface__  
 &emsp;&emsp;IEEE 在操作系统上定义的一系列 API 标准  
 &emsp;&emsp;POSIX 兼容的程序可在其它 POSIXX 操作系统编译执行  
-* __运行程序格式：__  
+- __运行程序格式：__  
 &emsp;&emsp;Windows: EXE, .dll (dynamic link library), .lib  
 &emsp;&emsp;Linux: ELF, .so (shared object), .a  
 
 ---
 ## 用户和内核空间
-* __用户空间：User space__  
+- __用户空间：User space__  
 &emsp;&emsp;用户程序的运行空间。为了安全，它们是隔离的，即使用户的程序崩溃，内核也不受影响，只能执行简单的运算，不能直接调用系统资源，必须通过系统接口（ system call），才能向内核发出指令。  
-* __内核空间：Kernel space__  
+- __内核空间：Kernel space__  
 &emsp;&emsp;是 Linux 内核的运行空间，可以执行任意命令，调用系统的一切资源。  
 
 <img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/kernelSpaceAndUserSpaces.png" width="500" align=middle />
@@ -77,20 +77,20 @@ y = x + 200            // 切换回用户空间
 &emsp;&emsp;Linux 发行版的名称和版本号是由发行版的维护者决定的  
 &emsp;&emsp;主要的 Linux 发行版如下：  
 
-* __slackware__：SUSE Linux Enterprise Server (SLES)  
+- __slackware__：SUSE Linux Enterprise Server (SLES)  
 &emsp;&emsp;&emsp;&emsp;&emsp;OpenSuse 桌面  
-* __debian__：ubuntu，mint  
-* __RedHat__：RHEL: RedHat Enterprise Linux&emsp; 每 18 个月发行一个新版本  
+- __debian__：ubuntu，mint  
+- __RedHat__：RHEL: RedHat Enterprise Linux&emsp; 每 18 个月发行一个新版本  
 &emsp;&emsp;&emsp;&emsp;CentOS：兼容 RHEL 的格式，国内下载源  
 &emsp;&emsp;&emsp;&emsp;中标麒麟：中标软件  
 &emsp;&emsp;&emsp;&emsp;Fedora：每 6 个月发行一个新版本  
-* __ArchLinux__：轻量简洁  
-* __Gentoo__：极致性能，不提供传统意义的安装程序  
-* __LFS__：Linux From scratch 自制 Linux  
-* __Android__：kernel+busybox（工具集）+java 虚拟机  
-* __Linux 分支参考网站__：[http://futurist.se/gldt/](http://futurist.se/gldt/)  
-* __阿里巴巴开源镜像站__：[https://opsx.alibaba.com/mirror](https://opsx.alibaba.com/mirror)
-* __网易开源镜像站__：[http://mirrors.163.com/](http://mirrors.163.com/)
+- __ArchLinux__：轻量简洁  
+- __Gentoo__：极致性能，不提供传统意义的安装程序  
+- __LFS__：Linux From scratch 自制 Linux  
+- __Android__：kernel+busybox（工具集）+java 虚拟机  
+- __Linux 分支参考网站__：[http://futurist.se/gldt/](http://futurist.se/gldt/)  
+- __阿里巴巴开源镜像站__：[https://opsx.alibaba.com/mirror](https://opsx.alibaba.com/mirror)
+- __网易开源镜像站__：[http://mirrors.163.com/](http://mirrors.163.com/)
 
 ---
 ## systemd 初始化进程
@@ -132,18 +132,24 @@ init 6  # 就是重启
 
 ---
 ## 用户登录
-* __root 用户__（即 UID 为 0 的用户）：   
+- __root 用户__（即 UID 为 0 的用户）：   
 &emsp;&emsp;一个特殊的管理帐户  
 &emsp;&emsp;也被称为超级用户  
 &emsp;&emsp;root 已接近完整的系统控制  
 &emsp;&emsp;对系统损害几乎有无限的能力  
 &emsp;&emsp;除非必要，不要登录为 root  
-* __普通（ 非特权 ）用户__：   
+- __普通（ 非特权 ）用户__：   
 &emsp;&emsp;权限有限  
 &emsp;&emsp;造成损害的能力比较有限  
 
 ---
-## 什么是shell
+## 什么是Shell
+- Shell 是Linux系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行
+- Shell也被称为LINUX的命令解释器（command interpreter）
+- Shell是一种高级程序设计语言
+
+
+<img alt="用户和内核空间" src="../Photo/whatIsShelll.png" width="400" align=middle />
 
 
 ---
@@ -221,9 +227,9 @@ Change: 2019-03-19 00:56:19.553934247 +0800
 ---
 ## 如何获取帮助
 &emsp;&emsp;获取帮助的能力决定了技术的能力！可从以下几个方面获取多层次的帮助：  
-* `whatis`  
-* `COMMAND --help`  
-* `man` 和 `info`  
-* `/usr/share/doc/`  
-* Red Hat documentation  
-* 其它网站和搜索
+- `whatis`  
+- `COMMAND --help`  
+- `man` 和 `info`  
+- `/usr/share/doc/`  
+- Red Hat documentation  
+- 其它网站和搜索
