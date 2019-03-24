@@ -120,10 +120,12 @@ ln -sf /lib/systemd/system/multi-user.target/etc/systemd/system/default.target
 &emsp;&emsp;init 命令是 Linux 下的进程初始化工具，init 进程是所有 Linux 进程的父进程，它的进程号为 1。init 命令是 Linux 操作系统中不可缺少的程序之一，init 进程是 Linux 内核引导运行的，是系统中的第一个进程。  
 &emsp;&emsp;使用 init 命令很简单。直接输入 `init + 你想要的模式` 回车就行。   
 比如输入:   
-&emsp;&emsp;`init 0` 就是关机  
-&emsp;&emsp;`init 3` 就是切换到多用户 - 命令行模式  
-&emsp;&emsp;`init 5` 就是切换到图形化界面  
-&emsp;&emsp;`init 6` 就是重启  
+```bash
+init 0  # 就是关机  
+init 3  # 就是切换到多用户 - 命令行模式  
+init 5  # 就是切换到图形化界面  
+init 6  # 就是重启  
+```
 
 ### 运行级别
 &emsp;&emsp;到底什么是运行级呢？简单的说，运行级就是操作系统当前正在运行的功能级别。这个级别从 0 到 6 ，具有不同的功能。你也可以用 `cat /etc/inittab` 查看它的英文介绍。
@@ -139,6 +141,10 @@ ln -sf /lib/systemd/system/multi-user.target/etc/systemd/system/default.target
 * __普通（ 非特权 ）用户__：   
 &emsp;&emsp;权限有限  
 &emsp;&emsp;造成损害的能力比较有限  
+
+---
+## 什么是shell
+
 
 ---
 ## 必知必会命令
@@ -162,11 +168,11 @@ ln -sf /lib/systemd/system/multi-user.target/etc/systemd/system/default.target
 3. 判断内部还是外部命令：`tpye COMMAND`
 ```bash
 [root@centos7 ~]# type man
-man is /bin/man                     # 这是一个外部命令
+man is /bin/man           # 这是一个外部命令
+[root@centos7 ~]# type cd
+cd is a shell builtin     # 这是一个内部命令
 [root@centos7 ~]# type ls
 ls is aliased to `ls --color=auto`  # 这是一个别名命令
-[root@centos7 ~]# type cd
-cd is a shell builtin               # 这是一个内部命令
 ```
 
 4. 查看登陆当前系统的用户：`whoami`
@@ -209,7 +215,7 @@ Change: 2019-03-19 00:56:19.553934247 +0800
  Birth: -
 ```
 
-8.`hexdump - display file contents in ascii, decimal, hexadecimal, or octal`
+8. hexdump - display file contents in ascii, decimal, hexadecimal, or octal
 
 
 ---
