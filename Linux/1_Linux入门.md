@@ -2,7 +2,7 @@
 
 # Linux 入门
 
-## 开源 Open Source
+## 开源 Open 
 * __软件分类__：  
   1. 商业  
   2. 共享  
@@ -16,7 +16,7 @@
   
 &emsp;&emsp;世界上的开源许可证，大概有上百种，常用的有 6 个，下面一图读懂主要的开源协议：  
 
-<img alt="一图读懂主要的开源协议" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/openResourceLicenses.png" width="700" align=middle />
+<img alt="一图读懂主要的开源协议" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/openSourceLicenses.png" width="700" align=middle />
 
 ---
 ## Linux 哲学思想
