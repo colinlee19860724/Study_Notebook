@@ -96,7 +96,7 @@ y = x + 200            // 切换回用户空间
 ## systemd 初始化进程
 &emsp;&emsp;Linux 操作系统的开机过程是这样的，即从 BIOS 开始，然后进入 Boot Loader，再加载系统内核，然后内核进行初始化，最后启动初始化进程。初始化进程作为 Linux 系统的第一个进程，它需要完成 Linux 系统中相关的初始化工作，为用户提供合适的工作环境。红帽 RHEL 7 系统已经替换掉了熟悉的初始化进程服务 System V init，正式采用全新的 systemd 初始化进程服务。systemd 初始化进程服务采用了并发启动机制，开机速度得到了不小的提升。  
  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;**systemd 与 System V init 的区别以及作用 **
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;__systemd 与 System V init 的区别以及作用__
 
 System V init 运行级别 | systemd 目标名称  | 作用
 :------------------:|:---------------|:-----
@@ -141,7 +141,7 @@ ln -sf /lib/systemd/system/multi-user.target/etc/systemd/system/default.target
 &emsp;&emsp;造成损害的能力比较有限  
 
 ---
-## 简单命令
+## 必知必会命令
 1. 如何查看当前使用的 shell：`echo ${SHELL}`
 ```bash
 [root@CentOS7 ~]# echo ${SHELL}  
@@ -193,7 +193,9 @@ lxl      pts/0    192.168.20.1     14:46    4.00s  0.41s  0.29s sshd: lxl [priv]
 ```bash
 [root@centos7 ~]# id root
 uid=0 (root) gid=0 (root) groups=0 (root)
-```8. 查看文件的具体存储信息和时间等信息：`stat FILENAME`
+```
+
+8. 查看文件的具体存储信息和时间等信息：`stat FILENAME`
 ```bash
 [root@centos7 ~]# stat anaconda-ks.cfg 
   File: ‘anaconda-ks.cfg’
@@ -205,7 +207,9 @@ Access: 2019-03-19 00:58:06.037999203 +0800
 Modify: 2019-03-19 00:56:19.553934247 +0800
 Change: 2019-03-19 00:56:19.553934247 +0800
  Birth: -
-```8.`hexdump - display file contents in ascii, decimal, hexadecimal, or octal`
+```
+
+8.`hexdump - display file contents in ascii, decimal, hexadecimal, or octal`
 
 
 ---
