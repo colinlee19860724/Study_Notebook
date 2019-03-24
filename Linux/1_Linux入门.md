@@ -143,13 +143,82 @@ init 6  # 就是重启
 &emsp;&emsp;造成损害的能力比较有限  
 
 ---
-## 什么是Shell
-- Shell 是Linux系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行
-- Shell也被称为LINUX的命令解释器（command interpreter）
-- Shell是一种高级程序设计语言
+## 什么是 Shell
+- Shell 是 Linux 系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行
+- Shell 也被称为 LINUX 的命令解释器（command interpreter）
+- Shell 是一种高级程序设计语言
 
+<img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/whatIsShelll.png" width="350" align=middle />
 
-<img alt="用户和内核空间" src="../Photo/whatIsShelll.png" width="400" align=middle />
+### bash shell
+- GNU Bourne-Again Shell (bash) 是 GNU 计划中重要的工具软件之一，目前也是 Linux 标准的 shell，与 sh 兼容
+- CentOS 默认使用
+
+### 命令提示符
+- 命令提示符：prompt  
+```bash
+[root@localhost ~]#  
+# 管理员  
+
+[lxl@centos7 ~]$
+$ 普通用户
+```
+
+- 显示提示符格式：`echo $PS1`
+- 修改提示符格式：
+```bash
+# [当前用户的账号名称@主机名的第一个名字 工作目录的最后一层目录名]命令提示符 
+PS1='[\u@\h \W]\$ '
+# 不停闪烁的提示符样式
+PS1="\[\e[1;5;41;33m\][\u@\h \W]\\$ \[\e[0m\]"
+# 黄字红底([\e[31;40m])，依次显示24小时格式时间(\t)、当前用户的账号名称(\u)、主机的第一个名字(\h)、完整的当前工作目录名称(\w)、
+PS1="\[\e[1;2;41;33m\][\t \u@\h \w]\\$ \[\e[0m\]"
+```
+&emsp;&emsp;&emsp;&emsp;__在 PS1 中设置的参数与含义对照表__  
+参数|含义
+:--:|:--
+\d|可显示出『星期 月 日』的日期格式，如："Mon Feb 2"
+\H|完整的主机名。
+\h|仅取主机名在第一个小数点之前的名字
+\t|显示时间，为 24 小时格式的『HH:MM:SS』
+\T|显示时间，为 12 小时格式的『HH:MM:SS』
+\A|显示时间，为 24 小时格式的『HH:MM』
+\@|显示时间，为 12 小时格式的『am/pm』样式
+\u|目前使用者的账号名称，如『root』
+\v|BASH 的主版本信息
+\w|完整的工作目录名称，由根目录写起的目录名称，但家目录会以 ~ 取代
+\W|利用 basename 函数取得工作目录名称，所以仅会列出最后一个目录名
+\!|命令历史数
+\#|开机后命令历史数
+\$|提示字符，如果是 root 时，提示字符为 # ，否则就是 $ 
+
+&emsp;&emsp;在 PS1 中设置字符颜色的格式为：[\e [F;Bm]，其中 “F“为字体颜色，编号为 30-37，“B” 为背景颜色，编号为 40-47。  
+&emsp;&emsp;__颜色对照表__
+F   |B   |颜色
+:--:|:--:|:--:
+30|40|黑色
+31|41|红色
+32|42|绿色
+33|43|黄色
+34|44|蓝色
+35|45|紫红色
+36|46|青蓝色
+37|47|白色
+
+&emsp;&emsp;这行配置可以写到 `/etc/profile` 下（写完记得 `source /etc/profile` 一下，让配置生效），也可以写到个人用户的环境变量配置文件中。  
+
+###
+在shell中可执行的命令有两类:  
+- **内部命令**：由shell自带的，而且通过某命令形式提供
+```bash
+help          # 内部命令列表
+enable CMD    # 启用内部命令
+enable –n CMD # 禁用内部命令
+enable –n     # 查看所有禁用的内部命令
+```
+- **外部命令**：在文件系统路径下有对应的可执行程序文件  
+查看路径：`which -a |--skip-alias ; whereis`
+
 
 
 ---
@@ -221,8 +290,15 @@ Change: 2019-03-19 00:56:19.553934247 +0800
  Birth: -
 ```
 
-8. hexdump - display file contents in ascii, decimal, hexadecimal, or octal
+9. 长时间执行远程终端窗口，不退出连接的命令（可在会话间自由切换）：`screen`
+  - 创建新screen会话：`screen –S [SESSION]`  
+  - 加入screen会话：`screen –x [SESSION]`   
+  - 退出并关闭screen会话：`exit`  
+  - 剥离当前screen会话：`Ctrl+A+D`  
+  - 显示所有已经打开的screen会话：`screen -ls`  
+  - 恢复某screen会话：`screen -r [SESSION]`  
 
+10. `hexdump`命令一般用来查看“二进制”文件的十六进制编码，但实际上它能查看任何文件，而不只限于二进制文件。  
 
 ---
 ## 如何获取帮助
