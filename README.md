@@ -12,4 +12,4 @@
 
 **来点小额赞助，鼓励作者写出更好的文章-->** **`请扫描下面的二维码打赏:`**  
 
-<img alt="支付宝收款码" src="Photo/colinlee_zhifubao.JPG" width="200" align=bottom /> &ensp;&ensp;&ensp;&ensp; <img alt="微信支付收款码" src="Photo/colinlee_weixin.JPG" width="200" align=bottom />
+<img alt="支付宝收款码" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/colinlee_zhifubao.JPG" width="200" align=bottom /> &emsp;&emsp; <img alt="微信支付收款码" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/colinlee_weixin.JPG" width="200" align=bottom />

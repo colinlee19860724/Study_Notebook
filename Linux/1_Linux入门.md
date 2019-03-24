@@ -16,7 +16,7 @@
   
 &emsp;&emsp;世界上的开源许可证，大概有上百种，常用的有 6 个，下面一图读懂主要的开源协议：  
 
-<img alt="一图读懂主要的开源协议" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/一图读懂主要的开源协议.png" width="700" align=middle />
+<img alt="一图读懂主要的开源协议" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/openResourceLicenses.png" width="700" align=middle />
 
 ---
 ## Linux 哲学思想
@@ -46,7 +46,7 @@
 * __内核空间：Kernel space__  
 &emsp;&emsp;是 Linux 内核的运行空间，可以执行任意命令，调用系统的一切资源。  
 
-<img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/用户和内核空间.png" width="500" align=middle />
+<img alt="用户和内核空间" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/kernelSpaceAnduserSpace.png" width="500" align=middle />
 
 示例：
 ```c
