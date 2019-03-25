@@ -211,7 +211,7 @@ F   |B   |颜色
 
 &emsp;&emsp;这行配置可以写到 `/etc/profile` 下（写完记得 `source /etc/profile` 一下，让配置生效），也可以写到个人用户的环境变量配置文件中。  
 
-###
+### 命令分类
 &emsp;&emsp;在shell中可执行的命令有两类:  
 - **内部命令**：由shell自带的，而且通过某命令形式提供
 ```bash
