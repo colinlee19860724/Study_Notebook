@@ -344,6 +344,36 @@ Change: 2019-03-19 00:56:19.553934247 +0800
 - `whatis`  
 - `COMMAND --help`  
 - `man` 和 `info`  
-- `/usr/share/doc/`  
-- Red Hat documentation  
+- 通过本地文档获取帮助：`/usr/share/doc/`  
+- 通过在线文档获取帮助  
 - 其它网站和搜索
+
+### 通过本地文档获取帮助
+- /usr/share/doc目录
+  - 多数安装了的软件包的子目录,包括了这些软件的相关原理说明
+  - 常见文档：README INSTALL CHANGES
+  - 不适合其它地方的文档的位置
+    - 配置文件范例
+    - HTML/PDF/PS 格式的文档
+    - 授权书详情
+
+### 通过在线文档获取帮助
+- 第三方应用官方文档
+  - http://www.nginx.org
+  - http://tomcat.apache.org
+  - http://httpd.apache.org
+  - http://www.python.org
+  - https://dev.mysql.com/doc/
+- 通过发行版官方的文档光盘或网站可以获得
+  - 安装指南、部署指南、虚拟化指南等
+  - 红帽知识库和官方在线文档
+    - http://kbase.redhat.com
+    - http://www.redhat.com/docs
+    - http://access.redhat.com
+
+### 其它网站和搜索
+- http://tldp.org
+- http://www.slideshare.net
+- http://www.google.com
+- Openstack filetype:pdf
+- rhca site:redhat.com/docs
