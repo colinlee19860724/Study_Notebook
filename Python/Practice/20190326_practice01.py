@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Script Name   : 20190326_pratice01.py
+# Script Name   : 20190326_practice01.py
 # Author        : ColinLee
 # QQ:           : 517999276
 # URL:          : https://github.com/colinlee19860724
