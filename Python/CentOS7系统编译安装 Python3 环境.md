@@ -110,4 +110,6 @@ Python 3.7.3
 
 ## 1.5. 再次编译其他 Python 版本
 
-&emsp;&emsp;完成上面的编译安装过程后，可以再次尝试编译安装其他版本的 Python。
+&emsp;&emsp;完成上面的编译安装过程后，可以再次尝试编译安装其他版本的 Python。  
+
+Python-3.6.6 源码下载地址：[https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz](https://www.python.org/ftp/python/3.6.6/Python-3.6.6.tar.xz)
