@@ -4,7 +4,7 @@
     - [1.3. CentOS7 系统中 Pycharm 环境使用](#13-centos7-系统中-pycharm-环境使用)
     - [1.4. Pycharm 中安装 Jupyter](#14-pycharm-中安装-jupyter)
 
-# 1. CentOS7 系统简单 Python 环境使用
+# 1. CentOS 7 系统简单 Python 环境使用
 
 ## 1.1. 查看当前系统 Python 版本
 
