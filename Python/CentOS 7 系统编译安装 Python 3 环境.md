@@ -55,16 +55,7 @@ Saving to: ‘Python-3.7.3.tgz’
 [root@localhost ~]# ll
 total 22476
 -rw-------. 1 root root     1866 Jan  4 22:24 anaconda-ks.cfg
-drwxr-xr-x. 2 root root     4096 Jan  4 22:30 Desktop
-drwxr-xr-x. 2 root root     4096 Jan  4 22:30 Documents
-drwxr-xr-x. 2 root root     4096 Jan  4 22:30 Downloads
--rw-r--r--. 1 root root     1914 Jan  4 22:27 initial-setup-ks.cfg
-drwxr-xr-x. 2 root root     4096 Jan  4 22:30 Music
-drwxr-xr-x. 2 root root     4096 Jan  4 22:30 Pictures
-drwxr-xr-x. 2 root root     4096 Jan  4 22:30 Public
 -rw-r--r--. 1 root root 22973527 Mar 26 04:59 Python-3.7.3.tgz
-drwxr-xr-x. 2 root root     4096 Jan  4 22:30 Templates
-drwxr-xr-x. 2 root root     4096 Jan  4 22:30 Videos
 [root@localhost ~]# 
 ```
 
@@ -101,11 +92,9 @@ abrt-console-notification.sh  colorgrep.sh        csh.local    lang.sh     Packa
 [root@localhost profile.d]# cat python3.7.sh 
 #!/bin/bash
 export PATH=$PATH:/usr/local/python37/bin
-[root@localhost profile.d]#
 [root@localhost profile.d]# source ./python3.7.sh 
 [root@localhost profile.d]# python3.7 -V
 Python 3.7.3
-[root@localhost profile.d]#
 ```
 
 ## 1.5. 再次编译其他 Python 版本
