@@ -144,8 +144,8 @@ Out: ('JAVA_HOME', '/usr/bin/java')
 &emsp;&emsp;Python提供了两种定义一个集合的方式，`set()` 和 `set(iterable)`，他们的用法如下：
 
 ```python
-set() ==>> new empty set object     # 返回一个空的set对象
-set(iterable) ==>> new set object   # 返回一个set对象，元素由iterable填充
+set() --> new empty set object     # 返回一个空的set对象
+set(iterable) --> new set object   # 返回一个set对象，元素由iterable填充
 ```
 
 例如：
@@ -186,9 +186,9 @@ TypeError: unhashable type: 'list'
 &emsp;&emsp;set 提供了两种定义一个集合的方式，`add` 和 `update`，他们的用法如下：  
 
 ```python
-s.add(elem) ==>> None            # 在集合 s 中添加一个元素 elem，如果元素存在，则什么都不做(去重特性)。（就地修改）
+s.add(elem) --> None            # 在集合 s 中添加一个元素 elem，如果元素存在，则什么都不做(去重特性)。（就地修改）
 
-s.update(*others) ==>> None   # 把 *others 个可迭代可 hash 对象，和 s 进行并集，然后赋给 s。（就地修改）
+s.update(*others) --> None   # 把 *others 个可迭代可 hash 对象，和 s 进行并集，然后赋给 s。（就地修改）
 ```
 
 例如：
@@ -216,13 +216,13 @@ Out: {(1, 2, 3), 0, 1, 2, 3, 4, 5, 6, 7, 8, 'a', 'abc', 'b', 'c', 'd', 'e', 'f'}
 &emsp;&emsp;set 提供了多种删除元素的方式，比如 `remove` ,`pop`，他们的用法如下：
 
 ```python
-s.remove(elem)  ==>> None   # 在集合 s 中删除一个元素，这个元素必须存在集合 s 中，否则会报 KeyError 异常
+s.remove(elem)  --> None   # 在集合 s 中删除一个元素，这个元素必须存在集合 s 中，否则会报 KeyError 异常
 
-s.discard(elem) ==>> None   # 在集合 s 中删除一个元素，如果元素不存在集合中，那么什么也不做
+s.discard(elem) --> None   # 在集合 s 中删除一个元素，如果元素不存在集合中，那么什么也不做
 
-s.pop()  ==>> item     # 在集合 s 中随便弹出一个元素，并返回元素的本身，如果集合本身为空，那么会提示 KeyError 异常
+s.pop()  --> item     # 在集合 s 中随便弹出一个元素，并返回元素的本身，如果集合本身为空，那么会提示 KeyError 异常
 
-s.clear()  ==>> None   # 清空集合
+s.clear()  --> None   # 清空集合
 ```
 
 例如：
@@ -335,9 +335,9 @@ Out: True
 ![union](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/union.png)
 
 ```python
-s.union(*others) ==>> new set object   # 把多个集合和集合 s 进行合并，返回一个新的集合对象, 使用 | 表示
+s.union(*others) --> new set object   # 把多个集合和集合 s 进行合并，返回一个新的集合对象, 使用 | 表示
 
-s.update(*others) ==>> None            # 把 *others 个可迭代可 hash 对象，和 s 进行并集，然后赋给 s。（就地修改）, 使用 |= 表示
+s.update(*others) --> None            # 把 *others 个可迭代可 hash 对象，和 s 进行并集，然后赋给 s。（就地修改）, 使用 |= 表示
 ```
 
 ## 3.3. 交集
@@ -346,9 +346,9 @@ s.update(*others) ==>> None            # 把 *others 个可迭代可 hash 对象
 ![intersection](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/intersection.png)
 
 ```python
-s.intersection(*others) ==>> new set object   # 返回多个集合的交集，使用 & 表示
+s.intersection(*others) --> new set object   # 返回多个集合的交集，使用 & 表示
 
-s.intersection_update(*others) ==>> None      # 获取多个集合的交集，就地进行修改，使用 &= 表示
+s.intersection_update(*others) --> None      # 获取多个集合的交集，就地进行修改，使用 &= 表示
 ```
 
 ## 3.4. 差集
@@ -357,9 +357,9 @@ s.intersection_update(*others) ==>> None      # 获取多个集合的交集，�
 ![difference](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/difference.png)
 
 ```python
-s.difference(*others) ==>> new set object    # 返回集合s和其他多个集合的差集，使用 - 表示
+s.difference(*others) --> new set object    # 返回集合s和其他多个集合的差集，使用 - 表示
 
-s.difference_update(*others) ==>> None       # 返回集合s和其他多个集合的差集，就地进行修改，使用 -= 表示
+s.difference_update(*others) --> None       # 返回集合s和其他多个集合的差集，就地进行修改，使用 -= 表示
 ```
 
 ## 3.5. 对称差集
@@ -368,23 +368,23 @@ s.difference_update(*others) ==>> None       # 返回集合s和其他多个集�
 ![symmetric_differece](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/symmetric_differece.png)
 
 ```python
-s.symmetric_difference(other) ==>> new set object   # 返回和另一个集合的对称差集，使用 ^ 表示
+s.symmetric_difference(other) --> new set object   # 返回和另一个集合的对称差集，使用 ^ 表示
 
-s.symmetric_difference_update(other) ==>> None      # 返回和另一个集合的对称差集，就地修改，使用 ^= 表示
+s.symmetric_difference_update(other) --> None      # 返回和另一个集合的对称差集，就地修改，使用 ^= 表示
 ```
 
 ## 3.6. 集合的其他运算
 
 ```python
-s.issubset(other) ==>> bool      # 判断当前集合是否是另一个集合的子集，使用 <= 表示
+s.issubset(other) --> bool      # 判断当前集合是否是另一个集合的子集，使用 <= 表示
 
 set1 < set2                      # 判断 set1 是否是 set2 的真子集
 
-s.issuperset(other) ==>> bool    # 判断当前集合是否是 other 的超集，使用 >= 表示
+s.issuperset(other) --> bool    # 判断当前集合是否是 other 的超集，使用 >= 表示
 
 set1 > set2                      # 判断 set1 是否是 set2 的真超集
 
-s.isdisjoint(other) ==>> bool    # 判断当前集合和另一个集合有没有交集，没有交集返回 True
+s.isdisjoint(other) --> bool    # 判断当前集合和另一个集合有没有交集，没有交集返回 True
 ```
 
 &emsp;&emsp;以上集合运算举例说明之：
