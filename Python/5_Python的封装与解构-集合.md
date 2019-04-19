@@ -5,37 +5,25 @@
     - [1.3. Python3 的解构](#13-python3-的解构)
 - [2. set 类型](#2-set-类型)
     - [2.1. set 的定义](#21-set-的定义)
-    - [2.2. set 的基本操作](#22-set-的基本操作)
-        - [2.2.1. 增加元素](#221-增加元素)
         - [2.2.2. 删除元素](#222-删除元素)
-        - [2.2.3. 修改元素](#223-修改元素)
-        - [2.2.4. 成员判断](#224-成员判断)
-    - [2.3. set 和线性结构](#23-set-和线性结构)
-- [3. 集合](#3-集合)
-    - [3.1. 集合运算](#31-集合运算)
-    - [3.2. 并集](#32-并集)
-    - [3.3. 交集](#33-交集)
-    - [3.4. 差集](#34-差集)
-    - [3.5. 对称差集](#35-对称差集)
-    - [3.6. 集合的其他运算](#36-集合的其他运算)
 
 
 # 1. 封装与解构
-&emsp;&emsp;封装与解构属于 Python 语言的一种特性，它使用起来很像其他语言中的`"逗号表达式"`，但内部原理是不同的，在某些场景下：比如变量交换、复制时使用，显得非常优雅。
+&emsp;&emsp;封装与解构属于 Python 语言的一种特性，它使用起来很像其他语言中的 `"逗号表达式"`，但内部原理是不同的，在某些场景下：比如变量交换、复制时使用，显得非常优雅。
 
 ## 1.1. 封装
 &emsp;&emsp;封装顾名思义就是装箱，把多个值使用逗号分隔，组合在一起，本质上来看，其返回的是一个元组，只是省略了小括号。(一定要区别于 C 语言的逗号表达式)
 
 ```python
-In : t1 = (1,2)  # 定义一个元组
+In : t1 =(1,2)  # 定义一个元组
 
 In : t2 = 1,2    # 省略括号，其内部还是会封装成元组
 
 In : t1
-Out: (1, 2)
+Out:(1, 2)
 
 In : t2
-Out: (1, 2)
+Out:(1, 2)
 
 In : type(t1)
 Out: tuple
@@ -49,7 +37,7 @@ Out: tuple
 
 ```python
 In : t1
-Out: (1, 2)
+Out:(1, 2)
 
 In : a,b = t1    # 表示把 1 赋给 a，把 2 赋给 b
 
@@ -59,13 +47,13 @@ Out: 1
 In : b
 Out: 2
 
-In : a,b,c = t1   # 当接受元素的变量多于解构的元素时，会提示ValueError，反之相同
+In : a,b,c = t1   # 当接受元素的变量多于解构的元素时，会提示 ValueError，反之相同
 ---------------------------------------------------------------------------
-ValueError                                Traceback (most recent call last)
+ValueError                                Traceback(most recent call last)
 <ipython-input-101-2e8ad53e5fc7> in <module>
 ----> 1 a,b,c = t1
 
-ValueError: not enough values to unpack (expected 3, got 2)
+ValueError: not enough values to unpack(expected 3, got 2)
 ```
 
 ## 1.3. Python3 的解构
@@ -119,38 +107,32 @@ Out: 4
 # 环境变量 JAVA_HOME=/usr/bin/java，返回环境变量名和路径
 >>> env, path = 'JAVA_HOME=/usr/bin/java'.split('=')
 >>> env, path
->>> ('JAVA_HOME','/usr/bin/java')
+>>>('JAVA_HOME','/usr/bin/java')
 
 # 或者
 
 In : env, _, path = 'JAVA_HOME=/usr/bin/java'.partition('=')
 
 In : env, path
-Out: ('JAVA_HOME', '/usr/bin/java')
-```
-
-> &emsp;&emsp;解构是 Python 提供的很好的功能，可以方便的提取复杂的数据结构的值，配合 `*` 和 `_` 使用时，会更加便捷。
+Out:('JAVA_HOME', '/usr/bin/java')
+```> &emsp;&emsp;解构是 Python 提供的很好的功能，可以方便的提取复杂的数据结构的值，配合`*`和`_` 使用时，会更加便捷。
 
 # 2. set 类型
-&emsp;&emsp;集合 set 在 Python 中是一个非常重要的`非线性结构`，它使用 `{}` 表示，用三个词总结集合的特点就是：__可变的__、__无序的__、__不重复__。它的官方解释如下：
-- set 是一个无序的，不重复的 `可hash对象` 组成的集。
+&emsp;&emsp;集合 set 在 Python 中是一个非常重要的 `非线性结构`，它使用 `{}` 表示，用三个词总结集合的特点就是：__可变的__、__无序的__、__不重复__。它的官方解释如下：
+- set 是一个无序的，不重复的 `可 hash 对象` 组成的集。
 - 常用来进行成员测试，在一个序列中去掉重复的对象，和进行数学上的计算，比如 `交集(intersection)`、`并集(union)`、`差集(difference)`、`对称差集(symmetric difference)` 等。
 - 和其他容器类型相似，在一个无序的集合中支持 `x in set`,`len(set)`,`for x in set` 等操作。
-- set 不会记录元素的位置以及元素加入集合的顺序，所以 set 不支持`索引`，`切片`或者其他的类序列的操作。
+- set 不会记录元素的位置以及元素加入集合的顺序，所以 set 不支持 `索引`，`切片` 或者其他的类序列的操作。
 
-> &emsp;&emsp;什么是可 hash 对象，可以简单的理解为可以被 `hash()` 计算的对象，在 Python中，可 hash 对象是不可变类型的，比如 tuple, str, int 等等。
+> &emsp;&emsp;什么是可 hash 对象，可以简单的理解为可以被 `hash()` 计算的对象，在 Python 中，可 hash 对象是不可变类型的，比如 tuple, str, int 等等。
 
 ## 2.1. set 的定义
-&emsp;&emsp;Python提供了两种定义一个集合的方式，`set()` 和 `set(iterable)`，他们的用法如下：
+&emsp;&emsp;Python 提供了两种定义一个集合的方式，`set()` 和 `set(iterable)`，他们的用法如下：
 
 ```python
-set() --> new empty set object     # 返回一个空的set对象
-set(iterable) --> new set object   # 返回一个set对象，元素由iterable填充
-```
-
-例如：
-
-```python
+set() --> new empty set object     # 返回一个空的 set 对象
+set(iterable) --> new set object   # 返回一个 set 对象，元素由 iterable 填充
+```例如：```python
 In : s1 = set()
 
 In : s2 = set(range(5))          # {0, 1, 2, 3, 4}
@@ -172,7 +154,7 @@ In : s5 = {(1,3),3,'a'}
 
 In : s6 = {[1,2],(1,2,),1,2}       # list 属于不可 hash 对象，所以无法添加到 set 中去
 ---------------------------------------------------------------------------
-TypeError                                 Traceback (most recent call last)
+TypeError                                 Traceback(most recent call last)
 <ipython-input-52-237c72203405> in <module>
 ----> 1 s6={[1,2],(1,2,),1,2}
 
@@ -189,11 +171,7 @@ TypeError: unhashable type: 'list'
 s.add(elem) --> None            # 在集合 s 中添加一个元素 elem，如果元素存在，则什么都不做(去重特性)。（就地修改）
 
 s.update(*others) --> None   # 把 *others 个可迭代可 hash 对象，和 s 进行并集，然后赋给 s。（就地修改）
-```
-
-例如：
-
-```python
+```例如：```python
 In : s = {1, 2, 3}        
 
 In : s.add('abc')       # 把字符串 'abc' 当作一个元素添加进去
@@ -201,7 +179,7 @@ In : s.add('abc')       # 把字符串 'abc' 当作一个元素添加进去
 In : s
 Out: {1, 2, 3, 'abc'}  
 
-In : s.add((1,2,3))     # 把元组 (1,2,3) 当作一个元素添加进去
+In : s.add((1,2,3))     # 把元组(1,2,3) 当作一个元素添加进去
 
 In : s
 Out: {(1, 2, 3), 1, 2, 3, 'abc'}
@@ -223,11 +201,7 @@ s.discard(elem) --> None   # 在集合 s 中删除一个元素，如果元素不
 s.pop()  --> item     # 在集合 s 中随便弹出一个元素，并返回元素的本身，如果集合本身为空，那么会提示 KeyError 异常
 
 s.clear()  --> None   # 清空集合
-```
-
-例如：
-
-```python
+```例如：```python
 In : s
 Out: {(1, 2, 3), 0, 1, 2, 3, 4, 5, 6, 7, 8, 'a', 'abc', 'b', 'c', 'd', 'e', 'f'}
 
@@ -238,7 +212,7 @@ Out: {(1, 2, 3), 1, 2, 3, 4, 5, 6, 7, 8, 'a', 'abc', 'b', 'c', 'd', 'e', 'f'}
 
 In : s.remove(1000)       # 不存在集合内的元素，删除会报异常   
 ---------------------------------------------------------------------------
-KeyError                                  Traceback (most recent call last)
+KeyError                                  Traceback(most recent call last)
 <ipython-input-74-9d9da17ab719> in <module>
 ----> 1 s.remove(1000)
 
@@ -256,7 +230,7 @@ In : s1 = set()
 
 In : s1.pop()      # 空集合会报异常        
 ---------------------------------------------------------------------------
-KeyError                                  Traceback (most recent call last)
+KeyError                                  Traceback(most recent call last)
 <ipython-input-84-095118de218b> in <module>
 ----> 1 s1.pop()
 
@@ -305,8 +279,8 @@ Out: True
 
 
 ## 2.3. set 和线性结构
-&emsp;&emsp;在 list，str 这种`线性结构`中进行`成员判断`时，因为需要遍历，线性结构的查询时间复杂度是 `O(n)`，即随着数据规模的增大而增加耗时。  
-&emsp;&emsp;而set 等非线性结构，内部使用的是 hash 值作为 key，查询时只需把要判断的元素进行 hash，找到 set 中对应的门牌号，把里面的数据拽出来，看看是不是相同就可以，时间复杂度可以做到 `O(1)`，查询时间和数据规模无关，效率很高。  
+&emsp;&emsp;在 list，str 这种 `线性结构` 中进行 `成员判断` 时，因为需要遍历，线性结构的查询时间复杂度是 `O(n)`，即随着数据规模的增大而增加耗时。  
+&emsp;&emsp;而 set 等非线性结构，内部使用的是 hash 值作为 key，查询时只需把要判断的元素进行 hash，找到 set 中对应的门牌号，把里面的数据拽出来，看看是不是相同就可以，时间复杂度可以做到 `O(1)`，查询时间和数据规模无关，效率很高。  
 &emsp;&emsp;在 Python 中可 hash 对象 __都属于不可变类型__ ，Python 中的可 hash 对象如下：  
 - 数值类型 int、float、complex
 - 布尔值 True、False
@@ -327,7 +301,7 @@ Out: True
 > &emsp;&emsp;这些是小学数学基础概念。
 
 ## 3.1. 集合运算
-&emsp;&emsp;通过集合运算，我们可以方便地求出集合的差集、并集等，Python的集合除了提供了大量的集合运算方法，还提供了不少的特殊符号用来表示集合运算。
+&emsp;&emsp;通过集合运算，我们可以方便地求出集合的差集、并集等，Python 的集合除了提供了大量的集合运算方法，还提供了不少的特殊符号用来表示集合运算。
 
 ## 3.2. 并集
 &emsp;&emsp;将集合 A 和集合 B 所有元素合并在一起，组成的集合称为集合 A 和集合 B 的 __并集__
@@ -335,7 +309,7 @@ Out: True
 ![union](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/union.png)
 
 ```python
-s.union(*others) --> new set object   # 把多个集合和集合 s 进行合并，返回一个新的集合对象, 使用 | 表示
+s.union(*others) --> new set object   # 把多个集合和集合 s 进行合并，返回一个新的集合对象，使用 | 表示
 
 s.update(*others) --> None            # 把 *others 个可迭代可 hash 对象，和 s 进行并集，然后赋给 s。（就地修改）, 使用 |= 表示
 ```
@@ -357,13 +331,13 @@ s.intersection_update(*others) --> None      # 获取多个集合的交集，就
 ![difference](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/difference.png)
 
 ```python
-s.difference(*others) --> new set object    # 返回集合s和其他多个集合的差集，使用 - 表示
+s.difference(*others) --> new set object    # 返回集合 s 和其他多个集合的差集，使用 - 表示
 
-s.difference_update(*others) --> None       # 返回集合s和其他多个集合的差集，就地进行修改，使用 -= 表示
+s.difference_update(*others) --> None       # 返回集合 s 和其他多个集合的差集，就地进行修改，使用 -= 表示
 ```
 
 ## 3.5. 对称差集
-&emsp;&emsp;不属于集合 A 和集合 B 交集的其他元素组成的集合，数学表达式为：`(A-B) U (B-A)`。
+&emsp;&emsp;不属于集合 A 和集合 B 交集的其他元素组成的集合，数学表达式为：`(A-B) U(B-A)`。
 
 ![symmetric_differece](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/symmetric_differece.png)
 
@@ -371,11 +345,7 @@ s.difference_update(*others) --> None       # 返回集合s和其他多个集合
 s.symmetric_difference(other) --> new set object   # 返回和另一个集合的对称差集，使用 ^ 表示
 
 s.symmetric_difference_update(other) --> None      # 返回和另一个集合的对称差集，就地修改，使用 ^= 表示
-```
-
-## 3.6. 集合的其他运算
-
-```python
+```## 3.6. 集合的其他运算```python
 s.issubset(other) --> bool      # 判断当前集合是否是另一个集合的子集，使用 <= 表示
 
 set1 < set2                      # 判断 set1 是否是 set2 的真子集
@@ -385,11 +355,7 @@ s.issuperset(other) --> bool    # 判断当前集合是否是 other 的超集，
 set1 > set2                      # 判断 set1 是否是 set2 的真超集
 
 s.isdisjoint(other) --> bool    # 判断当前集合和另一个集合有没有交集，没有交集返回 True
-```
-
-&emsp;&emsp;以上集合运算举例说明之：
-
-```python
+```&emsp;&emsp;以上集合运算举例说明之：```python
 >>> s1 = set(range(1, 10))
 
 >>> s2 = set(range(8, 15))
