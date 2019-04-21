@@ -7,7 +7,6 @@
     - [2.1. set 的定义](#21-set-的定义)
         - [2.2.2. 删除元素](#222-删除元素)
 
-
 # 1. 封装与解构
 &emsp;&emsp;封装与解构属于 Python 语言的一种特性，它使用起来很像其他语言中的 `"逗号表达式"`，但内部原理是不同的，在某些场景下：比如变量交换、复制时使用，显得非常优雅。
 
@@ -115,7 +114,9 @@ In : env, _, path = 'JAVA_HOME=/usr/bin/java'.partition('=')
 
 In : env, path
 Out:('JAVA_HOME', '/usr/bin/java')
-```> &emsp;&emsp;解构是 Python 提供的很好的功能，可以方便的提取复杂的数据结构的值，配合`*`和`_` 使用时，会更加便捷。
+```
+
+> &emsp;&emsp;解构是 Python 提供的很好的功能，可以方便的提取复杂的数据结构的值，配合`*`和`_` 使用时，会更加便捷。
 
 # 2. set 类型
 &emsp;&emsp;集合 set 在 Python 中是一个非常重要的 `非线性结构`，它使用 `{}` 表示，用三个词总结集合的特点就是：__可变的__、__无序的__、__不重复__。它的官方解释如下：
@@ -132,7 +133,11 @@ Out:('JAVA_HOME', '/usr/bin/java')
 ```python
 set() --> new empty set object     # 返回一个空的 set 对象
 set(iterable) --> new set object   # 返回一个 set 对象，元素由 iterable 填充
-```例如：```python
+```
+
+例如：
+
+```python
 In : s1 = set()
 
 In : s2 = set(range(5))          # {0, 1, 2, 3, 4}
@@ -171,7 +176,11 @@ TypeError: unhashable type: 'list'
 s.add(elem) --> None            # 在集合 s 中添加一个元素 elem，如果元素存在，则什么都不做(去重特性)。（就地修改）
 
 s.update(*others) --> None   # 把 *others 个可迭代可 hash 对象，和 s 进行并集，然后赋给 s。（就地修改）
-```例如：```python
+```
+
+例如：
+
+```python
 In : s = {1, 2, 3}        
 
 In : s.add('abc')       # 把字符串 'abc' 当作一个元素添加进去
@@ -201,7 +210,11 @@ s.discard(elem) --> None   # 在集合 s 中删除一个元素，如果元素不
 s.pop()  --> item     # 在集合 s 中随便弹出一个元素，并返回元素的本身，如果集合本身为空，那么会提示 KeyError 异常
 
 s.clear()  --> None   # 清空集合
-```例如：```python
+```
+
+例如：
+
+```python
 In : s
 Out: {(1, 2, 3), 0, 1, 2, 3, 4, 5, 6, 7, 8, 'a', 'abc', 'b', 'c', 'd', 'e', 'f'}
 
@@ -344,7 +357,11 @@ s.difference_update(*others) --> None       # 返回集合 s 和其他多个集�
 s.symmetric_difference(other) --> new set object   # 返回和另一个集合的对称差集，使用 ^ 表示
 
 s.symmetric_difference_update(other) --> None      # 返回和另一个集合的对称差集，就地修改，使用 ^= 表示
-```## 3.6. 集合的其他运算```python
+```
+
+## 3.6. 集合的其他运算
+
+```python
 s.issubset(other) --> bool      # 判断当前集合是否是另一个集合的子集，使用 <= 表示
 
 set1 < set2                      # 判断 set1 是否是 set2 的真子集
@@ -354,7 +371,11 @@ s.issuperset(other) --> bool    # 判断当前集合是否是 other 的超集，
 set1 > set2                      # 判断 set1 是否是 set2 的真超集
 
 s.isdisjoint(other) --> bool    # 判断当前集合和另一个集合有没有交集，没有交集返回 True
-```&emsp;&emsp;以上集合运算举例说明之：```python
+```
+
+&emsp;&emsp;以上集合运算举例说明之：
+
+```python
 >>> s1 = set(range(1, 10))
 
 >>> s2 = set(range(8, 15))
@@ -419,3 +440,4 @@ False
 >>> s1.isdisjoint(s2)   # 判断 s2 是否与 s1 没有交集，没有交集返回 True
 False
 ```
+
