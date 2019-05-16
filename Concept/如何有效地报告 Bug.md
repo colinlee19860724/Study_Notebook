@@ -131,4 +131,4 @@ __小结：__
 作者：Simon Tatham 专业的自由软件程序员  
 翻译：Dasn  
 原文：[https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html](https://www.chiark.greenend.org.uk/~sgtatham/bugs-cn.html)  
-版权声明：本文为Simon Tatham原创文章，转载请附上链接！  
+版权声明：本文为 Simon Tatham 原创文章，转载请附上链接！  
