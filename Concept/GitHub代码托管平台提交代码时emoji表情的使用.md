@@ -10,7 +10,7 @@
 `:emoji1: :emoji2: 提交信息主体`
 
 **初次提交示例：**  
-git commit -m ":tada: fisrt commit"
+`git commit -m ":tada: fisrt commit"`
 
 ## emoji 指南
 
