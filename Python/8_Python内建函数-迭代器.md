@@ -20,6 +20,16 @@ In : a = 123
 
 In : id(a)
 Out: 9330656
+
+In : def b(): 
+...:     return a 
+...:
+
+In : id(b)
+Out: 139701663500624
+
+In : b()
+Out: 123
 ```
 
 - **哈希 `hash()`**：返回一个对象的哈希值  
@@ -27,7 +37,7 @@ Out: 9330656
 In : hash(range(3))
 Out: 5050907061201647097
 
-In : hash([3])
+In : hash([3])    # 不能 hash 可变对象
 ---------------------------------------------------------------------------
 TypeError                                 Traceback (most recent call last)
 <ipython-input-6-b1bd0fbc0b77> in <module>
@@ -50,30 +60,38 @@ Out: function
 
 
 - **类型转换**  
-    - `float()`
-    - `int()`
-    - `bin()`
-    - `hex()`
-    - `oct()`
-    - `bool()`
-    - `list()`
-    - `tuple()`
-    - `dict()`
-    - `set()`
-    - `complex()`
-    - `bytes()`
-    - `bytearray()`  
+    1. `float(x)`：返回从数字或字符串 x 生成的浮点数。
+    1. `int(x)`：返回一个使用数字或字符串 x 生成的整数对象，或者没有实参的时候返回 0 。
+    1. `bin(x)`：将一个整数转变为一个前缀为“0b”的二进制字符串。
+    1. `hex(x)`：将整数转换为以“0x”为前缀的小写十六进制字符串。
+    1. `oct(x)`：将一个整数转变为一个前缀为“0o”的八进制字符串。
+    1. `bool(x)`：返回一个布尔值，True 或者 False。
+    1. `list([iterable])`：从可迭代对象返回一个列表。
+    1. `tuple([iterable])`：从可迭代对象返回一个元组。
+    1. `dict(**kwarg)`：从 k:v 键值对返回一个字典。
+    1. `set([iterable])`：返回一个新的 set （集合）对象。
+    1. `complex([real[, imag]])`：返回值为 real + imag*1j 的复数，或将字符串或数字转换为复数。
+    1. `bytearray([source[, encoding[, errors]]])`：返回一个新的 bytes 数组。 bytearray 类是一个可变序列，包含范围为 0 <= x < 256 的整数。 
+    1. `bytes([source[, encoding[, errors]]])`：返回一个新的“bytes”对象， 是一个不可变序列，包含范围为 0 <= x < 256 的整数。bytes 是 bytearray 的不可变版本 - 它有其中不改变序列的方法和相同的索引、切片操作。
 
 **输入 `input([prompt])`**  
 - 接收用户输入，返回一个字符串  
+```python
+In : input('please input: ')
+please input: hello
+Out: 'hello'
+```
 
 **打印 `print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)`**  
 - 打印输出，默认使用空格分割、换行结尾，输出到控制台  
+```python
+In : print('hello noob')                                                        
+hello noob
+```
   
 # 内建函数 2 
 
 **对象长度 `len(s)`**  
-
 - 返回一个集合类型的元素个数  
 
 **`isinstance(obj, class_or_tuple)`**  
