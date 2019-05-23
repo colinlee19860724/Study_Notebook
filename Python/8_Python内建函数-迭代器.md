@@ -85,7 +85,7 @@ Out: 'hello'
 **打印 `print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)`**  
 - 打印输出，默认使用空格分割、换行结尾，输出到控制台  
 ```python
-In : print('hello noob')                                                        
+In : print('hello noob')
 hello noob
 ```
   
@@ -144,38 +144,38 @@ Out: 5050
 `sorted(iterable [, key][, reverse])` 排序  
 - 立即返回一个新的列表，默认升序  
 - reverse 是反转  
-`sorted([1, 3, 5])`  
-`sorted([1, 3, 5], reverse=True)`  
-`sorted({'c':1, 'b':2, 'a':1})`  
+sorted([1, 3, 5])  
+sorted([1, 3, 5], reverse=True)  
+sorted({'c':1, 'b':2, 'a':1})  
   
 # 内建函数 6  
 
 翻转 `reversed(seq)`  
 - 返回一个翻转元素的迭代器  
-`list(reversed("13579")`)  
-{`reversed((2, 4)`) } # 有几个元素？  
-for x in `reversed(['c','b','a'])`: print(x)  
-`reversed(sorted({1, 5, 9})`)  
+list(reversed("13579"))  
+{reversed((2, 4)) } # 有几个元素？  
+for x in reversed(['c','b','a']): print(x)  
+reversed(sorted({1, 5, 9}))  
   
 # 内建函数 7 
 
 枚举 `enumerate(seq, start=0)`  
 - 迭代一个序列，返回索引数字和元素构成的二元组  
-- start 表示索引开始的数字，默认是 0 for x in `enumerate([2,4,6,8])`:  
-`print(x)`  
+- start 表示索引开始的数字，默认是 0 for x in enumerate([2,4,6,8]):  
+print(x)  
   
 
-for x in `enumerate("abcde")`: print(x,end=" ")  
+for x in enumerate("abcde"): print(x,end=" ")  
 
 # 内建函数 8 
 
 迭代器和取元素 `iter(iterable)`、next(iterator [, default])  
 - iter 将一个可迭代对象封装成一个迭代器  
-- next 对一个迭代器取下一个元素。如果全部元素都取过了，再次 next 会抛 StopIteration 异常 it = `iter(range(5)`)  
-`next(it)`  
+- next 对一个迭代器取下一个元素。如果全部元素都取过了，再次 next 会抛 StopIteration 异常 it = iter(range(5))  
+next(it)  
   
 
-it = `reversed([1,3,5])` next(it)  
+it = reversed([1,3,5]) next(it)  
 
 # 可迭代对象  
 
@@ -185,9 +185,9 @@ it = `reversed([1,3,5])` next(it)
 ['a', 'a']，虽然这个列表有 2 个元素，值一样，但是两个 'a' 是不同的元素，因为有不同的索引  
 - 可以迭代，但是未必有序，未必可索引  
 可迭代对象有：list、tuple、string、bytes、bytearray、range 对象、set、dict、生成器、迭代器 等  
-- 可以使用成员操作符 in、not in，in 本质上对于线性结构就是在遍历对象，非线性结构求 hash 3 in `range(10)`  
-3 `in(x for x in range(10)`)  
-3 in {x:y for x,y in `zip(range(4)`,range(4,10))}  
+- 可以使用成员操作符 in、not in，in 本质上对于线性结构就是在遍历对象，非线性结构求 hash 3 in range(10)  
+3 in(x for x in range(10))  
+3 in {x:y for x,y in zip(range(4),range(4,10))}  
   
 # 迭代器  
 
@@ -196,10 +196,10 @@ it = `reversed([1,3,5])` next(it)
 - 通过 iter 方法把一个可迭代对象封装成迭代器  
 - 通过 next 方法，迭代 迭代器对象  
 - 生成器对象，就是迭代器对象  
-for x in `iter(range(10)`): print(x)  
+for x in iter(range(10)): print(x)  
   
 
-g = (x for x in `range(10)`) print(type(g)) print(next(g)) print(next(g))  
+g = (x for x in range(10)) print(type(g)) print(next(g)) print(next(g))  
 
 # 内建函数  
 
@@ -208,10 +208,10 @@ g = (x for x in `range(10)`) print(type(g)) print(next(g)) print(next(g))
 - 将每次从不同对象中取到的元素合并成一个元组  
   
 
-`list(zip(range(10)`,range(10))) list(zip(range(10),range(10),range(5),range(10)))  
+list(zip(range(10),range(10))) list(zip(range(10),range(10),range(5),range(10)))  
 
-`dict(zip(range(10)`,range(10)))  
-{`str(x)`:y for x,y in zip(range(10),range(10))}  
+dict(zip(range(10),range(10)))  
+{str(x):y for x,y in zip(range(10),range(10))}  
 
 # 内建函数  
 
