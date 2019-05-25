@@ -1,18 +1,20 @@
 
-- [内建函数 1](#内建函数-1)
-- [内建函数 2](#内建函数-2)
-- [内建函数 3](#内建函数-3)
-- [内建函数 4](#内建函数-4)
-- [内建函数 5](#内建函数-5)
-- [内建函数 6](#内建函数-6)
-- [内建函数 7](#内建函数-7)
-- [可迭代对象](#可迭代对象)
-- [迭代器](#迭代器)
-- [内建函数](#内建函数)
-- [内建函数](#内建函数-1)
+- [1. 内建函数 1](#1-内建函数-1)
+- [2. 内建函数 2](#2-内建函数-2)
+- [3. 内建函数 3](#3-内建函数-3)
+- [4. 内建函数 4](#4-内建函数-4)
+- [5. 内建函数 5](#5-内建函数-5)
+- [6. 内建函数 6](#6-内建函数-6)
+- [7. 内建函数 7](#7-内建函数-7)
+- [8. 内建函数 8](#8-内建函数-8)
+- [9. 可迭代对象](#9-可迭代对象)
+- [10. 迭代器](#10-迭代器)
+- [11. 内建函数](#11-内建函数)
+- [12. 内建函数](#12-内建函数)
+- [13. 总结](#13-总结)
 
 
-# 内建函数 1  
+# 1. 内建函数 1  
 
 - **标识 `id()`**：返回对象的唯一标识，CPython 返回内存地址  
 ```python
@@ -83,27 +85,63 @@ Out: 'hello'
 ```
 
 **打印 `print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)`**  
+
 - 打印输出，默认使用空格分割、换行结尾，输出到控制台  
 ```python
 In : print('hello noob')
 hello noob
+
+In : print('abc', 'hello', 'ok', sep='\n')
+abc
+hello
+ok
 ```
-  
-# 内建函数 2 
+
+# 2. 内建函数 2  
 
 **对象长度 `len(s)`**  
-- 返回一个集合类型的元素个数  
+
+- 返回对象（字符、列表、元组等）长度或项目个数 
+```python
+In : lst = [i for i in range(9)]
+
+In : tup = (1, 2, 3)
+
+In : st = 'colinlee'                                         
+
+In : len(lst), len(tup), len(st)
+Out: (9, 3, 8)
+```
+
 
 **`isinstance(obj, class_or_tuple)`**  
 
 - 判断对象 obj 是否属于某种类型或者元组中列出的某个类型  
 - `isinstance(True, int)`  
+```python
+In : isinstance(lst, tuple)                                                      
+Out: False
+
+In : isinstance(tup, tuple)                                                      
+Out: True
+
+In : isinstance(st, str)                                                        
+Out: True
+
+In : isinstance(0, bool)                                                        
+Out: False
+
+In : isinstance(True, int)                                                      
+Out: True
+
+```
+
 
 **`issubclass(cls, class_or_tuple)`**  
 - 判断类型 cls 是否是某种类型的子类或元组中列出的某个类型的子类  
 - `issubclass(bool, int)`  
   
-# 内建函数 3 
+# 3. 内建函数 3 
 
 绝对值 `abs(x)`  x 为数值  
 ```python
@@ -129,7 +167,7 @@ In : sum(range(1,101,1))
 Out: 5050
 ``
 
-# 内建函数 4 
+# 4. 内建函数 4 
 
 - `chr(i)` 给一个一定范围的整数返回对应的字符  
 - `chr(97)`	chr(20013)  
@@ -139,7 +177,7 @@ Out: 5050
 
 `str()` 、repr()、ascii() 后面说  
 
-# 内建函数 5 
+# 5. 内建函数 5 
 
 `sorted(iterable [, key][, reverse])` 排序  
 - 立即返回一个新的列表，默认升序  
@@ -148,7 +186,7 @@ sorted([1, 3, 5])
 sorted([1, 3, 5], reverse=True)  
 sorted({'c':1, 'b':2, 'a':1})  
   
-# 内建函数 6  
+# 6. 内建函数 6  
 
 翻转 `reversed(seq)`  
 - 返回一个翻转元素的迭代器  
@@ -157,7 +195,7 @@ list(reversed("13579"))
 for x in reversed(['c','b','a']): print(x)  
 reversed(sorted({1, 5, 9}))  
   
-# 内建函数 7 
+# 7. 内建函数 7 
 
 枚举 `enumerate(seq, start=0)`  
 - 迭代一个序列，返回索引数字和元素构成的二元组  
@@ -167,7 +205,7 @@ print(x)
 
 for x in enumerate("abcde"): print(x,end=" ")  
 
-# 内建函数 8 
+# 8. 内建函数 8 
 
 迭代器和取元素 `iter(iterable)`、next(iterator [, default])  
 - iter 将一个可迭代对象封装成一个迭代器  
@@ -177,7 +215,7 @@ next(it)
 
 it = reversed([1,3,5]) next(it)  
 
-# 可迭代对象  
+# 9. 可迭代对象  
 
 - 可迭代对象  
 - 能够通过迭代一次次返回不同的元素的对象。  
@@ -189,7 +227,7 @@ it = reversed([1,3,5]) next(it)
 3 in(x for x in range(10))  
 3 in {x:y for x,y in zip(range(4),range(4,10))}  
   
-# 迭代器  
+# 10. 迭代器  
 
 - 迭代器  
 - 特殊的对象，一定是可迭代对象，具备可迭代对象的特征  
@@ -201,7 +239,7 @@ for x in iter(range(10)): print(x)
 
 g = (x for x in range(10)) print(type(g)) print(next(g)) print(next(g))  
 
-# 内建函数  
+# 11. 内建函数  
 
 拉链函数 `zip(*iterables)`  
 - 像拉链一样，把多个可迭代对象合并在一起，返回一个迭代器  
@@ -213,7 +251,7 @@ list(zip(range(10),range(10))) list(zip(range(10),range(10),range(5),range(10)))
 dict(zip(range(10),range(10)))  
 {str(x):y for x,y in zip(range(10),range(10))}  
 
-# 内建函数  
+# 12. 内建函数  
 
 **`all(iterable)`**  
 - 可迭代对象所有元素都要等效为 True，或空的可迭代对象，all 函数返回 True  
@@ -229,3 +267,6 @@ print(all(lst), any(lst))
 print(all([]), any([]))  
 print(all(lst + [0]), any(lst + [0])  
 ```
+
+# 13. 总结
+以上内建函数的权威解释和用法请参见 [2. 内置函数 — Python 3.6.8 文档](https://docs.python.org/zh-cn/3.6/library/functions.html)
