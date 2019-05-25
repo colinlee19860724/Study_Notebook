@@ -355,7 +355,7 @@ Change: 2019-03-19 00:56:19.553934247 +0800
 
 11. `sz` 和 `rz` 命令  
 输速度比较慢，推荐使用中小文件的传输。  
-&emsp;&emsp;`rz`，`sz` 是 Linux/Unix 同 Windows 进行 ZModem 文件传输的命令行工具，对传输的数据会进行核查，并且有很好的传输性能。使用起来更是非常方便，但前提是Windows 端需要支持 ZModem 的 telnet/ssh 客户端（比如 SecureCRT、Xshell 等）。注意：该方法的传输速度比较慢，推荐用于中小文件的传输，如配置文件等。  
+&emsp;&emsp;`rz`，`sz` 是 Linux/Unix 同 Windows 进行 ZModem 文件传输的命令行工具，对传输的数据会进行核查，并且有很好的传输性能。使用起来更是非常方便，但前提是 Windows 端需要支持 ZModem 的 telnet/ssh 客户端（比如 SecureCRT、Xshell 等）。注意：该方法的传输速度比较慢，推荐用于中小文件的传输，如配置文件等。  
 
 - `sz`：将 Linux/Unix 中选定的文件发送（send）到本地 Windows 机器:  
 
