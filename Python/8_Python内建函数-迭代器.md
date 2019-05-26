@@ -9,13 +9,12 @@
 - [8. 内建函数 8](#8-内建函数-8)
 - [9. 可迭代对象](#9-可迭代对象)
 - [10. 迭代器](#10-迭代器)
-- [11. 内建函数](#11-内建函数)
-- [12. 内建函数](#12-内建函数)
+- [11. 内建函数 9](#11-内建函数-9)
+- [12. 内建函数 10](#12-内建函数-10)
 - [13. 总结](#13-总结)
 
 
 # 1. 内建函数 1  
-
 - **标识 `id()`**：返回对象的唯一标识，CPython 返回内存地址  
 ```python
 In : a = 123
@@ -107,7 +106,7 @@ In : lst = [i for i in range(9)]
 
 In : tup = (1, 2, 3)
 
-In : st = 'colinlee'                                         
+In : st = 'colinlee'  
 
 In : len(lst), len(tup), len(st)
 Out: (9, 3, 8)
@@ -119,113 +118,341 @@ Out: (9, 3, 8)
 - 判断对象 obj 是否属于某种类型或者元组中列出的某个类型  
 - `isinstance(True, int)`  
 ```python
-In : isinstance(lst, tuple)                                                      
+In : isinstance(lst, tuple)  
 Out: False
 
-In : isinstance(tup, tuple)                                                      
+In : isinstance(tup, tuple)  
 Out: True
 
-In : isinstance(st, str)                                                        
+In : isinstance(st, str)  
 Out: True
 
-In : isinstance(0, bool)                                                        
+In : isinstance(0, bool)  
 Out: False
 
-In : isinstance(True, int)                                                      
+In : isinstance(True, int)  
 Out: True
-
 ```
 
 
 **`issubclass(cls, class_or_tuple)`**  
 - 判断类型 cls 是否是某种类型的子类或元组中列出的某个类型的子类  
 - `issubclass(bool, int)`  
+```python
+In : issubclass(bool, int)  
+Out: True
+
+In : issubclass(float, int)  
+Out: False
+```
   
 # 3. 内建函数 3 
 
-绝对值 `abs(x)`  x 为数值  
+绝对值 `abs(x)` (x 为数值)  
 ```python
 In : abs(-3)
 Out: 3
+
+In : abs(-3.14)  
+Out: 3.14
+
+In : abs(5.20)  
+Out: 5.2
 ```
 
 最大值 `max()` 最小值 `min()`  
 - 返回可迭代对象中最大或最小值  
 - 返回多个参数中最大或最小值  
+```python
+In : max(1, 3, 1, 4)  
+Out: 4
+
+In : min(1, 3, 1, 4)  
+Out: 1
+
+In : import random  
+In : sam = random.sample(range(10), k=6)  
+In : sam  
+Out: [4, 1, 0, 3, 6, 9]
+
+In : max(sam), min(sam)  
+Out: (9, 0)
+
+```
 
 `round(x)` 四舍六入五取偶，`round(-0.5)`  
+```python
+In : round(1.4), round(1.6), round(1.5)
+Out: (1, 2, 2)
 
+In : round(-1.4), round(-1.6), round(-1.5)
+Out: (-1, -2, -2)
+
+In : round(-0.4), round(-0.6), round(-0.5)
+Out: (0, -1, 0)
+```
 `pow(x , y)` 等价于 `x**y`  
+```python
+In : pow(2, 3), pow(2, 0)
+Out: (8, 1)
+```
 
 `range(stop)` 从 0 开始到 stop-1 的可迭代对象；`range(start, stop [, step])` 从 start 开始到 stop-1 结束步长为 step 的可迭代对象  
+```python
+In : range(3)
+Out: range(0, 3)
 
-`divmod(x, y)` 等价于 `tuple(x//y, x% y)`  
+In : print(range(3))
+range(0, 3)
+
+In : for i in range(3):
+    ...:     print(i)
+    ...:
+0
+1
+2
+
+In : for i in range(1, 10, 2):
+    ...:     print(i)
+    ...:
+1
+3
+5
+7
+9
+```
+
+`divmod(x, y)` 等价于 `tuple([x//y, x%y])`  
+```python
+In : divmod(10, 3)
+Out: (3, 1)
+
+In : tuple(10//3, 10%3)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-14-d1b3fe479f67> in <module>
+----> 1 tuple(10//3, 10%3)
+
+TypeError: tuple() takes at most 1 argument (2 given)
+
+In : tuple([10//3, 10%3])
+Out: (3, 1)
+```
 
 `sum(iterable [, start])` 对可迭代对象的所有数值元素求和  
-``python
+```python
 In : sum(range(1,101,1))
 Out: 5050
-``
+```
 
 # 4. 内建函数 4 
 
 - `chr(i)` 给一个一定范围的整数返回对应的字符  
-- `chr(97)`	chr(20013)  
-- `ord(c)` 返回字符对应的整数，返回的是 Unicode  
-- `ord('a')`	ord(' 中 ')  
-  
+```python
+In : chr(97), chr(20013)
+Out: ('a', '中')
+```
 
-`str()` 、repr()、ascii() 后面说  
+- `ord(c)` 返回字符对应的整数，返回的是 Unicode  
+```python
+In : ord('a'), ord('中')
+Out: (97, 20013)
+```
+
+`str()` 返回 object 的 字符串 版本。 如果未提供 object 则返回空字符串。  
+```python
+In : str(123)
+Out: '123'
+
+In : a = 'good'
+
+In : str(a)
+Out: 'good'
+```
+
+`repr()` 返回包含一个对象的可打印表示形式的字符串。  
+```python
+In : repr(123)
+Out: '123'
+
+In : repr(range(3))
+Out: 'range(0, 3)'
+
+In : class cls:
+    ...:     pass
+    ...:
+
+In : repr(cls)
+Out: "<class '__main__.cls'>"
+```
+
+`ascii()` 就像函数 repr()，返回一个对象可打印的字符串，但是 repr() 返回的字符串中非 ASCII 编码的字符，会使用 \x、\u 和 \U 来转义。生成的字符串和 Python 2 的 repr() 返回的结果相似。  
+```python
+In : st = 'I \tam \nColinLee'
+
+In : print(st)
+I       am
+ColinLee
+
+In : ascii(st)
+Out: "'I \\tam \\nColinLee'"
+
+In : ascii('胜利是属于我们的')
+Out: "'\\u80dc\\u5229\\u662f\\u5c5e\\u4e8e\\u6211\\u4eec\\u7684'"
+```
 
 # 5. 内建函数 5 
 
 `sorted(iterable [, key][, reverse])` 排序  
 - 立即返回一个新的列表，默认升序  
 - reverse 是反转  
-sorted([1, 3, 5])  
-sorted([1, 3, 5], reverse=True)  
-sorted({'c':1, 'b':2, 'a':1})  
+```python
+In : sorted([1, 3, 5])
+Out: [1, 3, 5]
+
+In : sorted([3, 1, 5])
+Out: [1, 3, 5]
+
+In : sorted([1, 3, 5], reverse=True)
+Out: [5, 3, 1]
+
+In : dic = {'c':1, 'b':2, 'a':1}
+
+In : sorted(dic)
+Out: ['a', 'b', 'c']
+
+In : dic
+Out: {'c': 1, 'b': 2, 'a': 1}
+```
+
   
 # 6. 内建函数 6  
 
-翻转 `reversed(seq)`  
-- 返回一个翻转元素的迭代器  
-list(reversed("13579"))  
-{reversed((2, 4)) } # 有几个元素？  
-for x in reversed(['c','b','a']): print(x)  
-reversed(sorted({1, 5, 9}))  
+翻转 `reversed(seq)`  返回一个翻转元素的迭代器  
+```python
+In : list(reversed("13579"))
+Out: ['9', '7', '5', '3', '1']
+
+In : {reversed((2, 4)) } # 有几个元素？
+Out: {<reversed at 0x210243222b0>}
+
+In : for x in reversed(['c','b','a']): print(x)
+a
+b
+c
+
+In : reversed(sorted({1, 5, 9}))
+Out: <list_reverseiterator at 0x21024360748>
+
+In : for x in reversed(sorted({1, 5, 9})): print(x)
+9
+5
+1
+```
   
 # 7. 内建函数 7 
 
 枚举 `enumerate(seq, start=0)`  
 - 迭代一个序列，返回索引数字和元素构成的二元组  
-- start 表示索引开始的数字，默认是 0 for x in enumerate([2,4,6,8]):  
-print(x)  
-  
+- start 表示索引开始的数字，默认是 0 
+```python
+In : for x in enumerate([2,4,6,8]): print(x)
+(0, 2)
+(1, 4)
+(2, 6)
+(3, 8)
 
-for x in enumerate("abcde"): print(x,end=" ")  
+In : for x in enumerate("abcde"): print(x,end=" ")
+(0, 'a') (1, 'b') (2, 'c') (3, 'd') (4, 'e')
+In : enumerate('abcde')
+Out: <enumerate at 0x210242c9c18>
+
+In : print(enumerate('abcde'))
+<enumerate object at 0x00000210242C9630>
+
+In : dict(enumerate('abcde', start=1))
+Out: {1: 'a', 2: 'b', 3: 'c', 4: 'd', 5: 'e'}
+```
 
 # 8. 内建函数 8 
 
-迭代器和取元素 `iter(iterable)`、next(iterator [, default])  
+迭代器和取元素 `iter(iterable)`、`next(iterator [, default])`  
 - iter 将一个可迭代对象封装成一个迭代器  
-- next 对一个迭代器取下一个元素。如果全部元素都取过了，再次 next 会抛 StopIteration 异常 it = iter(range(5))  
-next(it)  
-  
+- next 对一个迭代器取下一个元素。如果全部元素都取过了，再次 next 会抛 StopIteration 异常 
+```python
+In : it = iter(range(3))
 
-it = reversed([1,3,5]) next(it)  
+In : it
+Out: <range_iterator at 0x210242a5670>
+
+In : next(it)
+Out: 0
+
+In : next(it)
+Out: 1
+
+In : next(it)
+Out: 2
+
+In : next(it)
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+<ipython-input-60-bc1ab118995a> in <module>
+----> 1 next(it)
+
+StopIteration:
+  
+In : it2 = reversed([1,3,5])
+
+In : next(it2)
+Out: 5
+
+In : next(it2)
+Out: 3
+
+In : next(it2)
+Out: 1
+
+In : next(it2)
+---------------------------------------------------------------------------
+StopIteration                             Traceback (most recent call last)
+<ipython-input-65-bc1ab118995a> in <module>
+----> 1 next(it2)
+
+StopIteration:
+```
 
 # 9. 可迭代对象  
-
 - 可迭代对象  
 - 能够通过迭代一次次返回不同的元素的对象。  
 - 所谓相同，不是指值是否相同，而是元素在容器中是否是同一个，例如列表中值可以重复的，  
-['a', 'a']，虽然这个列表有 2 个元素，值一样，但是两个 'a' 是不同的元素，因为有不同的索引  
+> &emsp;&emsp;['a', 'a']，虽然这个列表有 2 个元素，值一样，但是两个 'a' 是不同的元素，因为有不同的索引  
+
 - 可以迭代，但是未必有序，未必可索引  
 可迭代对象有：list、tuple、string、bytes、bytearray、range 对象、set、dict、生成器、迭代器 等  
-- 可以使用成员操作符 in、not in，in 本质上对于线性结构就是在遍历对象，非线性结构求 hash 3 in range(10)  
-3 in(x for x in range(10))  
-3 in {x:y for x,y in zip(range(4),range(4,10))}  
+- 可以使用成员操作符 `in`、`not in`，`in` 本质上对于线性结构就是在遍历对象，非线性结构求 hash 
+```python
+In : 3 in range(10)
+Out: True
+
+In : list(range(10))
+Out: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+In : 3 in (x for x in range(10))
+Out: True
+
+In : (x for x in range(10))
+Out: <generator object <genexpr> at 0x0000021023F4B308>
+
+In : tuple(x for x in range(10))
+Out: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+In : 3 in {x:y for x,y in zip(range(4),range(4,10))}
+Out: True
+
+In : {x:y for x,y in zip(range(4),range(4,10))}
+Out: {0: 4, 1: 5, 2: 6, 3: 7}
+```
   
 # 10. 迭代器  
 
@@ -234,24 +461,63 @@ it = reversed([1,3,5]) next(it)
 - 通过 iter 方法把一个可迭代对象封装成迭代器  
 - 通过 next 方法，迭代 迭代器对象  
 - 生成器对象，就是迭代器对象  
-for x in iter(range(10)): print(x)  
-  
+```python
+In : for x in iter(range(10)): print(x)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
 
-g = (x for x in range(10)) print(type(g)) print(next(g)) print(next(g))  
+In : g = (x for x in range(10))
 
-# 11. 内建函数  
+In : print(type(g))
+<class 'generator'>
+
+In : print(next(g))
+0
+
+In : print(next(g))
+1
+
+In : print(next(g))
+2
+```
+# 11. 内建函数 9 
 
 拉链函数 `zip(*iterables)`  
-- 像拉链一样，把多个可迭代对象合并在一起，返回一个迭代器  
+- 像拉链一样，把多个`可迭代对象`合并在一起，返回一个`迭代器`  
 - 将每次从不同对象中取到的元素合并成一个元组  
-  
+- 取值依据木桶原理，元组的个数 = 元素最少的`可迭代对象`的元素个数
+```python
+In : list(zip(range(10),range(10)))
+Out:
+[(0, 0),
+ (1, 1),
+ (2, 2),
+ (3, 3),
+ (4, 4),
+ (5, 5),
+ (6, 6),
+ (7, 7),
+ (8, 8),
+ (9, 9)]
 
-list(zip(range(10),range(10))) list(zip(range(10),range(10),range(5),range(10)))  
+In : list(zip(range(10),range(10),range(5),range(10)))
+Out: [(0, 0, 0, 0), (1, 1, 1, 1), (2, 2, 2, 2), (3, 3, 3, 3), (4, 4, 4, 4)]
 
-dict(zip(range(10),range(10)))  
-{str(x):y for x,y in zip(range(10),range(10))}  
+In : dict(zip(range(10),range(10)))
+Out: {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9}
 
-# 12. 内建函数  
+In : {str(x):y for x,y in zip(range(10),range(1,5))}
+Out: {'0': 1, '1': 2, '2': 3, '3': 4}
+```
+# 12. 内建函数 10 
 
 **`all(iterable)`**  
 - 可迭代对象所有元素都要等效为 True，或空的可迭代对象，all 函数返回 True  
@@ -262,11 +528,17 @@ dict(zip(range(10),range(10)))
 - 空可迭代对象或所有元素都等效 False，any 函数返回 False 
 
 ```python
-lst = [True, {1}, [2, 3], 5.1, 'abc']  
-print(all(lst), any(lst)) 
-print(all([]), any([]))  
-print(all(lst + [0]), any(lst + [0])  
+In : lst = [True, {1}, [2, 3], 5.1, 'abc']
+
+In : print(all(lst), any(lst))
+True True
+
+In : print(all([]), any([]))
+True False
+
+In : print(all(lst + [0]), any(lst + [0]))
+False True
 ```
 
 # 13. 总结
-以上内建函数的权威解释和用法请参见 [2. 内置函数 — Python 3.6.8 文档](https://docs.python.org/zh-cn/3.6/library/functions.html)
+&emsp;&emsp;以上内建函数的权威解释和用法请参见 [2. 内置函数 — Python 3.6.8 文档](https://docs.python.org/zh-cn/3.6/library/functions.html) 和 [Python3 内置函数 | 菜鸟教程](https://www.runoob.com/python3/python3-built-in-functions.html)
