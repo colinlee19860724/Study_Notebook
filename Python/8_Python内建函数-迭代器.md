@@ -180,7 +180,7 @@ Out: (9, 0)
 
 ```
 
-`round(x)` 四舍六入五取偶，`round(-0.5)`  
+`round(x)` 四舍六入五取偶  
 ```python
 In : round(1.4), round(1.6), round(1.5)
 Out: (1, 2, 2)
