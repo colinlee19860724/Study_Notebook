@@ -47,3 +47,6 @@ emoji | emoji 代码 | commit 说明
 :globe_with_meridians: (地球) | `:globe_with_meridians:` | 国际化与本地化
 :pencil2: (铅笔) | `:pencil2:` | 修复错别字
 :ok_hand: (OK手势) | `:ok_hand:` | 由于代码审查更改而更新代码
+
+
+一起来使用吧！  
