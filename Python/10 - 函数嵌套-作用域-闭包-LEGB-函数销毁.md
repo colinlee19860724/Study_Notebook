@@ -12,109 +12,150 @@
 &emsp;&emsp;一个函数中存在另外一个函数 (定义 / 调用)，这种方式我们称之为函数嵌套。所以：函数的嵌套主要分为 `嵌套调用`，以及 `嵌套定义`。
 
 ```python
-函数的嵌套调用
-def max2 (a,b):   # 判断两个变量的最大值
-    return a if  a > b else b
+# 1.函数的嵌套调用
+def max2(a,b):        # 判断两个变量的最大值
+    return a if a > b else b
  
-def max4 (a,b,c,d):  # 判断四个变量的最大值
-    res1 = max2 (a,b)  # 函数的嵌套调用
-    res2 = max2 (res1,c)
-    res3 = max (res2,d)
-    print (res3)
+def max4(a,b,c,d):    # 判断四个变量的最大值
+    res1 = max2(a,b)  # 函数的嵌套调用
+    res2 = max2(res1,c)
+    res3 = max(res2,d)
+    print(res3)
  
-max4 (10,100,21,99)
+In : max4(10,100,21,99)
+100
 
-函数的嵌套定义
-def func1 ():
-    print ('from func1')
-    def func2 ():
-        print ('from func2')
-        def func3 ():
-            print ('from func3')
-        func3 ()  # 只有在 func2 中才能调用内部定义的函数 func3
-    func2 ()
- 
-func1 ()
+# 2.函数的嵌套定义
+def func1():
+    print('from func1')
+    def func2():
+        print('from func2')
+        def func3():
+            print('from func3')
+        func3()  # 只有在 func2 中才能调用内部定义的函数 func3
+    func2()
+
+In : func1()
+from func1
+from func2
+from func3
+
+In : func3()
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-6-b7e4f488dc81> in <module>
+----> 1 func3()
+
+NameError: name 'func3' is not defined
 ```
 
-> 注意：在函数的内部定义函数，只能在函数内部进行调用，在其他地方是无法进行调用，强行调用就会提示 NameError 异常，所以说函数是有可见范围的，这就涉及到了作用域了
+> &emsp;&emsp;**注意**：在函数的内部定义函数，只能在函数内部进行调用，在其他地方无法进行调用，强行调用就会提示 NameError 异常，所以说函数是有可见范围的，这就涉及到了作用域了
 
 # 2. 作用域
-&emsp;&emsp;一个标识符的可见范围，叫做标识符的作用域。一般常说的是变量的作用域。根据作用的范围主要分为 `全局作用域` 和 `局部作用域`。
-- 全局作用域：在整个程序运行环境中都可见
-- 局部作用域：在函数、类的内部可见，并且使用范围不能超过所在的局部作用域 (比如在函数内部定义了一个变量 x，我在全局使用变量 x 是不行的。)
+&emsp;&emsp;一个标识符的可见范围，叫做**标识符的作用域**，一般常说的是**变量的作用域**。根据作用的范围主要分为 **全局作用域** 和 **局部作用域**。
+- **全局作用域**：在整个程序运行环境中都可见
+- **局部作用域**：在函数、类的内部可见，并且使用范围不能超过所在的局部作用域 (比如在函数内部定义了一个变量 x，我在全局使用变量 x 是不行的。)
 
 ```python
 x = 1   # 全局变量
-def outer ():
-    def inner ():
+def outer():
+    def inner():
         y = 100   # 局部变量
-        print (x) 
-    inner ()
+        print(x) 
+    inner()
 
-outer ()
-print (y)
+In : outer()
+1
+
+In : print(y)
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-9-d9183e048de3> in <module>
+----> 1 print(y)
+
+NameError: name 'y' is not defined
 ```
 
-- 全局变量 x 在全局生效，所以内部函数 inner 是可以打印 x 的
-- 局部变量 y 只在 inner 内部生效，所以在全局 print (y) 是无法调用局部变量 y 的  
+- 全局变量 x 在全局生效，所以内部函数 inner 是可以打印 x 的  
+- 局部变量 y 只在 inner 内部生效，所以在全局 print(y) 是无法调用局部变量 y 的  
 
-观察下面的例子：
+&emsp;&emsp;观察下面的例子：
 
 ```python
 x = 1
-def outer ():
-    def inner ():
+def outer():
+    def inner():
         x += 1
         return x
-    inner ()
-outer ()
+    inner()
+
+In : outer()
+---------------------------------------------------------------------------
+UnboundLocalError                         Traceback (most recent call last)
+<ipython-input-11-0811df1b6f71> in <module>
+----> 1 outer()
+
+<ipython-input-10-c03563d674ed> in outer()
+      4         x += 1
+      5         return x
+----> 6     inner()
+      7
+
+<ipython-input-10-c03563d674ed> in inner()
+      2 def outer():
+      3     def inner():
+----> 4         x += 1
+      5         return x
+      6     inner()
+
+UnboundLocalError: local variable 'x' referenced before assignment
+
 ```
 
-代码是从上到下执行的，所欲这样写也没什么毛病，但是这里这个例子是无法执行的，为什么呢？
+&emsp;&emsp;代码是从上到下执行的，所以这样写也没什么毛病，但是这里这个例子是无法执行的，为什么呢？  
 1. x 作为全局变量，在 inner 内部是可见的
 2. 在定义函数的阶段，Python 的 `函数是作为一个整体一起被解释的`。
 3. inner 函数在解释时，解释器发现在 inner 内部对 x 进行了定义 (`x += 1`)，那么它就不会在调用全局变量 x，而是标识 x 是局部定义的变量
-4. 而在执行 x+=1 的时候，inner 内部的 x 还没有被定义，所以会提示 x 在定义前被执行了。(x += 1 --> x = x + 1 , 预先求 x + 1 时提示的)。  
+4. 而在执行 `x += 1` 的时候，inner 内部的 x 还没有被定义，所以会提示 x 在定义前被执行了。(`x += 1` -> `x = x + 1` , 预先求 `x + 1` 时提示的，变量类型是赋值即定义)。  
 
 如何解决呢？有两种方法：`更换变量名称`、声明当前变量非本地变量 (`global`)
 
 ```python
 x = 1
-def outer ():
-    def inner ():
+def outer():
+    def inner():
         y = x + 1    # 这里定义的 y 是局部变量，而 x 来自于全局变量
         return y
-    return inner ()
-print (outer ())
+    return inner()
+print(outer())
 ```
 
 ## 2.1. global 关键字
 我们通过在函数内部使用 global 关键字来声明一个变量不是局部变量，而是一个全局变量。
 
 ```python
-def outer ():
-    def inner ():
+def outer():
+    def inner():
         global x   # 在函数内部声明一个全局变量，全局不存在时新建全局变量 x，全局变量 x 存在时，则使用全局变量 x
         x = 10   # 修改全局变量 x 的值
-    inner ()
+    inner()
 
-outer ()
-print (x)
+In : outer()
+Out: 2
 ```
 
 > 虽然全局变量 x，在全局没有被定义，但是由于在函数内部使用了 global 关键字，所以 x 就变成了全局变量了。使用了 global 关键字，那么之前的例子就可以进行如下修改了
 
 ```python
 x = 1
-def outer ():
-    def inner ():
+def outer():
+    def inner():
         global x  # 使用全局变量 x
         x += 1  # 这里的 x 是全局变量，那么对 x 的修改必然会作用域全局
         return x
-    inner ()
-outer ()
-print (x) # 2   , 在函数内部把全局变量 x 给修改了！！！
+    inner()
+outer()
+print(x) # 2   , 在函数内部把全局变量 x 给修改了！！！
 ```
 
 针对 global 的总结：
@@ -127,14 +168,14 @@ print (x) # 2   , 在函数内部把全局变量 x 给修改了！！！
 > 自由变量：未在本地作用域中定义的变量，比如在嵌套函数的外层定义的变量 (非全局变量)，对内层来说，这个变量就叫做自由变量。
 
 ```python
-def outer ():
+def outer():
     c = [1]
-    def inner ():
+    def inner():
         c[0] = 1
         return c
-    return inner ()
-a = outer ()
-print (a)
+    return inner()
+a = outer()
+print(a)
 ```
 
 &emsp;&emsp; 注意：上面这个例子比较特殊，首先它是一个闭包，在 inner 函数内引用了外层函数的自由变量 C。因为这里的 c 是一个引用类型，我们可以直接通过 c 来操作 c 中的元素，但是没办法对 c 本身进行修改，即`c += [1,3]`。看似是列表拼接，但是它会重新对 c 进行声明，这就引发了之前的问题，内部函数 inner 没有定义 c，所以会报错！所以当 c 不是引用类型的话，我们就没办法修改了吗？当然不是，可以使用 global 把 c 声明为全局变量，但是这就不是闭包了，所以这里就需要使用`nonlocal` 了 (python 3 特有)。  
@@ -147,18 +188,18 @@ print (a)
 > nonlocal 只能用在嵌套函数的内部
 
 ```python
-def outer ():
+def outer():
     c = 100
-    def inner ():
+    def inner():
         nonlocal c  # 声明不是本地的 c（引用上级目录的 c)
         c += 200   # 对 c 进行修改
         return c
-    print (' 内 ',c)   # 100
+    print(' 内 ',c)   # 100
     c = 1000
     return inner
 
-a = outer ()
-print (' 外 ',a)  # 1200
+a = outer()
+print(' 外 ',a)  # 1200
 ```
 
 # 4. 默认值的作用域
@@ -168,17 +209,17 @@ print (' 外 ',a)  # 1200
 ```python
 In : import random
 ...:
-...: def add (x=set (),y=[]):
-...:     x.add (random.randint (1,10))
-...:     y.append (1)
-...:     # print (x)
-...:     # print (y)
+...: def add(x=set(),y=[]):
+...:     x.add(random.randint(1,10))
+...:     y.append(1)
+...:     # print(x)
+...:     # print(y)
 ...:
-...: print (add (),id (add))
-...: print (add.__defaults__)
+...: print(add(),id(add))
+...: print(add.__defaults__)
 ...:
-...: print (add (),id (add))
-...: print (add.__defaults__)
+...: print(add(),id(add))
+...: print(add.__defaults__)
 None 2721081985904
 ({1}, [1])
 None 2721081985904
@@ -192,10 +233,10 @@ None 2721081985904
 
 # 5. 变量名解析原则 LEGB
 &emsp;&emsp;变量的解析原则，也可以理解为变量的查找顺序：
-- L (`Local`): 本地作用域、局部作用域的 local 命名空间。函数调用是创建，调用结束消亡
-- E (`Enclosing`): Python 2.2 时引入嵌套函数，实现了闭包，这个就是嵌套函数的外部函数的命名空间
-- G (`Global`): 全局作用域，即一个模块的命名空间。模块被 import 时创建，解释器退出时消亡
-- B (`Build-in`): 内置模块的命名空间，生命周期从 Python 解释器启动时创建到解释器退出时消亡。例如 print 函数、open 函数等。
+- L(`Local`): 本地作用域、局部作用域的 local 命名空间。函数调用是创建，调用结束消亡
+- E(`Enclosing`): Python 2.2 时引入嵌套函数，实现了闭包，这个就是嵌套函数的外部函数的命名空间
+- G(`Global`): 全局作用域，即一个模块的命名空间。模块被 import 时创建，解释器退出时消亡
+- B(`Build-in`): 内置模块的命名空间，生命周期从 Python 解释器启动时创建到解释器退出时消亡。例如 print 函数、open 函数等。
 > 变量查找的规则为 L > E > G > B，即：先本地后嵌套再全局最后是内置函数中
 
 # 6. 函数的销毁
