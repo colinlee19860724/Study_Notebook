@@ -1,6 +1,23 @@
-# Python 函数之 logging.basicConfig 用法和参数详解
+- [1. Python 函数之 logging.basicConfig 用法和参数详解](#1-python-函数之-loggingbasicconfig-用法和参数详解)
+    - [1.1. logging 模块简介](#11-logging-模块简介)
+    - [1.2. `logging.basicConfig(**kwargs)`](#12-loggingbasicconfigkwargs)
+    - [1.3. LogRecord 属性](#13-logrecord-属性)
 
-先举例个例子：
+
+# 1. Python 函数之 logging.basicConfig 用法和参数详解
+
+## 1.1. logging 模块简介
+&emsp;&emsp;logging 模块是 Python 内置的标准模块，主要用于输出运行日志，可以设置输出日志的等级、日志保存路径、日志文件回滚等；相比 print，具备如下优点：
+
+1. 可以通过设置不同的日志等级，在 release 版本中只输出重要信息，而不必显示大量的调试信息；
+2. print 将所有信息都输出到标准输出中，严重影响开发者从标准输出中查看其它数据；logging 则可以由开发者决定将信息输出到什么地方，以及怎么输出；
+3. 和 print 相比，logging 是线程安全的。
+
+> &emsp;&emsp;**线程安全**：线程执行一段代码，不会产生不确定的结果，那这段代码就是线程安全的。
+> &emsp;&emsp;多线程的时候执行 print 应该是一行行打印，但是很多字符串打在了一起，为什么？
+> &emsp;&emsp;说明，print 函数被打断了，被线程切换打断了。print 函数分两步，第一步打印字符串，第二步打印换行符，就在这之间，发生了线程的切换。这说明 print 函数是**线程不安全**的。
+
+&emsp;&emsp;**先举个例子：**
 ```python
 import logging
 
@@ -14,12 +31,13 @@ logging.info('This is a info.')
 logging.debug('This is a debug message.')
 logging.warning('This is a warning.')
 
-# 输出：
+# 输出到同目录下 my.log 文件中的内容：
 Wed 05 Jun 2019 22:25:32 test.py INFO This is a info.
 Wed 05 Jun 2019 22:25:32 test.py WARNING This is a warning.
 ```
+&emsp;&emsp;请读者根据以下参数自行解读为什么会有这样的输出。
 
-## `logging.basicConfig(**kwargs)`  
+## 1.2. `logging.basicConfig(**kwargs)`  
 &emsp;&emsp;使用默认格式化程序创建 StreamHandler 并将其添加到根日志记录器中，从而完成日志系统的基本配置。如果没有为根日志程序定义处理程序，debug()、info()、warning()、error()和 critical() 函数将自动调用 basicConfig()。
 &emsp;&emsp;如果根日志记录器已经为其配置了处理程序，则此函数不执行任何操作。
 
@@ -38,7 +56,7 @@ level | 将根记录器级别设置为指定的级别。
 stream | 使用指定的流初始化 StreamHandler。注意，此参数与 filename 不兼容——如果两者都存在，则会抛出 ValueError。
 handlers | 如果指定，这应该是已经创建的处理程序的迭代，以便添加到根日志程序中。任何没有格式化程序集的处理程序都将被分配给在此函数中创建的默认格式化程序。注意，此参数与 filename 或 stream 不兼容——如果两者都存在，则会抛出 ValueError。
 
-## LogRecord 属性
+## 1.3. LogRecord 属性
 &emsp;&emsp;LogRecord 有许多属性，其中大部分是从构造函数的参数派生出来的。(注意，名称并不总是与LogRecord 构造函数参数和 LogRecord 属性完全对应。)这些属性可用于将记录中的数据合并到格式字符串中。下表以 % 样式的格式字符串列出(按字母顺序)属性名、它们的含义和对应的占位符。
 
 &emsp;&emsp;如果您使用 {} 格式 (str.format())，可以使用 {attrname} 作为格式字符串中的占位符。如果您正在使用 $-formatting (string.Template)，请使用 ${attrname} 格式。当然，在这两种情况下，都要用想要使用的实际属性名替换 attrname。
