@@ -38,8 +38,8 @@ Wed 05 Jun 2019 22:25:32 test.py WARNING This is a warning.
 &emsp;&emsp;请读者根据以下参数自行解读为什么会有这样的输出。
 
 ## 1.2. `logging.basicConfig(**kwargs)`  
-&emsp;&emsp;使用默认格式化程序创建 StreamHandler 并将其添加到根日志记录器中，从而完成日志系统的基本配置。如果没有为根日志程序定义处理程序，debug()、info()、warning()、error()和 critical() 函数将自动调用 basicConfig()。
-&emsp;&emsp;如果根日志记录器已经为其配置了处理程序，则此函数不执行任何操作。
+&emsp;&emsp;使用默认格式化程序创建 StreamHandler 并将其添加到根日志记录器中，从而完成日志系统的基本配置。如果没有为根日志程序定义处理程序，debug()、info()、warning()、error()和 critical() 函数将自动调用 basicConfig()。  
+&emsp;&emsp;如果根日志记录器已经为其配置了处理程序，则此函数不执行任何操作。  
 
 > 注解：这个函数应该在其他线程启动之前从主线程调用。在 2.7.1 和 3.2 之前的 Python 版本中，如果从多个线程调用此函数，则可能(在很少的情况下)不止一次地将处理程序添加到根日志记录器中，从而导致意想不到的结果，比如在日志中消息被复写。
 
@@ -52,7 +52,7 @@ filemode | 如果指定 filename，则以此模式打开文件('r'、'w'、'a')�
 format | 为处理程序使用指定的格式字符串。
 datefmt | 使用 time.strftime() 所接受的指定日期/时间格式。
 style | 如果指定了格式，则对格式字符串使用此样式。'%' 用于 printf 样式、'{' 用于 str.format()、'$' 用于 string。默认为“%”。
-level | 将根记录器级别设置为指定的级别。
+level | 将根记录器级别设置为指定的级别。默认生成的 root logger 的 level 是 logging.WARNING，低于该级别的就不输出了。级别排序：CRITICAL > ERROR > WARNING > INFO > DEBUG。（如果需要显示所有级别的内容，可将 level=logging.NOTSET）
 stream | 使用指定的流初始化 StreamHandler。注意，此参数与 filename 不兼容——如果两者都存在，则会抛出 ValueError。
 handlers | 如果指定，这应该是已经创建的处理程序的迭代，以便添加到根日志程序中。任何没有格式化程序集的处理程序都将被分配给在此函数中创建的默认格式化程序。注意，此参数与 filename 或 stream 不兼容——如果两者都存在，则会抛出 ValueError。
 
