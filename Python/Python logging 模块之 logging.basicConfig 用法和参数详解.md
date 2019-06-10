@@ -1,10 +1,10 @@
-- [1. Python 函数之 logging.basicConfig 用法和参数详解](#1-python-函数之-loggingbasicconfig-用法和参数详解)
+- [1. Python logging 模块之 logging.basicConfig 用法和参数详解](#1-python-logging-模块之-loggingbasicconfig-用法和参数详解)
     - [1.1. logging 模块简介](#11-logging-模块简介)
     - [1.2. `logging.basicConfig(**kwargs)`](#12-loggingbasicconfigkwargs)
     - [1.3. LogRecord 属性](#13-logrecord-属性)
 
 
-# 1. Python 函数之 logging.basicConfig 用法和参数详解
+# 1. Python logging 模块之 logging.basicConfig 用法和参数详解
 
 ## 1.1. logging 模块简介
 &emsp;&emsp;logging 模块是 Python 内置的标准模块，主要用于输出运行日志，可以设置输出日志的等级、日志保存路径、日志文件回滚等；相比 print，具备如下优点：
@@ -72,7 +72,7 @@ exc_info | 您不应该自己设置此格式。 | 异常元组(如 sys.exc_info)
 filename | `%(filename)s` | **路径名**的**文件名**部分。
 funcName | `%(funcName)s` | 包含日志记录调用的函数的名称。
 levelname | `%(levelname)s` | 消息的文本日志级别('DEBUG'、'INFO'、'WARNING'、'ERROR'、'CRITICAL')。
-levelno | `%(levelno)s` | 消息的数字日志级别(DEBUG、INFO、WARNING、ERROR、CRITICAL)。
+levelno | `%(levelno)s` | 消息的数字日志级别(NOTSET-0、DEBUG-10、INFO-20、WARNING-30、ERROR-40、CRITICAL-50)。
 lineno | `%(lineno)d` | 发出日志调用的源行号(如果可用)。
 message | `%(message)s` | 已记录的消息，计算为 msg % args。这是在调用 Formatter.format() 时设置的。
 module | `%(module)s` | 模块(文件名的名称部分)。
