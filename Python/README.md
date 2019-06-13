@@ -4,7 +4,7 @@
 [1_基础概念及环境部署](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/1_基础概念及环境部署.md)  
 [2_基础语法-操作符-循环控制](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/2_基础语法-操作符-循环控制.md)  
 [3_内置结构-列表](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/3_内置结构-列表.md)  
-[4_内置结构-元组-字符串](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/4_内置结构-元组-字符串.md)  
+[4_内置结构-元组-字符串-bytes-bytearray-切片](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/4_内置结构-元组-字符串-bytes-bytearray-切片.md)  
 [5_Python的封装与解构-集合](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/5_Python的封装与解构-集合.md)  
 [6_内置结构-字典](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/6_内置结构-字典.md)  
 [7_列表解析式-生成器](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/7_列表解析式-生成器.md)  
