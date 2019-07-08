@@ -138,8 +138,10 @@ emergency|emergency.target           | 紧急 Shell
 &emsp;&emsp;如果想要将系统默认的运行目标修改为 “多用户，无图形” 模式，可直接用 ln 命令把多用户模式目标文件连接到 /etc/systemd/system/default.target：
 
 ```bash 
-ln -sf /lib/systemd/system/multi-user.target/etc/systemd/system/default.target 
+ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target 
 ```
+
+&emsp;&emsp;更多 Systemd 相关知识请参见 [Systemd 入门教程：命令篇 - 阮一峰的网络日志](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
 
 ### 1.6.2. System V init 运行级别
 &emsp;&emsp;init 命令是 Linux 下的进程初始化工具，init 进程是所有 Linux 进程的父进程，它的进程号为 1。init 命令是 Linux 操作系统中不可缺少的程序之一，init 进程是 Linux 内核引导运行的，是系统中的第一个进程。  
