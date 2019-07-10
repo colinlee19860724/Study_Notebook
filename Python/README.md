@@ -13,6 +13,13 @@
 [10_函数嵌套-作用域-闭包-LEGB-函数销毁](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/10_函数嵌套-作用域-闭包-LEGB-函数销毁.md)  
 [11_函数的执行流程-函数递归-匿名函数-生成器](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/11_函数的执行流程-函数递归-匿名函数-生成器.md)  
 [12_树-基础知识-二叉树-完全二叉树-斜树](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/12_树-基础知识-二叉树-完全二叉树-斜树.md)  
+[13_高阶函数-柯里化-装饰器](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/13_高阶函数-柯里化-装饰器.md)  
+[14_函数参数检测-inspect模块](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/14_函数参数检测-inspect模块.md)  
+[15_reduce-pratial偏函数-lru_cache](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/15_reduce-pratial偏函数-lru_cache.md)  
+[16_文件操作-StringIO-BytesIO](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/16_文件操作-StringIO-BytesIO.md)  
+[17_路径操作-shutil模块](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/17_路径操作-shutil模块.md)  
+[18_csv文件-ini文件处理](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/18_csv文件-ini文件处理.md)  
+
 
 ## Python 环境和模块  
 [CentOS 7 系统编译安装 Python 3 环境](https://github.com/colinlee19860724/Study_Notebook/blob/master/Python/CentOS%207%20系统编译安装%20Python%203%20环境.md)  
