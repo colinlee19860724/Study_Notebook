@@ -110,9 +110,9 @@ Out: {'x': int, 'y': int, 'return': int}
 
 ```
 
-&emsp;&emsp; 当我们使用变量注释时，变量名和类型就会存放在函数的__annotations__属性中。那么即然有变量存储，那么我们是不是只需要获取传入的参数，然后和 annotations 中存储的变量类型进行比较是不是就达到目的了呢？仔细思考一下：
+&emsp;&emsp; 当我们使用变量注释时，变量名和类型就会存放在函数的`__annotations__`属性中。那么即然有变量存储，那么我们是不是只需要获取传入的参数，然后和 annotations 中存储的变量类型进行比较是不是就达到目的了呢？仔细思考一下：
 1. 参数检查势必要在函数执行前，想要在 add 执行前添加参数判断那么就需要使用装饰器了
-2. __annotations__的值是一个字典，字典是无序的，用户按照位置传进来参数是有序的，如何让它们形成对应关系方便我们检测呢？  
+2. `__annotations__`的值是一个字典，字典是无序的，用户按照位置传进来参数是有序的，如何让它们形成对应关系方便我们检测呢？  
 下面我们来了解一下 inspect 模块，它可以帮我们完成这个事情。
 
 # 5. inspect 模块
@@ -120,18 +120,18 @@ Out: {'x': int, 'y': int, 'return': int}
 
 ## 5.1. 常用方法
 
-分类 | 方法名称 | 功能
-:--|:--|:--
-判断 |`inspect.getmodulename(path)`| 获取模块名称
-|`inspect.ismodule(object)`| 是不是个模块
-|`inspect.isclass(object)`| 是不是个类
-|`inspect.ismethod(object)`| 是不是一个方法
-|`inspect.isfunction(object)`| 是不是一个函数
-|`inspect.isgeneratorfunction(object)`| 是不是一个生成器函数
-|`inspect.isgenerator(object)`| 是不是一个生成器
-|`inspect.iscoroutinefunction(object)`| 是不是一个协程函数
-获取信息 |`inspect.getmodulename(path)`| 获取模块名称
-|`inspect.getsource(object)`| 获取对象的原码(并不会解析装饰器原码)
+| 分类 | 方法名称 | 功能 |
+| :--|:--|:-- |
+判断 |`inspect.getmodulename(path)`| 获取模块名称 |
+| | `inspect.ismodule(object)`| 是不是个模块 |
+| | `inspect.isclass(object)`| 是不是个类 |
+| | `inspect.ismethod(object)`| 是不是一个方法 |
+| | `inspect.isfunction(object)`| 是不是一个函数 |
+| | `inspect.isgeneratorfunction(object)`| 是不是一个生成器函数 |
+| | `inspect.isgenerator(object)`| 是不是一个生成器 |
+| | `inspect.iscoroutinefunction(object)`| 是不是一个协程函数 |
+| 获取信息 |`inspect.getmodulename(path)`| 获取模块名称 |
+| |`inspect.getsource(object)`| 获取对象的原码(并不会解析装饰器原码) |
 
 ## 5.2. signature 类
 &emsp;&emsp; 首先我们要说的是函数的签名信息：它包含了了函数的函数名、它的参数类型，它所在的类和名称空间及其他信息，签名对象(signature object) 表示可调用对象的调用签名信息和它的注解信息，当我们使用 `signature()` 时，它会重新返回一个包含可调用对象信息的签名对象。
