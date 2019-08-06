@@ -53,4 +53,4 @@
 [Python logging 模块之 logging.basicConfig 用法和参数详解](Python%20logging%20模块之%20logging.basicConfig%20用法和参数详解.md)  
 
 ## 其它  
-[Comprehensive_Python_Cheatsheet](Python\Comprehensive_Python_Cheatsheet.md)  
+[Comprehensive_Python_Cheatsheet](Comprehensive_Python_Cheatsheet.md)  

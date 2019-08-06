@@ -139,14 +139,15 @@ Out: {'x': int, 'y': int, 'return': int}
 ## 5.3. parameters 属性
 &emsp;&emsp;signature 类的 `parameters` 属性，它里面存放的是函数的参数注解和返回值注解，组成的有序字典，其中参数注解的格式为：参数名称，使用 `inspect.Parameters` 类包装的参数注解，这个参数注解很强大，它包含如下常用的方法：
 
-方法名称 | 含义
-:--|:--
-empty | 等同于 inspect._empty 表示一个参数没有被类型注释
-name | 参数的名称
-default | 参数的默认值，如果一个参数没有默认值，这个属性的值为 inspect.empty
-annotation | 参数的注解类型，如果参数没有定义注解，这个属性的值为 inspect.empty
-kind | 参数的类型  
-这里的参数类型表示的是 inspect 内置参数类型(其实就是几个常用的函数参数定义类型而已，只是换个名字而已)
+| 方法名称 | 含义 |
+| :--|:-- |
+| empty | 等同于 inspect._empty 表示一个参数没有被类型注释 |
+| name | 参数的名称 |
+| default | 参数的默认值，如果一个参数没有默认值，这个属性的值为 | inspect.empty |
+| annotation | 参数的注解类型，如果参数没有定义注解，这个属性的值为 | inspect.empty |
+| kind | 参数的类型   |
+
+&emsp;&emsp;这里的参数类型表示的是 inspect 内置参数类型(其实就是几个常用的函数参数定义类型而已，只是换个名字而已)
 
 ```python
 _POSITIONAL_ONLY         = _ParameterKind.POSITIONAL_ONLY       # 位置参数_only
