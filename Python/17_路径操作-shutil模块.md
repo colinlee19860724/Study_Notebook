@@ -1,24 +1,10 @@
+**17 - 路径操作-shutil模块**
 
-- [1. 路径操作](#1-路径操作)
-    - [1.1. os.path 模块](#11-ospath-模块)
-    - [1.2. pathlib 模块](#12-pathlib-模块)
-        - [1.2.1. 目录操作](#121-目录操作)
-            - [1.2.1.1. 初始化(一个路径对象)](#1211-初始化一个路径对象)
-            - [1.2.1.2. 路径拼接和分解`/`: Path 对象支持使用`/` 来进行路径的拼接，拼接规则应遵循：](#1212-路径拼接和分解-path-对象支持使用-来进行路径的拼接拼接规则应遵循)
-            - [1.2.1.3. 获取路径](#1213-获取路径)
-            - [1.2.1.4. 父目录`parent`: 当前目录的逻辑父目录`parents`: 所有父目录的序列，索引 0 为当前目录的父目录，依次类推](#1214-父目录parent-当前目录的逻辑父目录parents-所有父目录的序列索引-0-为当前目录的父目录依次类推)
-            - [1.2.1.5. 目录的组成部分](#1215-目录的组成部分)
-            - [1.2.1.6. 全局方法及判断方法](#1216-全局方法及判断方法)
-            - [1.2.1.7. 通配符](#1217-通配符)
-            - [1.2.1.8. 目录属性](#1218-目录属性)
-        - [1.2.2. 文件操作](#122-文件操作)
-    - [1.3. os 模块](#13-os-模块)
-- [2. shutil 模块](#2-shutil-模块)
-    - [2.1. copy 复制](#21-copy-复制)
-    - [2.2. rm 删除](#22-rm-删除)
-    - [2.3. move 移动](#23-move-移动)
-    - [2.4. 打包](#24-打包)
+---
 
+[TOC]
+
+---
 
 # 1. 路径操作
 &emsp;&emsp;使用 Python 操作文件系统时，少不了会对路径进行切换，对目录的遍历，以及获取文件的绝对路径的一系列的操作，Python 内置了相关的模块完成对应的功能，其中:
@@ -41,9 +27,10 @@ os.path.join ('path1','path2','path3')：把 path1 和 path2 及 path3 进行组
 os.path.getatime('path')       获取文件的 atime 时间，返回时间戳
 os.path.getmtime('path')       获取文件的 mtime 时间，返回时间戳
 os.path.getsize(filename)      获取文件的大小，单位是字节
+
 ```
 
-> Linux 下：从 / 开始，Windows 下从 C,D,E 盘开始  
+> Linux 下：从 / 开始，Windows 下从 C,D,E 盘开始
 
 ```python
 In : import os  
@@ -78,6 +65,7 @@ Out: 'network-scripts'
 > >> os.path.splitdrive('c:/etc/sysconfig/network-script')   # windows   
 
 ('c:', '/etc/sysconfig/network-script')
+
 ```
 
 > \_\_file\_\_：变量比较特殊，存放的是当前的 Python 文件的名称，我们可以使用 os.path.abspath(__file__) 来获取当前 python 文件的绝对路径，然后进行打包或者进行相对调用。  
@@ -89,6 +77,7 @@ Out: 'network-scripts'
 
 ### 1.2.1. 目录操作
 下面来说一下日常的目录相关操作
+
 #### 1.2.1.1. 初始化(一个路径对象)
 通过构建一个 Path 对象来对路径进行初始化
 
@@ -106,6 +95,7 @@ Out: PosixPath('a/b/c')
 
 In : p2
 Out: PosixPath('/etc/sysconfig/network-scripts')
+
 ```
 
 #### 1.2.1.2. 路径拼接和分解`/`: Path 对象支持使用`/` 来进行路径的拼接，拼接规则应遵循：
@@ -122,6 +112,7 @@ Out: PosixPath('/etc/sysconfig/network-scripts/a/b/c')
 
 In : '/root' /p2
 Out: PosixPath('/etc/sysconfig/network-scripts')
+
 ```
 
 需要注意的是：
@@ -133,9 +124,9 @@ Out: PosixPath('/etc/sysconfig/network-scripts')
 ```python
 In : p2.parts
 Out: ('/', 'etc', 'sysconfig', 'network-scripts')
-```
+`
 
-`joinpath(*other)`: 在 Path 对象中使用当前操作系统的路径分隔符分割并追加多个字符串。 
+```joinpath(*other)`: 在 Path 对象中使用当前操作系统的路径分隔符分割并追加多个字符串。 
 
 ```python
 In : p2.joinpath('/etc')
@@ -146,10 +137,12 @@ Out: PosixPath('/etc/sysconfig/network-scripts/etc')
 
 In : p2.joinpath('/etc','/proc')
 Out: PosixPath('/proc')
+
 ```
 
 需要注意的是：
 1. 如果添加的的路径都为  `/` 开始，那么最后添加的路径将会覆盖前面所有添加的路径字符串。
+
 #### 1.2.1.3. 获取路径
 &emsp;&emsp;Path 返回的是一个路径对象，那么如何才可以只打印路径的字符串格式呢，我们可以通过 `str(Path 对象)` 进行转换，当需要 bytes 格式时，也可以使用 `bytes(Path 对象)` 转换。
 
@@ -159,9 +152,11 @@ Out: b'/etc/sysconfig/network-scripts'
 
 In : str(p2)  
 Out: '/etc/sysconfig/network-scripts'
+
 ```
 
 #### 1.2.1.4. 父目录`parent`: 当前目录的逻辑父目录`parents`: 所有父目录的序列，索引 0 为当前目录的父目录，依次类推
+
 ```python
 In : p2.parent
 Out: PosixPath('/etc/sysconfig')
@@ -177,6 +172,7 @@ Out: <PosixPath.parents>   # 可迭代对象
 
 In : list(p2.parents)
 Out: [PosixPath('/etc/sysconfig'), PosixPath('/etc'), PosixPath('/')]
+
 ```
 
 > parent 属性，看似支持类 js 的链式操作，主要还是因为每次使用 parent 属性时，返回的还是一个 Path 对象，所以才可以一直 parent 下去。  
@@ -201,6 +197,7 @@ Out: 'mysql.tar'
 
 In : p.suffixes  
 Out: ['.tar', '.gz']
+
 ```
 
 -`with_suffix(suffix)`: 有扩展名则替换，无则补充扩展名(注意后缀名要加点)
@@ -222,6 +219,7 @@ Out: PosixPath('/tmp/mysql.tar.gz')
 
 In : p.with_name('nginx.tar.gz')  
 Out: PosixPath('/tmp/nginx.tar.gz')
+
 ```
 
 #### 1.2.1.6. 全局方法及判断方法
@@ -253,6 +251,7 @@ Out: True
 
 In : p.is_absolute()  
 Out: True 
+
 ```
 
 -`resolve()`: 返回当前 Path 对象的绝对路径。如果是软连接，则直接被解析
@@ -268,6 +267,7 @@ Out: PosixPath('/etc/hosts')
 
 In : p3.absolute()         # 软链接的绝对路径  
 Out: PosixPath('/home/python/py368/hosts')
+
 ```
 
 -`exists()`: 文件或者目录是否存在
@@ -292,12 +292,15 @@ FileExistsError                           Traceback(most recent call last)
 FileExistsError: [Errno 17] File exists: '/tmp/hello.py'
 
 In :  
+
 ```
 
 - as_uri(): 将路径返回成 URI
+
 ```python
 In : p2.as_uri()  
 Out: 'file:///etc/hosts'
+
 ```
 
 -`mkdir(mode=0o777,parents=False,exist_ok=False)`: 创建一个目录
@@ -318,6 +321,7 @@ In : for x in p4.parents[0].iterdir():
 ...:         print('{} is a file'.format(x)) 
 ...:     else: 
 ...:         print('other file')
+
 ```
 
 > 判断文件类型，当文件为目录时，判断其是否为空目录。  
@@ -357,6 +361,7 @@ Out:
 
 In : p4.match('/etc/*/network-script?')  
 Out: True
+
 ```
 
 #### 1.2.1.8. 目录属性
@@ -366,6 +371,7 @@ Out: True
 ```python
 In : p4.stat()  
 Out: os.stat_result(st_mode=16877, st_ino=67533402, st_dev=2050, st_nlink=2, st_uid=0, st_gid=0, st_size=4096, st_atime=1550229289, st_mtime=1545830238, st_ctime=1545830238)
+
 ```
 
 ### 1.2.2. 文件操作
@@ -373,9 +379,9 @@ Out: os.stat_result(st_mode=16877, st_ino=67533402, st_dev=2050, st_nlink=2, st_
 
 ```python
 Path.open(mode='r',buffering=-1,encoding=None,errors=None,newline=None)
-```
 
-例：
+```例：
+
 ```python
 In : p5  
 Out: PosixPath('/tmp/123')
@@ -424,9 +430,10 @@ os.path.abspath('dir/file'): 获取 dir/file 的绝对路径
 os.path.split('path'): 把路径分割为目录和文件名组成的元组格式，不管 path 是否存在
 os.dirname('path')：获取文件的父目录名称，不管 path 是否存在
 os.basename('path'): 获取文件的名称，不管 path 是否存在
+
 ```
 
-> os.stat(follow_symlinks=True)，返回源文件本身信息，False 时，显示链接文件的信息，对于软连接本身，还可以使用 os.lstat 方法  
+> os.stat(follow_symlinks=True)，返回源文件本身信息，False 时，显示链接文件的信息，对于软连接本身，还可以使用 os.lstat 方法
 
 ```python
 In : os.lstat('hosts')  
@@ -439,6 +446,7 @@ In : os.stat('hosts',follow_symlinks=False)      # 等同于 os.lstat()
 Out: os.stat_result(st_mode=41471, st_ino=2083428, st_dev=2050, st_nlink=1, st_uid=1001, st_gid=1001, st_size=10, st_atime=1550259162, st_mtime=1550259161, st_ctime=1550259161)
 
 In :  
+
 ```
 
 # 2. shutil 模块
@@ -466,6 +474,7 @@ In :
 ```
 
 -`shutil.copyfile(fsrc,fdes)`: 复制文件，我们只需要传入文件名称即可进行复制，不用自行预先打开，等于创建一个新的文件，把老文件写入到新文件中然后关闭，新创建的文件权限和属主等信息遵循操作系统规定(本质上还是调用 copyfileobj)
+
 ```python
 
 > >> shutil.copyfile('1.txt','3.txt')  
@@ -473,9 +482,11 @@ In :
 > >> os.system('ls')  
 
 1.txt  2.txt  3.txt
+
 ```
 
 -`shutil.copymode(src,des)`: 复制文件权限，既把 src 文件的权限复制给 des 文件，只改变权限，不改变其他比如属组，内容等(des 文件必须存在)
+
 ```python
 
 > >> os.system('ls -l')  
@@ -499,6 +510,7 @@ total 12
 ```
 
 -`shutil.copystat(src,des)`: 复制文件的权限，还包括，atime，mtime，flags 等信息，不改变文件内容（des 需存在）
+
 ```python
 
 > >> os.system('stat 1.txt')  
@@ -573,9 +585,10 @@ Out: 'new'
 
 In : os.listdir('new')  
 Out: ['123.txt', '456.txt']
+
 ```
 
-> shutil 模块自己也实现了一个过滤某些特征的方法，`shutil.ignore_patterns('*py')`，表示过滤 * py 的文件。  
+> shutil 模块自己也实现了一个过滤某些特征的方法，`shutil.ignore_patterns('*py')`，表示过滤 * py 的文件。
 
 ## 2.2. rm 删除
 - `shutil.rmtree(path, ignore_errors=False, onerror=None)`: 递归的删除文件，类似于 rm -rf，需要注意的是它不是原子操作，如果删除错误，就会中断，已经删除的就删除了。
@@ -617,6 +630,7 @@ old/
 
 In : shutil.move('old','new_old')  
 Out: 'new_old'
+
 ```
 
 ## 2.4. 打包
@@ -633,5 +647,6 @@ Out: '/home/python/py368/abc.tar.gz'
 
 In : ls  
 123/  abc.tar.gz  new_old/
+
 ```
 

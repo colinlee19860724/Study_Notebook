@@ -1,8 +1,8 @@
-- [1. Python logging 模块之 logging.basicConfig 用法和参数详解](#1-python-logging-模块之-loggingbasicconfig-用法和参数详解)
-    - [1.1. logging 模块简介](#11-logging-模块简介)
-    - [1.2. `logging.basicConfig(**kwargs)`](#12-loggingbasicconfigkwargs)
-    - [1.3. LogRecord 属性](#13-logrecord-属性)
+---
 
+[TOC]
+
+---
 
 # 1. Python logging 模块之 logging.basicConfig 用法和参数详解
 

@@ -1,16 +1,10 @@
+**15 - reduce-pratial偏函数-lru_cache**
 
-- [1. 介绍](#1-介绍)
-- [2. reduce 方法](#2-reduce-方法)
-- [3. partial 方法(偏函数)](#3-partial-方法偏函数)
-    - [3.1. partial 方法基本使用](#31-partial-方法基本使用)
-    - [3.2. partial 原码分析](#32-partial-原码分析)
-    - [3.3. functools.warps 实现分析](#33-functoolswarps-实现分析)
-- [4. lru_cache 方法](#4-lru_cache-方法)
-    - [4.1. 基本使用](#41-基本使用)
-    - [4.2. lru_cache 原码分析](#42-lru_cache-原码分析)
-    - [4.3. 斐波那契序列的 lru 改造](#43-斐波那契序列的-lru-改造)
-    - [4.4. lru_cache 的总结](#44-lru_cache-的总结)
+---
 
+[TOC]
+
+---
 
 # 1. 介绍
 &emsp;&emsp;functools 模块存放着很多工具函数，大部分都是高阶函数，其作用于或返回其他函数的函数。一般来说，对于这个模块，任何可调用的对象都可以被视为函数。
@@ -20,6 +14,7 @@
 
 ```python
 reduce(function, sequence[, initial]) -> value
+
 ```
 
 - function: 两个参数的函数
@@ -40,6 +35,7 @@ In : print(sum)
 In : import functools
 In : functools.reduce(lambda x,y:x+y,range(101))
 Out: 5050
+
 ```
 
 # 3. partial 方法(偏函数)
@@ -49,9 +45,11 @@ Out: 5050
 
 ```python
 partial(func, *args, **keywords) - 返回一个新的被 partial 函数包装过的 func，并带有默认值的新函数
+
 ```
 
 ## 3.1. partial 方法基本使用
+
 ```python
 In : import functools
 ...: import inspect
@@ -77,6 +75,7 @@ TypeError: add() takes 2 positional arguments but 3 were given
 
 In : new_add(1)
 Out: 2
+
 ```
 
 - 由于我们包装了函数 add，并指定了一个默认参数 1，这个参数会按照位置参数，当作默认值赋给 x 了
@@ -88,6 +87,7 @@ Out: 2
 ```python
 In : inspect.signature(new_add)
 Out: <Signature(y)>
+
 ```
 
 - 查看 new_add 的签名信息，发现，它的确只需要传入一个 y 就可以了。  
@@ -97,6 +97,7 @@ Out: <Signature(y)>
 # 最复杂的函数的形参定义方式
 def add(x, y, *args, m, n, **kwargs):
     return x + y
+
 ```
 
 - add1 =`functools.partial(add,x=1)`：包装后的签名信息(*, x=1, y, m, n, **kwargs)，只接受 keyword-only 的方式赋值了
@@ -117,10 +118,11 @@ def partial(func, *args, **keywords):
     newfunc.args = args    # 记录包装指定的位置参数
     newfunc.keywords = keywords # 记录包装指定的关键字参数
     return newfunc
+
 ```
 
 上面是偏函数的原码注释，如果不是很理解，请看下图
-![partial](photo/partial.png)
+![partial](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/partial.png)
 
 ## 3.3. functools.warps 实现分析
 现在我们在来看一下 functools.warps 函数的原码实现，前面我们已经说明了，它是用来拷贝函数签名信息的装饰器，它在内部是使用了偏函数实现的。
@@ -132,6 +134,7 @@ def wraps(wrapped,
 
     return partial(update_wrapper, wrapped=wrapped,
                    assigned=assigned, updated=updated)  
+
 ```
 
 使用偏函数包装了 update_wrapper 函数，并设置了下面参数的默认值：
@@ -159,6 +162,7 @@ def update_wrapper(wrapper,
         getattr(wrapper, attr).update(getattr(wrapped, attr, {}))
     wrapper.__wrapped__ = wrapped   # 将被包装的函数，绑定在__wrapped__属性上。
     return wrapper
+
 ```
 
 - update_wrapper 在外层被 wraps 包装，实际上只需要传入 wrapper 即可
@@ -189,6 +193,7 @@ def add(x, y):
     return x + y
 
 add(4,5)
+
 ```
 
 > 这里之所以使用偏函数实现，是因为对于拷贝这个过程来说，要拷贝的属性一般是不会改变的，那么针对这些不长改变的东西进行偏函数包装，那么在使用起来会非常方便，我觉得这就是偏函数的精髓吧。    
@@ -214,6 +219,7 @@ def check(fn):
                     raise Exception('kwargs Key Error')
         return fn(*args, **kwargs)
     return wrapper
+
 ```
 
 -`@functools.wraps(fn)`表示一个有参装饰器，在这里实际上等于：`wrapper = functools.wraps(fn)(wrapper)`-`functools.wraps(fn)`的返回值就是偏函数`update_wrapper`, 所以也可以理解为这里实际上：`update_wrapper(wrapper)`-`update_wrapper` 在这里将 wrapped 的属性(也就是 fn)，拷贝到了 wrapper 上，并返回了 wrapper。  
@@ -231,6 +237,7 @@ def check(fn):
 
 ```python
 functools.lru_cache(maxsize=128, typed=False)
+
 ```
 
 -`maxsize`: 限制不同参数和结果缓存的总量，如果设置为`None`，则` 禁用 LRU 功能 `，并且缓存可以无限制增长，当 maxsize 是二的幂时，LRU 功能执行的最好，当超过 maxsize 设置的总数量时，LRU 会把最近最少用的缓存弹出的。
@@ -263,6 +270,7 @@ Out: 9
 
 In : add.cache_info()  # 命中加 1 次
 Out: CacheInfo(hits=1, misses=1, maxsize=128, currsize=1)
+
 ```
 
 cache_info 各参数含义：
@@ -284,9 +292,11 @@ def lru_cache(maxsize=128, typed=False):
         return update_wrapper(wrapper, user_function)
 
     return decorating_function
+
 ```
 
 &emsp;&emsp; 这里的返回的`decorating_function`函数中返回的`update_wrapper`是不是看起来很熟悉，没错，这里同样利用了偏函数对被包装函数的属性签名信息进行了拷贝，而传入的 wrapper 是才是缓存的结果，所以我们进一步查看_lru_cache_wrapper 到底是怎么完成缓存的。
+
 ```python
 def _lru_cache_wrapper(user_function, maxsize, typed, _CacheInfo):
     ... ...
@@ -303,9 +313,11 @@ def _lru_cache_wrapper(user_function, maxsize, typed, _CacheInfo):
         key = make_key(args, kwds, typed)
         with lock:  
     ... ...
+
 ```
 
 &emsp;&emsp; 这里截取部分代码进行简要说明：cache 是个字典，那么就印证了之前我们的设想，的确是使用字典 key-value 的形式进行缓存的。字典的 key 是来自于 make_key 函数的，那么我们接下来看一看这个函数都做了哪些事
+
 ```python
 def _make_key(args, kwds, typed,
              kwd_mark = (object(),),
@@ -323,6 +335,7 @@ def _make_key(args, kwds, typed,
     elif len(key) == 1 and type(key[0]) in fasttypes:
         return key[0]
     return _HashedSeq(key)
+
 ```
 
 - args: 是我们给函数进行的位置传参，这里是元组类型（因为不希望被修改）。
@@ -335,9 +348,9 @@ Out: [1, 2, 3, <object at 0x2798734b0b0>, 'a', 1, 'b', 2]    # 缓存的 key 不
 
 In : functools._HashedSeq(functools._make_key((1,2,3),{'a':1,'b':2},typed=True))     # 限制类型
 Out: [1, 2, 3, <object at 0x2798734b0b0>, 'a', 1, 'b', 2, int, int, int, int, int]  # 缓存的 key 带类型
-```
 
-key 构建完毕了，`_HashedSeq`是如何对一个列表进行 hash 的呢？下面来阅读以下`_HashedSeq`原码
+```key 构建完毕了，`_HashedSeq`是如何对一个列表进行 hash 的呢？下面来阅读以下`_HashedSeq`原码
+
 ```python
 class _HashedSeq(list):
     __slots__ = 'hashvalue'
@@ -348,9 +361,9 @@ class _HashedSeq(list):
 
     def __hash__(self):
         return self.hashvalue
-```
 
-这里发现`_HashedSeq`，是一个类，当对其进行 hash 时，实际上调用的就是它的`__hash__`方法，返回的是 hashvalue 这个值，而这个值在`__init__`函数中赋值时，又来自于 hash 函数(这不是多此一举吗，哈哈)，tup 是元组类型，这里还是对元组进行了 hash，只是返回了一个 list 类型而已。这里为了测试，我们使用`_HashedSeq`对象的 hashvalue 属性和 hash 函数来对比生成的 hash 值
+```这里发现`_HashedSeq`，是一个类，当对其进行 hash 时，实际上调用的就是它的`__hash__`方法，返回的是 hashvalue 这个值，而这个值在`__init__`函数中赋值时，又来自于 hash 函数(这不是多此一举吗，哈哈)，tup 是元组类型，这里还是对元组进行了 hash，只是返回了一个 list 类型而已。这里为了测试，我们使用`_HashedSeq`对象的 hashvalue 属性和 hash 函数来对比生成的 hash 值
+
 ```python
 In : value = functools._HashedSeq(functools._make_key((1,2,3),{'a':1,'b':2},typed=True))
 In : value
@@ -360,6 +373,7 @@ In : value.hashvalue
 Out: 3337684084446775700
 In : hash(value)
 Out: 3337684084446775700    # 这里两次执行的结果是相同的！
+
 ```
 
 小结：
@@ -390,6 +404,7 @@ Out: 9
 
 In : add.cache_info()    # 当 5，4 调换时，key 不同，那么就要重新缓存了！
 Out: CacheInfo(hits=3, misses=2, maxsize=128, currsize=2)
+
 ```
 
 ## 4.3. 斐波那契序列的 lru 改造
@@ -419,9 +434,10 @@ start = datetime.datetime.now()
 print(fib(40))   # 102334155
 duration = (datetime.datetime.now() - start).total_seconds()
 print('it costs {} s'.format(duration))  # it costs 0.000501s
+
 ```
 
-> `lru_cache` 版本的速度简直要起飞了！  
+>`lru_cache` 版本的速度简直要起飞了！
 
 ## 4.4. lru_cache 的总结
 lru_cache 使用的前提是：

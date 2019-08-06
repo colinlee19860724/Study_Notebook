@@ -1,30 +1,24 @@
+**16 - 文件操作-StringIO-BytesIO**
 
-- [1. 文件操作](#1-文件操作)
-    - [1.1. open 函数介绍](#11-open-函数介绍)
-    - [1.2. 打开操作](#12-打开操作)
-        - [1.2.1. mode 模式](#121-mode-模式)
-        - [1.2.2. 文件指针](#122-文件指针)
-        - [1.2.3. 缓冲区](#123-缓冲区)
-        - [1.2.4. encoding 编码](#124-encoding-编码)
-        - [1.2.5. 其他参数`errors`: 什么样的编码错误将被捕获。](#125-其他参数errors-什么样的编码错误将被捕获)
-    - [1.3. 读写操作](#13-读写操作)
-    - [1.4. 关闭操作](#14-关闭操作)
-    - [1.5. 上下文管理](#15-上下文管理)
+---
 
+[TOC]
+
+---
 
 # 1. 文件操作
 &emsp;&emsp;读写文件是最常见的 IO 操作(一般说 IO 操作，指的是文件 IO，如果是网络，一般都会直接说网络 IO)，在磁盘上读写文件的功能都是由操作系统提供的，操作系统不允许普通的程序直接操作磁盘(大部分程序都需要间接的通过操作系统来完成对硬件的操作)，所以，读写文件就是请求操作系统打开一个文件对象（通常称为文件描述符），然后，通过操作系统提供的接口从这个文件对象中读取数据（读文件），或者把数据写入这个文件对象（写文件）。在操作系统中，文件常用的操作有：
 
-功能 | 介绍
---|--
-open | 打开
-read | 读取
-write | 写
-close | 关闭
-readline | 行读取
-readlines | 多行读取
-seek | 文件指针操作
-tell | 指针操作  
+| 功能 | 介绍 |
+| --|-- |
+| open | 打开 |
+| read | 读取 |
+| write | 写 |
+| close | 关闭 |
+| readline | 行读取 |
+| readlines | 多行读取 |
+| seek | 文件指针操作 |
+| tell | 指针操作   |
 ## 1.1. open 函数介绍
 &emsp;&emsp;在 python 中，我们使用 open 函数来打开一个文件，然后返回一个文件对象(流对象) 和文件描述符。打开文件失败，则返回异常。
 
@@ -35,6 +29,7 @@ tell | 指针操作
 
 ```python
 open(['file', "mode='r'", 'buffering=-1', 'encoding=None', 'errors=None', 'newline=None', 'closefd=True', 'opener=None'],)
+
 ```
 
 -`file`：要打开的文件名(默认为当前路径，否则要指定绝对路径)。
@@ -99,6 +94,7 @@ UnsupportedOperation                      Traceback(most recent call last)
 UnsupportedOperation: not readable
 
 In :
+
 ```
 
 注意：
@@ -121,6 +117,7 @@ is
 colin
 thanks
 In :
+
 ```
 
 > 注意：这里 for line in fd，其实可以从 fd.readlines() 中读取，但是如果文件很大，那么就会一次性读取到内存中，非常占内存，而这里 fd 存储的是对象，只有我们读取一行，它才会把这行读取到内存中，建议使用这种方法。  
@@ -133,6 +130,7 @@ In :
 ```python
 f.tell()    # 显示当前文件指针的位置
 f.seek(offset, whence=0, /)   # 移动文件指针的位置
+
 ```
 
 - offset：偏移多少字节
@@ -159,6 +157,7 @@ f.seek(offset, whence=0, /)   # 移动文件指针的位置
 - `1` ：只在文本模式使用，表示使用行缓冲。(见到换行符就 flush)
 - `大于 1` ：用于指定 buffer 的大小  
 二进制场景：
+
 ```
 
  python
@@ -191,9 +190,9 @@ Out: b'colin'
 
 In : f.flush()
 In : f.close()
-```
 
-文本字符串场景：
+```文本字符串场景：
+
 ```python
 In : f = open('123.txt','w+')   # 没有指定缓冲区的大小，采用默认值 - 1（由于不是终端设备，所以采用二进制的策略 由 io.DEFAULT_BUFFER_SIZE 控制
 In : !cat 123.txt
@@ -219,6 +218,7 @@ In : !cat 123.txt
 colin hello
 
 In :
+
 ```
 
 buffering | 说明
@@ -237,6 +237,7 @@ buffering>1 | 文本模式时，是 io.DEFAULT_BUFFER_SIZE 字节，flush 后把
 encoding=None, 默认值时，表示使用操作系统默认编码类型
 - windows: GBK(0xB0A1)
 - Linux: UTF-8(0xE5 95 8A)
+
 ```
 
 ### 1.2.5. 其他参数`errors`: 什么样的编码错误将被捕获。
@@ -278,9 +279,9 @@ encoding=None, 默认值时，表示使用操作系统默认编码类型
 > >> f.read(1)  
 
 ' 你 '
-```
+`
 
-`readline(size=-1)`: 一行行读取文件内容。size 设置一次能读取行内几个字符或者字节。负数或者 None 表示读取到 EOF(end of file)
+```readline(size=-1)`: 一行行读取文件内容。size 设置一次能读取行内几个字符或者字节。负数或者 None 表示读取到 EOF(end of file)
 
 ```python
 
@@ -297,9 +298,9 @@ encoding=None, 默认值时，表示使用操作系统默认编码类型
 > >> f.readline(-10)    
 
 'c\n'
-```
+`
 
-`readlines(hint=-1)`: 读取所有行并返回列表。**`当指定 hint 为负数时，则会读取所有行，当指定为正数时，表示读取 hint 个字符所在的行`**。比如第一行有 6 个字符，第二行有 3 个字符，当我们使用 readlines(7) 时，就会返回两行，而如果使用 readlines(5) 时就会只返回第一行。
+```readlines(hint=-1)`: 读取所有行并返回列表。**`当指定 hint 为负数时，则会读取所有行，当指定为正数时，表示读取 hint 个字符所在的行`**。比如第一行有 6 个字符，第二行有 3 个字符，当我们使用 readlines(7) 时，就会返回两行，而如果使用 readlines(5) 时就会只返回第一行。
 
 ```python
 In : f.readlines()
@@ -314,9 +315,9 @@ In : f.readlines(3)
 Out: [' 你好 \n', ' 在 ']
 
 In :
-```
+`
 
-`write(s)`: 把字符串写入到文件中并返回写入字符串的个数。
+```write(s)`: 把字符串写入到文件中并返回写入字符串的个数。
 `writelines(lines)`: 将字符串列表写入文件中。
 
 ```python
@@ -341,6 +342,7 @@ Out: 25
 
 In : f.read()
 Out: '101112'
+
 ```
 
 ## 1.4. 关闭操作
@@ -348,6 +350,7 @@ Out: '101112'
 
 ```python
 f.close()  
+
 ```
 
 > 关闭文件的操作，会同时调用 flush()，把缓冲区的数据刷入磁盘。当文件已经关闭，再次关闭没有任何效果  
@@ -366,9 +369,10 @@ In : with open('123.txt','r+') as f:
 
 In : f.closed
 Out: True
-```
 
-或者：```PYTHON
+```或者：
+
+```PYTHON
 In : f = open('123.txt','r+')
 
 In : with f:
@@ -377,9 +381,10 @@ In : with f:
 
 In : f.closed
 Out: True
+
 ```
 
-## 1.6 文件对象的其他方法
+## 1.6. 文件对象的其他方法
 文件对象的内置方法还有很多种，如下所示：
 
 ```python
@@ -404,9 +409,10 @@ fd.encoding:     查看文件的编码
 fd.writeable()： 判断文件是否可以写
 fd.fileno()：    返回文件在操作系统上的文件描述符（一个进程的运行默认会打开三个特殊的文件描述符：0 表示 stdin、1 表示 stdout，2 表示 stderr）
 fd.name：        文件名称 
+
 ```
 
-# 2 StringIO 模块
+# 2. StringIO 模块
 &emsp;&emsp;用于在内存空开辟一个文本模式的 buffer, 可以像文件对象一样操作它，当 close 方法被调用时，这个 buffer 会被释放.
 
 > 使用前需要先进行导入，from io import StringIO  
@@ -427,9 +433,9 @@ Out: 0
 
 In : s.readline()
 Out: '123'
-```
+`
 
-`getvalue()`: 获取全部内容，跟文件指针没有关系.
+```getvalue()`: 获取全部内容，跟文件指针没有关系.
 
 ```python
 In : from io import StringIO
@@ -450,11 +456,12 @@ Out: '123'
 
 In : s.getvalue()    # 无视指针，可以读取所有
 Out: '123'
+
 ```
 
 > 一般来说，磁盘的操作比内存的操作要慢得多，内存足够的情况下，一般的优化思路是少落地，减少磁盘 IO 的过程，可以大大提高程序的运行效率.  
 
-# 3 BytesIO 模块
+# 3. BytesIO 模块
 &emsp;&emsp;用于在内存中开辟一个二进制模式的 buffer, 可以像文件对象一样操作它，当 close 方法被调用时，这个 buffer 会被释放.
 
 > 调用前需要先导入: from io import BytesIO  
@@ -475,6 +482,7 @@ Out: b'abc'
 
 In : b.getvalue()   # 同样无视指针的存在
 Out: b'abc'
+
 ```
 
 &emsp;&emsp;针对 StringIO 和 BytesIO 来说，还有如下方法:
@@ -490,6 +498,7 @@ In : type(stdout)
 Out: colorama.ansitowin32.StreamWrapper
 
 In :
+
 ```
 
 每个程序初始化运行时，都会打开 3 个文件:

@@ -1,10 +1,9 @@
-- [1. CentOS 7 系统下使用 Pyenv 安装 Python 环境](#1-centos-7-系统下使用-pyenv-安装-python-环境)
-    - [1.1. Pyenv 介绍](#11-pyenv-介绍)
-    - [1.2. Linux 环境下安装 Pyenv](#12-linux-环境下安装-pyenv)
-    - [1.3. 使用 pyenv 编译安装 Python 环境](#13-使用-pyenv-编译安装-python-环境)
-    - [1.4. 使用 pyenv global 指定系统 python 环境](#14-使用-pyenv-global-指定系统-python-环境)
-    - [1.5. 使用 pyenv shell 指定系统 python 环境](#15-使用-pyenv-shell-指定系统-python-环境)
-    - [1.6. 使用 pyenv local 指定系统 python 环境](#16-使用-pyenv-local-指定系统-python-环境)
+
+---
+
+[TOC]
+
+---
 
 # 1. CentOS 7 系统下使用 Pyenv 安装 Python 环境
 

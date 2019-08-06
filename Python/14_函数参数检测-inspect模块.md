@@ -1,8 +1,10 @@
+**14 - 函数参数检测-inspect模块**
 
-- [1. python 类型注解](#1-python-类型注解)
-- [2. 函数定义的弊端](#2-函数定义的弊端)
-- [3. 函数文档](#3-函数文档)
+---
 
+[TOC]
+
+---
 
 # 1. python 类型注解
 &emsp;&emsp; 类型注解，即对变量的类型，进行标注或者说明，因为 Python 是一门动态编译型语言，我们无法在赋值时就定义它的变量类型，所以在 `Python3.5` 以上版本新增了类型注解，但仅仅是提示作用，并不能严格控制，这是动态编译型语言的通病，下面来仔细看一下什么是 Python 的类型注解。
@@ -16,6 +18,7 @@ def add(x,y):
 print(add(1,2))
 print(add('s','b'))
 print(add(1,'a'))
+
 ```
 
 &emsp;&emsp; 当用户传入两个数字时，返回它们的和，但是如果我们传递其他变量呢？比如字符串，因为 Python 中实现了 + 号的类型重载，所以说两个字符串的确可以加，但是如果是数字和字符串呢？在 Python 这种强类型语言中来说，属于非法操作(javascript 会隐式转换)，而这时，我们就需要对用户传入的数据进行类型判断，不符合本函数的需求，那么就抛个异常，或者提示等等操作，这样就不会引起后续代码在执行期崩溃。如何解决呢？其实主要有两种方式。
@@ -32,9 +35,11 @@ def add(x, y):
     :param x: int object
     :param y: int object
     :return: int object
-    """return x + y```
+    """
+    return x + y
+```
 
-在函数中，一般是定义语句后的首行使用三对双引号表示。通常存储在函数的__doc__属性中。当用户使用 help(函数) 时，会被打印在屏幕上。
+&emsp;&emsp;在函数中，一般是定义语句后的首行使用三对双引号表示。通常存储在函数的__doc__属性中。当用户使用 help(函数) 时，会被打印在屏幕上。
 
 ```python
 In : def add(x, y):
@@ -63,17 +68,17 @@ In : print(add.__doc__)
     :param y: int object
     :return: int object
 
-In :
 ```
 
-> 每次都要使用 help 来查看函数的说明，的确可以让使用者了解函数的参数以及返回值的类型，但并不是所有人都愿意写 doc 的，在这个所谓的敏捷开发时代，人们大多会以敏捷开发为借口没时间写，所以这种方法不是很用。  
+> &emsp;&emsp;每次都要使用 help 来查看函数的说明，的确可以让使用者了解函数的参数以及返回值的类型，但并不是所有人都愿意写 doc 的，在这个所谓的敏捷开发时代，人们大多会以敏捷开发为借口没时间写，所以这种方法不是很常用。  
 
-# 4 函数注解
+# 4. 函数注解
 &emsp;&emsp;Python 的函数注解是什么呢？首先来看一下如下代码：
 
 ```python
 def add(x: int, y: int) -> int:
     return x + y
+
 ```
 
 - 函数的位置形参，和默认值形参后使用冒号分隔，后面用于标识变量期望的类型。
@@ -81,7 +86,7 @@ def add(x: int, y: int) -> int:
 完成以上定义后，，主要的差别如下图：  
 ![zhushi1](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/zhushi.png)  
 
-> 当我们在 IDE 中准备传入非注释类型变量时，IDE 会帮我们进行颜色提示，用于表示这里传入的变量有点问题。在编写时我们尚且可以使用这种方式，对我们产生一点 ' 警示 '，但是当我们写的函数被其他人调用的时候，那么就无法进行 ' 提示 ' 了，这个时候，我们就需要对传入的参数进行类型检查了。    
+> &emsp;&emsp;当我们在 IDE 中准备传入非注释类型变量时，IDE 会帮我们进行颜色提示，用于表示这里传入的变量有点问题。在编写时我们尚且可以使用这种方式，对我们产生一点 ' 警示 '，但是当我们写的函数被其他人调用的时候，那么就无法进行 ' 提示 ' 了，这个时候，我们就需要对传入的参数进行类型检查了。    
 
 我们来总结一下：
 - 函数注解在 Python3.5 中引入
@@ -92,7 +97,7 @@ def add(x: int, y: int) -> int:
 
 > `python3.6` 以上还添加了变量的注解：`i:int = 10`, 当然也只是提示的作用。    
 
-## 4.1 annotation 属性
+## 4.1. annotation 属性
 在 Python 中使用 `__` 开头的表示符一般被用特殊属性，`__annotation__` 存储的就是函数的签名信息
 
 ```python
@@ -102,6 +107,7 @@ In : def add(x: int, y: int) -> int:
 
 In : add.__annotations__
 Out: {'x': int, 'y': int, 'return': int}
+
 ```
 
 &emsp;&emsp; 当我们使用变量注释时，变量名和类型就会存放在函数的__annotations__属性中。那么即然有变量存储，那么我们是不是只需要获取传入的参数，然后和 annotations 中存储的变量类型进行比较是不是就达到目的了呢？仔细思考一下：
@@ -109,10 +115,10 @@ Out: {'x': int, 'y': int, 'return': int}
 2. __annotations__的值是一个字典，字典是无序的，用户按照位置传进来参数是有序的，如何让它们形成对应关系方便我们检测呢？  
 下面我们来了解一下 inspect 模块，它可以帮我们完成这个事情。
 
-# 5 inspect 模块
+# 5. inspect 模块
 &emsp;&emsp; 官方解释如下：inspect 模块提供了几个有用的函数来帮助获取关于活动对象的信息，例如模块、类、方法、函数、回溯、框架对象和代码对象。例如，它可以帮助您检查类的内容、检索方法的源代码、提取并格式化函数的参数列表，或者获取显示详细回溯所需的所有信息。
 
-## 5.1 常用方法
+## 5.1. 常用方法
 
 分类 | 方法名称 | 功能
 :--|:--|:--
@@ -127,10 +133,10 @@ Out: {'x': int, 'y': int, 'return': int}
 获取信息 |`inspect.getmodulename(path)`| 获取模块名称
 |`inspect.getsource(object)`| 获取对象的原码(并不会解析装饰器原码)
 
-## 5.2 signature 类
+## 5.2. signature 类
 &emsp;&emsp; 首先我们要说的是函数的签名信息：它包含了了函数的函数名、它的参数类型，它所在的类和名称空间及其他信息，签名对象(signature object) 表示可调用对象的调用签名信息和它的注解信息，当我们使用 `signature()` 时，它会重新返回一个包含可调用对象信息的签名对象。
 
-## 5.3 parameters 属性
+## 5.3. parameters 属性
 &emsp;&emsp;signature 类的 `parameters` 属性，它里面存放的是函数的参数注解和返回值注解，组成的有序字典，其中参数注解的格式为：参数名称，使用 `inspect.Parameters` 类包装的参数注解，这个参数注解很强大，它包含如下常用的方法：
 
 方法名称 | 含义
@@ -148,11 +154,12 @@ _POSITIONAL_OR_KEYWORD   = _ParameterKind.POSITIONAL_OR_KEYWORD # 位置或关�
 _VAR_POSITIONAL          = _ParameterKind.VAR_POSITIONAL        # 可变位置参数
 _KEYWORD_ONLY            = _ParameterKind.KEYWORD_ONLY          # keyword-only 参数
 _VAR_KEYWORD             = _ParameterKind.VAR_KEYWORD           # 可变关键字参数
+
 ```
 
 > 其中 POSITIONAL_ONLY，Python 中没有被实现。    
 
-## 5.4 获取对象的参数签名
+## 5.4. 获取对象的参数签名
 根据上面讲的方法，我们可以通过如下方式，简单的获取参数的签名：
 
 ```python
@@ -168,14 +175,13 @@ OrderedDict([('x', <Parameter "x:int">), ('y', <Parameter "y:int">)])
 
 In : params['x'].annotation
 Out: int    # 如果没有定义 x 的参数注解，那么这里就是 inspect._empty
-```
 
-通过它的属性，搭配` 有序字典 ` 这个特性，有没有很兴奋？参数有序，传入的实参有序，还能获取参数注解的类型，那么就可以开工进行参数检查了！
+​```通过它的属性，搭配` 有序字典 ` 这个特性，有没有很兴奋？参数有序，传入的实参有序，还能获取参数注解的类型，那么就可以开工进行参数检查了！
 
 # 6 检查参数
 以上面函数为例子，当给 add 函数传入的 x，y 时进行参数检查，如果 x，y 不是 int 类型，那么返回异常，并退出函数
 
-```python
+​```python
 import inspect
 import functools
 
@@ -200,5 +206,6 @@ def check(fn):
 def add(x: int, y: int) -> int:
     return x + y  
 add(4,y=5)
+
 ```
 
