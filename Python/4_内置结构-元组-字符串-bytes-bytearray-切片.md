@@ -854,26 +854,26 @@ Out: '生命苦短，Python当歌'
 ## 4.1. ASCII
 &emsp;&emsp;ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套单字节编码系统，编码范围从 0 到 127  
 
-&emsp;&emsp; _熟记常用字符的 ASCII 码__
+**熟记常用字符的 ASCII 码**
 
-Char |Decimal（十进制）|Hex（十六进制）
-:---:|:---:|:---:
-`\t` 水平制表符 | 9 | 09
-`\n` 换行符 | 10 | 0A
-`\v` 垂直制表符 | 11 | 0B
-`\f` 换页符 | 12 | 0C
-`\r` 回车符 | 13 | 0D
-`(space)` 空格 | 32 | 20
-`0~9` | 48~57 | 30~39
-`A-Z` | 65~90 | 41~5A
-`a-z` | 97~122 | 61~7A
+| Char |Decimal（十进制）|Hex（十六进制） |
+| :---:|:---:|:---: |
+| `\t` 水平制表符 | 9 | 09 |
+| `\n` 换行符 | 10 | 0A |
+| `\v` 垂直制表符 | 11 | 0B |
+| `\f` 换页符 | 12 | 0C |
+| `\r` 回车符 | 13 | 0D |
+| `(space)` 空格 | 32 | 20 |
+| `0~9` | 48~57 | 30~39 |
+| `A-Z` | 65~90 | 41~5A |
+| `a-z` | 97~122 | 61~7A |
 
 ## 4.2. bytes 定义
-- bytes() 空 bytes
-- bytes(int) 指定字节的 bytes，被 0 填充
-- bytes(iterable_of_ints) --> bytes （ 由[0,255] 的 int 组成的可迭代对象 ）
-- bytes(string, encoding[, errors]) --> bytes （ 等价于 string.encode() ）
-- bytes(bytes_or_buffer) --> immutable copy of bytes_or_buffer （从一个字节序列或者 buffer 复制出一个新的不可变的 bytes 对象）
+- `bytes()` 空 bytes
+- `bytes(int)` 指定字节的 bytes，被 0 填充
+-` bytes(iterable_of_ints) --> bytes` （ 由[0,255] 的 int 组成的可迭代对象 ）
+- `bytes(string, encoding[, errors]) --> bytes` （ 等价于 string.encode() ）
+- `bytes(bytes_or_buffer) --> immutable copy of bytes_or_buffer` （从一个字节序列或者 buffer 复制出一个新的不可变的 bytes 对象）
 - 使用 b 前缀定义
   - 只允许基本 ASCII 使用字符形式 b'abc9'
   - 使用 16 进制表示 b"\x41\x61"
