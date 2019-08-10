@@ -150,11 +150,11 @@ Out: {'x': int, 'y': int, 'return': int}
 &emsp;&emsp;这里的参数类型表示的是 inspect 内置参数类型(其实就是几个常用的函数参数定义类型而已，只是换个名字而已)
 
 ```python
-_POSITIONAL_ONLY         = _ParameterKind.POSITIONAL_ONLY       # 位置参数_only
-_POSITIONAL_OR_KEYWORD   = _ParameterKind.POSITIONAL_OR_KEYWORD # 位置或关键字参数
-_VAR_POSITIONAL          = _ParameterKind.VAR_POSITIONAL        # 可变位置参数
-_KEYWORD_ONLY            = _ParameterKind.KEYWORD_ONLY          # keyword-only 参数
-_VAR_KEYWORD             = _ParameterKind.VAR_KEYWORD           # 可变关键字参数
+_POSITIONAL_ONLY       = _ParameterKind.POSITIONAL_ONLY       # 位置参数_only
+_POSITIONAL_OR_KEYWORD = _ParameterKind.POSITIONAL_OR_KEYWORD # 位置或关键字参数
+_VAR_POSITIONAL        = _ParameterKind.VAR_POSITIONAL        # 可变位置参数
+_KEYWORD_ONLY          = _ParameterKind.KEYWORD_ONLY          # keyword-only 
+_VAR_KEYWORD           = _ParameterKind.VAR_KEYWORD           # 可变关键字参数
 
 ```
 
@@ -177,12 +177,16 @@ OrderedDict([('x', <Parameter "x:int">), ('y', <Parameter "y:int">)])
 In : params['x'].annotation
 Out: int    # 如果没有定义 x 的参数注解，那么这里就是 inspect._empty
 
-​```通过它的属性，搭配` 有序字典 ` 这个特性，有没有很兴奋？参数有序，传入的实参有序，还能获取参数注解的类型，那么就可以开工进行参数检查了！
+```
 
-# 6 检查参数
+
+通过它的属性，搭配 **有序字典** 这个特性，有没有很兴奋？参数有序，传入的实参有序，还能获取参数注解的类型，那么就可以开工进行参数检查了！
+
+# 6. 检查参数
 以上面函数为例子，当给 add 函数传入的 x，y 时进行参数检查，如果 x，y 不是 int 类型，那么返回异常，并退出函数
 
-​```python
+```python
+
 import inspect
 import functools
 
