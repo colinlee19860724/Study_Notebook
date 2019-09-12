@@ -17,7 +17,7 @@
 num = int(input("Please input a integer number: "))
 odd_num = 0
 even_num = 0
-
+# TODO:
 for i in range(num + 1):
     if i & 1 == 1: # 奇数与 1 做位运算 与（&），其结果恒为 1；偶数与 1 做位运算 与（&），其结果恒为 0
         print("%d is an odd number! " %(i))
@@ -25,6 +25,7 @@ for i in range(num + 1):
     else :
         print("%d is an even number! " %(i))
         even_num = even_num + i
+# FIXME:        
 print("----------------------------------------")
 print("Sum of odd numbers is: ", odd_num)
 print("Sum of even numbers is: ", even_num)
