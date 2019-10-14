@@ -1,4 +1,4 @@
-**18 - csv文件-ini文件处理**
+**18_csv文件-ini文件处理**
 
 ---
 
@@ -7,10 +7,11 @@
 ---
 
 # 1. CSV 文件
-&emsp;&emsp;逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。
+&emsp;&emsp;逗号分隔值（Comma-Separated Values，CSV，有时也称为字符分隔值，因为分隔字符也可以不是逗号），其文件以纯文本形式存储表格数据（数字和文本）。  
 
+&emsp;&emsp;下面都是 csv 文件的内容格式：  
 ```csv
-# 下面都是 csv 文件的内容格式
+
 1,2,3,4,5
 
 1,2,"1,3"
@@ -22,7 +23,7 @@
 - CSV 不指定字符编码。
 
 它有以下规范：
-1. 行分隔符为 \r\n，最后一行可以没有换行符
+1. 行分隔符为 `\r\n`，最后一行可以没有换行符
 2. 列分隔符常为逗号或者制表符。每一行称为一条记录 record
 3. 字段可以使用双引号括起来，也可以不使用。如果字段中出现了双引号、逗号、换行符必须使用双引号括起来。
 4. 如果字段的值是双引号，需要额外使用一个个双引号，表示一个转义。
@@ -34,7 +35,7 @@
 ```python
 from pathlib import Path
 
-p = Path(r'E:\Python - base - code\chapter06 文件 \test.csv')
+p = Path(r'E:\Python-base-code\chapter06文件\test.csv')
 p.touch()
 csv_body = '''\
 no,name,age,comment
