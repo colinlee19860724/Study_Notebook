@@ -1,0 +1,14 @@
+
+# User specific aliases and functions
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+alias l.='ls -d .* --color=auto'
+alias ll='ls -lh'
+alias ls='ls --color=auto'
+alias vi='vim'
+# PS1="\[\e[32;1m\][\A \u@\h \w]\\$ \[\e[0m\]"
+
+# 日期和时间用红色，账号、主机名用绿色，当前路径用黄色，在命令提示符处换行
+PS1="[ \[\e[31;1m\]\d \t\[\e[0m\] \[\e[32;1m\]\u@\h\[\e[0m\] \[\e[33;1m\]\w\[\e[0m\] ] \[\e[32;1m\]\n\\$ \[\e[0m\]"
+
