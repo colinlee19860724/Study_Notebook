@@ -10,4 +10,4 @@
 * `Photo`：文档中的插图，关键过程截图等
 * `Assets`：文档中涉及的文件
 
-&emsp;&emsp;欢迎指正错误和学习交流，我的电子邮箱：colinlee1986@gmail.com
+&emsp;&emsp;欢迎指正错误和学习交流，我的电子邮箱：colinlee1986@foxmail.com
