@@ -2384,25 +2384,25 @@ slave从redis宕机，配置主从复制的时候才配置从的redis，从的�
 
 2、Redis不仅仅支持简单的k/v类型的数据，同时还提供list,set,hash等数据结构的存储
 
-3、虚拟内存-redis当物流内存用完时，可以将一些很久没用的value交换到磁盘
+3、虚拟内存-redis当物理内存用完时，可以将一些很久没用的value交换到磁盘
 
-4、过期策略-memcache在set时就指定，例如set key1 0 0 8，即永不过期。Redis可以通过例如expire设定，例如expire name 10
+4、过期策略-memcache 在 set 时就指定，例如`set key1 0 0 8`，即永不过期。Redis 可以通过例如 expire 设定，例如 `expire name 10`
 
-5、分布式-设定memcache集群，利用magent做一主多从，redis可以做一主多从。都可以一主一丛
+5、分布式-设定 memcache 集群，利用 magent 做一主多从，redis 可以做一主多从。都可以一主一从
 
-6、存储数据安全-memcache挂掉后，数据没了，redis可以定期保存到磁盘(持久化)
+6、存储数据安全-memcache 挂掉后，数据没了，redis 可以定期保存到磁盘(持久化)
 
-7、灾难恢复-memcache挂掉后，数据不可恢复，redis数据丢失后可以通过aof恢复
+7、灾难恢复-memcache 挂掉后，数据不可恢复，redis 数据丢失后可以通过 aof 恢复
 
-8、Redis支持数据的备份，即master-slave模式的数据备份
+8、Redis 支持数据的备份，即 master-slave 模式的数据备份
 
-9、应用场景不一样，redis除了作为NoSQL数据库使用外，还能用做消息队列，数据堆栈和数据缓存等;Memcache适合于缓存SQL语句，数据集，用户临时性数据，延迟查询数据和session等
+9、应用场景不一样，redis 除了作为 NoSQL 数据库使用外，还能用做消息队列，数据堆栈和数据缓存等;Memcache 适合于缓存 SQL 语句，数据集，用户临时性数据，延迟查询数据和 session 等
 
 使用场景
 
-1,如果有持久方面的需求或对数据类型和处理有要求的应该选择redis
+1,如果有持久方面的需求或对数据类型和处理有要求的应该选择 redis
 
-2,如果简单的key/value存储应该选择memcached.
+2,如果简单的 key/value 存储应该选择 memcached.
 
 ### 209.Redis集群方案该怎么做?都有哪些方案?
 

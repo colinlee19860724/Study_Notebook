@@ -32,7 +32,7 @@ hello world
 [root@localhost ~]#
 ```
 
-&emsp;&emsp;上图中进入交互解释运行环境，显示了 python 环境的相关信息。然后尝试执行了第一行代码 `print("hello world)`，成功运行并打印了 hello world 内容；接着我们执行了退出交互环境的函数 `exit()`，成功退出python交互解释环境。  
+&emsp;&emsp;上图中进入交互解释运行环境（REPL），显示了 python 环境的相关信息。然后尝试执行了第一行代码 `print("hello world)`，成功运行并打印了 hello world 内容；接着我们执行了退出交互环境的函数 `exit()`，成功退出python交互解释环境。  
 
 &emsp;&emsp;除了使用 python 交互解释环境，我们还可以直接编写 python 源代码文件使用 vim 编辑器编写一个简单的 hello.py ，然后使用 python 命令直接运行它，如图：
 ```bash
