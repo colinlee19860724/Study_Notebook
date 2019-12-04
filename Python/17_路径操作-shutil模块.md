@@ -15,18 +15,18 @@
 &emsp;&emsp;os.path 是 os 模块中的一个比较重要的用来拼接、判断路径的主要方法，它主要有如下方法：
 
 ```python
-os.path.abspath('dir/file')    获取 dir/file 的绝对路径
-os.path.split('path')          把路径分割为目录和文件名组成的元组格式，不管 path 是否存在
-os.dirname('path')             获取文件的父目录名称，不管 path 是否存在
-os.basename('path')            获取文件的名称，不管 path 是否存在
-os.path.exists('path')         判断 path 是否存在，return bool
-os.path.isabs('path')          判断 path 是否是从根开始，return bool
-os.path.isfile('path')         判断 path 是否是一个文件
-os.path.isdir('path')          判断 path 是否是一个目录
-os.path.join ('path1','path2','path3')：把 path1 和 path2 及 path3 进行组合，但如果 path2 中包含了根路径，那么就会舍弃 path1, 从 path2 开始组合
-os.path.getatime('path')       获取文件的 atime 时间，返回时间戳
-os.path.getmtime('path')       获取文件的 mtime 时间，返回时间戳
-os.path.getsize(filename)      获取文件的大小，单位是字节
+os.path.abspath('dir/file')    # 获取 dir/file 的绝对路径
+os.path.split('path')          # 把路径分割为目录和文件名组成的元组格式，不管 path 是否存在
+os.dirname('path')             # 获取文件的父目录名称，不管 path 是否存在
+os.basename('path')            # 获取文件的名称，不管 path 是否存在
+os.path.exists('path')         # 判断 path 是否存在，return bool
+os.path.isabs('path')          # 判断 path 是否是从根开始，return bool
+os.path.isfile('path')         # 判断 path 是否是一个文件
+os.path.isdir('path')          # 判断 path 是否是一个目录
+os.path.join ('path1','path2','path3')：  # 把 path1 和 path2 及 path3 进行组合，但如果 path2 中包含了根路径，那么就会舍弃 path1, 从 path2 开始组合
+os.path.getatime('path')       # 获取文件的 atime 时间，返回时间戳
+os.path.getmtime('path')       # 获取文件的 mtime 时间，返回时间戳
+os.path.getsize(filename)      # 获取文件的大小，单位是字节
 
 ```
 
@@ -68,7 +68,7 @@ Out: 'network-scripts'
 
 ```
 
-> \_\_file\_\_：变量比较特殊，存放的是当前的 Python 文件的名称，我们可以使用 os.path.abspath(__file__) 来获取当前 python 文件的绝对路径，然后进行打包或者进行相对调用。  
+> \_\_file\_\_：变量比较特殊，存放的是当前的 Python 文件的名称，我们可以使用 os.path.abspath(\_\_file\_\_) 来获取当前 python 文件的绝对路径，然后进行打包或者进行相对调用。  
 
 ## 1.2. pathlib 模块
 &emsp;&emsp;3.4 以后建议使用 pathlib 模块，它提供 Path 对象来对路径进行操作，还包括了目录和文件。
@@ -124,9 +124,10 @@ Out: PosixPath('/etc/sysconfig/network-scripts')
 ```python
 In : p2.parts
 Out: ('/', 'etc', 'sysconfig', 'network-scripts')
-`
 
-```joinpath(*other)`: 在 Path 对象中使用当前操作系统的路径分隔符分割并追加多个字符串。 
+
+```
+`joinpath(*other)`：在 Path 对象中使用当前操作系统的路径分隔符分割并追加多个字符串。 
 
 ```python
 In : p2.joinpath('/etc')
@@ -254,7 +255,7 @@ Out: True
 
 ```
 
--`resolve()`: 返回当前 Path 对象的绝对路径。如果是软连接，则直接被解析
+- `resolve()`: 返回当前 Path 对象的绝对路径。如果是软连接，则直接被解析
 - `absolute()`: 获取 Path 对象的绝对路径
 
 ```python
@@ -270,11 +271,11 @@ Out: PosixPath('/home/python/py368/hosts')
 
 ```
 
--`exists()`: 文件或者目录是否存在
+- `exists()`: 文件或者目录是否存在
 - `rmdir()`: 删除空目录(没有提供目录为空的方法)
 - `touch(mode=0o666，exist_ok=False)`: 创建一个文件
     * `mode`: 文件的属性，默认为 666
-    * `exist_ok`: 在 3.5 版本加入，False 时，路径存在，抛出 FileExistsError;True 时，异常将被忽略
+    * `exist_ok`: 在 3.5 版本加入，False 时，路径不存在，抛出 FileExistsError;True 时，异常将被忽略
 
 ```python
 In : p = Path('/tmp','hello.py')  
@@ -380,9 +381,9 @@ Out: os.stat_result(st_mode=16877, st_ino=67533402, st_dev=2050, st_nlink=2, st_
 ```python
 Path.open(mode='r',buffering=-1,encoding=None,errors=None,newline=None)
 
-```例：
+​```例：
 
-```python
+​```python
 In : p5  
 Out: PosixPath('/tmp/123')
 

@@ -191,9 +191,9 @@ Out: b'colin'
 In : f.flush()
 In : f.close()
 
-```文本字符串场景：
+​```文本字符串场景：
 
-```python
+​```python
 In : f = open('123.txt','w+')   # 没有指定缓冲区的大小，采用默认值 - 1（由于不是终端设备，所以采用二进制的策略 由 io.DEFAULT_BUFFER_SIZE 控制
 In : !cat 123.txt
 
@@ -258,25 +258,25 @@ encoding=None, 默认值时，表示使用操作系统默认编码类型
 
 ```python
 
-> >> f = open('123.txt','r+')  
+>>> f = open('123.txt','r+')  
 
-> >> f.read(5)  
+>>> f.read(5)  
 
 'colin'
 
-> >> f.read(5)  
+>>> f.read(5)  
 
 ' hell'
 
-> >> f.read(1)  
+>>> f.read(1)  
 
 'o'
 
-> >> f.read(1)  
+>>> f.read(1)  
 
 '\n'
 
-> >> f.read(1)  
+>>> f.read(1)  
 
 ' 你 '
 `
@@ -285,24 +285,24 @@ encoding=None, 默认值时，表示使用操作系统默认编码类型
 
 ```python
 
-> >> f = open('123.txt','r+')  
+>>> f = open('123.txt','r+')  
 
-> >> f.readline(3)  
+>>> f.readline(3)  
 
 'a d'
 
-> >> f.readline()    
+>>> f.readline()    
 
 'axin hello world\n'
 
-> >> f.readline(-10)    
+>>> f.readline(-10)    
 
 'c\n'
 `
 
-```readlines(hint=-1)`: 读取所有行并返回列表。**`当指定 hint 为负数时，则会读取所有行，当指定为正数时，表示读取 hint 个字符所在的行`**。比如第一行有 6 个字符，第二行有 3 个字符，当我们使用 readlines(7) 时，就会返回两行，而如果使用 readlines(5) 时就会只返回第一行。
+​```readlines(hint=-1)`: 读取所有行并返回列表。**`当指定 hint 为负数时，则会读取所有行，当指定为正数时，表示读取 hint 个字符所在的行`**。比如第一行有 6 个字符，第二行有 3 个字符，当我们使用 readlines(7) 时，就会返回两行，而如果使用 readlines(5) 时就会只返回第一行。
 
-```python
+​```python
 In : f.readlines()
 Out: ['1\n', '2\n', '3\n', '4\n', '5\n', '6\n', '7\n', '8\n', '9']
 
@@ -317,10 +317,10 @@ Out: [' 你好 \n', ' 在 ']
 In :
 `
 
-```write(s)`: 把字符串写入到文件中并返回写入字符串的个数。
+​```write(s)`: 把字符串写入到文件中并返回写入字符串的个数。
 `writelines(lines)`: 将字符串列表写入文件中。
 
-```python
+​```python
 In : f = open('123.txt','r+')
 
 In : f.seek(0,2)
@@ -356,7 +356,7 @@ f.close()
 > 关闭文件的操作，会同时调用 flush()，把缓冲区的数据刷入磁盘。当文件已经关闭，再次关闭没有任何效果  
 
 ## 1.5. 上下文管理
-&emsp;&emsp;上面说我们每次打开一个文件都需要手动的进行关闭，那么如果忘记了，这个文件会一直占用着对应的文件描述符，如果多次打开一个文件不关闭，那么每次都会占用新的文件秒师傅，直到文件描述符用完。上下文管理就是为了解决这种问题的，它有如下特点：
+&emsp;&emsp;上面说我们每次打开一个文件都需要手动的进行关闭，那么如果忘记了，这个文件会一直占用着对应的文件描述符，如果多次打开一个文件不关闭，那么每次都会占用新的文件描述符，直到文件描述符用完。上下文管理就是为了解决这种问题的，它有如下特点：
 1. 使用 with .. as 关键字。
 2. with 语句块执行完毕的时候，会自动关闭文件对象
 3. 不会开启新的作用域(不会产生诸如函数的内部变量等)  
@@ -370,9 +370,9 @@ In : with open('123.txt','r+') as f:
 In : f.closed
 Out: True
 
-```或者：
+​```或者：
 
-```PYTHON
+​```PYTHON
 In : f = open('123.txt','r+')
 
 In : with f:
@@ -388,18 +388,18 @@ Out: True
 文件对象的内置方法还有很多种，如下所示：
 
 ```python
-fd.closed()：    判断文件是否被关闭，若被打开提示 False，没有的话提示 True
-fd.flush()：     把修改的内容，强制刷新到文件中去
-fd.isatty：      判断是否是一个终端文件
-fd.mode：        查看文件的打开模式
-fd.name：        查看文件的名称
-fd.next：        迭代的方法，和 readline 很像，区别是，next 读到末尾会报错，readline 会继续返回空
-fd.read：        一次性读取所有内容，以字符串的方式存取
-fd.readable():   判断文件是否可读
-fd.readlines：   一次性读取所有内容，以列表的方式存取（适合操作小文件）
-fd.readline()：  每次读取一行内容
-fd.seek(0)：     调整文件读取的指针位置
-fd.seekable()：  判断文件是否可以调整指针位置（tty，磁盘等文件是不能被 seek 的），可以被 seek 则返回真，否则返回假
+fd.closed()：    # 判断文件是否被关闭，若被打开提示 False，没有的话提示 True
+fd.flush()：     # 把修改的内容，强制刷新到文件中去
+fd.isatty：      # 判断是否是一个终端文件
+fd.mode：        # 查看文件的打开模式
+fd.name：        # 查看文件的名称
+fd.next：        # 迭代的方法，和 readline 很像，区别是，next 读到末尾会报错，readline 会继续返回空
+fd.read：        # 一次性读取所有内容，以字符串的方式存取
+fd.readable():   # 判断文件是否可读
+fd.readlines：   # 一次性读取所有内容，以列表的方式存取（适合操作小文件）
+fd.readline()：  # 每次读取一行内容
+fd.seek(0)：     # 调整文件读取的指针位置
+fd.seekable()：  # 判断文件是否可以调整指针位置（tty，磁盘等文件是不能被 seek 的），可以被 seek 则返回真，否则返回假
 fd.tell()：      查询文件目前读取位置（以字符为单位）
 fd.truncate()：  截取文件，从开头开始截取，不指定指针位置的话，那么会清空文件
 fd.write：       把一个字符串写入到文件中去
@@ -435,9 +435,9 @@ In : s.readline()
 Out: '123'
 `
 
-```getvalue()`: 获取全部内容，跟文件指针没有关系.
+​```getvalue()`: 获取全部内容，跟文件指针没有关系.
 
-```python
+​```python
 In : from io import StringIO
 
 In : s = StringIO()
