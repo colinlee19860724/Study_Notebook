@@ -1,4 +1,3 @@
-
 ---
 
 [TOC]
@@ -631,4 +630,4 @@ drwx------. 18 python python 4096 Apr  4 10:17 ..
 
 &emsp;&emsp;通过上面的演示，我们发现 shell 选项定义的 python 版本优先级最高，他会覆盖 local 选项指定的python 版本，然后 local 选项的优先级高于 global 选项的优先级。
 
-&emsp;&emsp;下面我们可以在 pycharm 中直接使用安装在 .pyenv/versions 中安装的各种 python 版本。
+&emsp;&emsp;我们可以在 pycharm 中直接使用在 .pyenv/versions 中安装的各种 python 版本。

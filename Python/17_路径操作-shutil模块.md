@@ -71,9 +71,9 @@ Out: 'network-scripts'
 > \_\_file\_\_：变量比较特殊，存放的是当前的 Python 文件的名称，我们可以使用 os.path.abspath(\_\_file\_\_) 来获取当前 python 文件的绝对路径，然后进行打包或者进行相对调用。  
 
 ## 1.2. pathlib 模块
-&emsp;&emsp;3.4 以后建议使用 pathlib 模块，它提供 Path 对象来对路径进行操作，还包括了目录和文件。
+&emsp;&emsp;3.4 以后建议使用 pathlib 模块，它提供 Path 对象来对路径进行操作，还包括了目录和文件。  
 
-> 在使用时需要实现导入： from pathlib import Path  
+&emsp;&emsp;在使用时需要实现导入： `from pathlib import Path`    
 
 ### 1.2.1. 目录操作
 下面来说一下日常的目录相关操作
@@ -201,7 +201,8 @@ Out: ['.tar', '.gz']
 
 ```
 
--`with_suffix(suffix)`: 有扩展名则替换，无则补充扩展名(注意后缀名要加点)
+- `with_suffix(suffix)`: 有扩展名则替换，无则补充扩展名(注意后缀名要加点)
+
 - `with_name(name)`：替换目录最后一个部分并返回一个新的路径
 
 ```python
@@ -304,10 +305,11 @@ Out: 'file:///etc/hosts'
 
 ```
 
--`mkdir(mode=0o777,parents=False,exist_ok=False)`: 创建一个目录
-    * `parents`：是否创建父目录，True 等同于 `mkdir -p`, False 时，父目录不存在曝出 FileNotFoundError
-    * `exist_ok`: 在 3.5 版本加入，False 时，路径存在，抛出 FileExistsError;True 时，异常将被忽略
-- `iterdir()`: 迭代当前目录，不递归。
+- `mkdir(mode=0o777,parents=False,exist_ok=False)`: 创建一个目录  
+	- `parents`：是否创建父目录，True 等同于 `mkdir -p`, False 时，父目录不存在曝出 FileNotFoundError  
+	- `exist_ok`: 在 3.5 版本加入，False 时，路径存在，抛出 FileExistsError;True 时，异常将被忽略  
+
+- `iterdir()`: 迭代当前目录，不递归。  
 
 ```python
 In : for x in p4.parents[0].iterdir(): 
@@ -550,9 +552,10 @@ Change: 2017-03-09 18:44:33.286738354 +0800
 
 ```
 
--`shutil.copy(src,des)`: 复制文件的同时复制权限信息，等同于执行了如下命令:
-    1. __shutil.copyfile(src,dest,follow_symlinks=True)__ 
-    2. __shutil.copymode(src,dest,follow_symlinks=True)__
+- `shutil.copy(src,des)`: 复制文件的同时复制权限信息，等同于执行了如下命令:
+      1. __shutil.copyfile(src,dest,follow_symlinks=True)__ 
+          2. __shutil.copymode(src,dest,follow_symlinks=True)__
+
 - `shutil.copy2(src,des)`: 比 copy 对了全部原数据，但需要平台支持，等同于执行了如下命令:
     1. __shutil.copyfile(src,dest,follow_symlinks=True)__ 
     2. __shutil.copystat(src,dest,follow_symlinks=True)__
