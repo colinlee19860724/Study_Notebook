@@ -19,7 +19,7 @@
 __格式：__
 
 ```python
-tuple()   # 工厂函数，用于创建并返回一个空元组
+tuple()           # 工厂函数，用于创建并返回一个空元组
 tuple(iterable)   # 使用可迭代对象的元素，来初始化一个元组
 ```
 
@@ -814,10 +814,10 @@ __字符串与 bytes__
 
 __编码与解码__
 - 字符串按照不同的字符集编码 encode 返回字节序列 bytes
-  - str.encode(encoding='utf-8', errors='strict') --> bytes
+  - `str.encode(encoding='utf-8', errors='strict') --> bytes`
 - 字节序列按照不同的字符集解码decode返回字符串
-  - bytes.decode(encoding="utf-8", errors="strict") --> str
-  - bytearray.decode(encoding="utf-8", errors="strict") --> str
+  - `bytes.decode(encoding="utf-8", errors="strict") --> str`
+  - `bytearray.decode(encoding="utf-8", errors="strict") --> str`
 
 ```python
 In : '李'.encode()

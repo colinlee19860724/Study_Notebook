@@ -7,8 +7,9 @@
 ---
 
 
-# 1. 内建函数 1  
-- **标识 `id()`**：返回对象的唯一标识，CPython 返回内存地址  
+# 1. 内建函数`id()`、`hash()`、`type()`、类型转换、`input()`、`print()`
+**标识 `id()`**：返回对象的唯一标识，CPython 返回内存地址  
+
 ```python
 In : a = 123
 
@@ -26,7 +27,7 @@ In : b()
 Out: 123
 ```
 
-- **哈希 `hash()`**：返回一个对象的哈希值  
+**哈希 `hash()`**：返回一个对象的哈希值  
 ```python
 In : hash(range(3))
 Out: 5050907061201647097
@@ -40,7 +41,7 @@ TypeError                                 Traceback (most recent call last)
 TypeError: unhashable type: 'list'
 ```
 
-- **类型 `type()`**：返回对象的类型  
+**类型 `type()`**：返回对象的类型  
 ```python
 In : type(range(3))
 Out: range
@@ -52,24 +53,24 @@ In : type(lambda x: x+1)
 Out: function
 ```
 
-
-- **类型转换**  
+**类型转换**  
     1. `float(x)`：返回从数字或字符串 x 生成的浮点数。
-    1. `int(x)`：返回一个使用数字或字符串 x 生成的整数对象，或者没有实参的时候返回 0 。
-    1. `bin(x)`：将一个整数转变为一个前缀为“0b”的二进制字符串。
-    1. `hex(x)`：将整数转换为以“0x”为前缀的小写十六进制字符串。
-    1. `oct(x)`：将一个整数转变为一个前缀为“0o”的八进制字符串。
-    1. `bool(x)`：返回一个布尔值，True 或者 False。
-    1. `list([iterable])`：从可迭代对象返回一个列表。
-    1. `tuple([iterable])`：从可迭代对象返回一个元组。
-    1. `dict(**kwarg)`：从 k:v 键值对返回一个字典。
-    1. `set([iterable])`：返回一个新的 set （集合）对象。
-    1. `complex([real[, imag]])`：返回值为 real + imag*1j 的复数，或将字符串或数字转换为复数。
-    1. `bytearray([source[, encoding[, errors]]])`：返回一个新的 bytes 数组。 bytearray 类是一个可变序列，包含范围为 0 <= x < 256 的整数。 
-    1. `bytes([source[, encoding[, errors]]])`：返回一个新的“bytes”对象， 是一个不可变序列，包含范围为 0 <= x < 256 的整数。bytes 是 bytearray 的不可变版本 - 它有其中不改变序列的方法和相同的索引、切片操作。
+        1. `int(x)`：返回一个使用数字或字符串 x 生成的整数对象，或者没有实参的时候返回 0 。
+        1. `bin(x)`：将一个整数转变为一个前缀为“0b”的二进制字符串。
+        1. `hex(x)`：将整数转换为以“0x”为前缀的小写十六进制字符串。
+        1. `oct(x)`：将一个整数转变为一个前缀为“0o”的八进制字符串。
+        1. `bool(x)`：返回一个布尔值，True 或者 False。
+        1. `list([iterable])`：从可迭代对象返回一个列表。
+        1. `tuple([iterable])`：从可迭代对象返回一个元组。
+        1. `dict(**kwarg)`：从 k:v 键值对返回一个字典。
+        1. `set([iterable])`：返回一个新的 set （集合）对象。
+        1. `complex([real[, imag]])`：返回值为 real + imag*1j 的复数，或将字符串或数字转换为复数。
+        1. `bytearray([source[, encoding[, errors]]])`：返回一个新的 bytes 数组。 bytearray 类是一个可变序列，包含范围为 0 <= x < 256 的整数。 
+        1. `bytes([source[, encoding[, errors]]])`：返回一个新的“bytes”对象， 是一个不可变序列，包含范围为 0 <= x < 256 的整数。bytes 是 bytearray 的不可变版本 - 它有其中不改变序列的方法和相同的索引、切片操作。
 
-**输入 `input([prompt])`**  
-- 接收用户输入，返回一个字符串  
+**输入 `input([prompt])`**   
+
+- 接收用户输入，返回一个字符串   
 ```python
 In : input('please input: ')
 please input: hello
@@ -89,7 +90,7 @@ hello
 ok
 ```
 
-# 2. 内建函数 2  
+# 2. 内建函数 `len()`、`isinstance()`、`issubclass()`
 
 **对象长度 `len(s)`**  
 
@@ -104,7 +105,6 @@ In : st = 'colinlee'
 In : len(lst), len(tup), len(st)
 Out: (9, 3, 8)
 ```
-
 
 **`isinstance(obj, class_or_tuple)`**  
 
@@ -127,8 +127,8 @@ In : isinstance(True, int)
 Out: True
 ```
 
-
 **`issubclass(cls, class_or_tuple)`**  
+
 - 判断类型 cls 是否是某种类型的子类或元组中列出的某个类型的子类  
 - `issubclass(bool, int)`  
 ```python
@@ -138,8 +138,8 @@ Out: True
 In : issubclass(float, int)  
 Out: False
 ```
-  
-# 3. 内建函数 3 
+
+# 3. 内建函数 `abs()`、最大值 `max()` 最小值 `min()`  、`round()`、`pow()`、`range()`、`divmod()`、`sum()`
 
 绝对值 `abs(x)` (x 为数值)  
 ```python
@@ -174,6 +174,7 @@ Out: (9, 0)
 ```
 
 `round(x)` 四舍六入五取偶  
+
 ```python
 In : round(1.4), round(1.6), round(1.5)
 Out: (1, 2, 2)
@@ -183,14 +184,21 @@ Out: (-1, -2, -2)
 
 In : round(-0.4), round(-0.6), round(-0.5)
 Out: (0, -1, 0)
+    
 ```
-`pow(x , y)` 等价于 `x**y`  
+`pow(x, y[, z])` 返回 *x* 的 *y* 次幂；如果 *z* 存在，则对 *z* 取余（比直接 `pow(x, y) % z` 计算更高效）。两个参数形式的 `pow(x, y)` 等价于幂运算符： `x**y`。
+
 ```python
 In : pow(2, 3), pow(2, 0)
 Out: (8, 1)
+
+In : pow(2, 3, 3)
+Out: 2
+
 ```
 
 `range(stop)` 从 0 开始到 stop-1 的可迭代对象；`range(start, stop [, step])` 从 start 开始到 stop-1 结束步长为 step 的可迭代对象  
+
 ```python
 In : range(3)
 Out: range(0, 3)
@@ -215,7 +223,8 @@ In : for i in range(1, 10, 2):
 9
 ```
 
-`divmod(x, y)` 等价于 `tuple([x//y, x%y])`  
+`divmod(x, y)` 它将两个（非复数）数字作为实参，并在执行整数除法时返回一对商和余数。等价于 `tuple([x//y, x%y])`  
+
 ```python
 In : divmod(10, 3)
 Out: (3, 1)
@@ -233,26 +242,30 @@ Out: (3, 1)
 ```
 
 `sum(iterable [, start])` 对可迭代对象的所有数值元素求和  
+
 ```python
 In : sum(range(1,101,1))
 Out: 5050
 ```
 
-# 4. 内建函数 4 
+# 4. 内建函数`chr()` 、`ord()`、`str()`、`repr()`、`ascii()`
 
-- `chr(i)` 给一个一定范围的整数返回对应的字符  
+`chr(i)` 给一个一定范围的整数返回对应的字符  
+
 ```python
 In : chr(97), chr(20013)
 Out: ('a', '中')
 ```
 
-- `ord(c)` 返回字符对应的整数，返回的是 Unicode  
+`ord(c)` 返回字符对应的整数，返回的是 Unicode  
+
 ```python
 In : ord('a'), ord('中')
 Out: (97, 20013)
 ```
 
 `str()` 返回 object 的 字符串 版本。 如果未提供 object 则返回空字符串。  
+
 ```python
 In : str(123)
 Out: '123'
@@ -264,6 +277,7 @@ Out: 'good'
 ```
 
 `repr()` 返回包含一个对象的可打印表示形式的字符串。  
+
 ```python
 In : repr(123)
 Out: '123'
@@ -280,6 +294,7 @@ Out: "<class '__main__.cls'>"
 ```
 
 `ascii()` 就像函数 repr()，返回一个对象可打印的字符串，但是 repr() 返回的字符串中非 ASCII 编码的字符，会使用 \x、\u 和 \U 来转义。生成的字符串和 Python 2 的 repr() 返回的结果相似。  
+
 ```python
 In : st = 'I \tam \nColinLee'
 
@@ -318,7 +333,7 @@ In : dic
 Out: {'c': 1, 'b': 2, 'a': 1}
 ```
 
-  
+
 # 6. 内建函数 6  
 
 翻转 `reversed(seq)`  返回一个翻转元素的迭代器  
@@ -342,7 +357,7 @@ In : for x in reversed(sorted({1, 5, 9})): print(x)
 5
 1
 ```
-  
+
 # 7. 内建函数 7 
 
 枚举 `enumerate(seq, start=0)`  
@@ -446,7 +461,7 @@ Out: True
 In : {x:y for x,y in zip(range(4),range(4,10))}
 Out: {0: 4, 1: 5, 2: 6, 3: 7}
 ```
-  
+
 # 10. 迭代器  
 
 - 迭代器  

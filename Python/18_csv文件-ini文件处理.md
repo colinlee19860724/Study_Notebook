@@ -61,7 +61,7 @@ csv.reader(iterable, dialect='excel',**fmtparams)
 
 ```
 
--`dialect`：表示使用 excel 的方言(标准) 去读取
+- `dialect`：表示使用 excel 的方言(标准) 去读取
 - `**fmtparams`: 对 excel 的规范进行自定义设置
 
 可以设置的参数有：
@@ -98,7 +98,7 @@ with open(p, 'r') as f:
 ```
 
 ### 1.2.2. writer 方法
-csv 模块的 writer 方法，用于写模式打开一个 csv 文件，返回一个 `DictWriter 对象`。它的基本格式为：
+&emsp;&emsp;csv 模块的 writer 方法，用于写模式打开一个 csv 文件，返回一个 `DictWriter 对象`。它的基本格式为：
 
 ```python
 writer(fileobj, dialect='excel', *args, **kwargs)：
@@ -129,7 +129,7 @@ with open(p, 'a+') as f:
 
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 观察生成好的 csv 文件，发现每一行，后面都会多一行空行，这是因为在写的时候把一行文本的结尾 \r\n 转换成两个回车写入的，所以官方建议我们在打开文件的时候，添加`newline=''`参数，来组织替换。读取时也可以使用 newline 参数(不会影响原来的读取效果)
+&emsp;&emsp;观察生成好的 csv 文件，发现每一行，后面都会多一行空行，这是因为在写的时候把一行文本的结尾 \r\n 转换成两个回车写入的，所以官方建议我们在打开文件的时候，添加`newline=''`参数，来组织替换。读取时也可以使用 newline 参数(不会影响原来的读取效果)
 
 ```python
 with open(p, 'a+', newline='') as f:
@@ -140,7 +140,7 @@ with open(p, 'a+', newline='') as f:
 ```
 
 # 2. ini 文件处理
-作为配置文件，ini 文件格式很流行。著名的配置文件还有：json,yaml,xml 等。下面是一个 ini 格式的文件(mariadb 就是用的是这种格式的配置文件)
+&emsp;&emsp;作为配置文件，ini 文件格式很流行。著名的配置文件还有：json, yaml, xml 等。下面是一个 ini 格式的文件(mariadb 就是用的是这种格式的配置文件)
 
 ```ini
 [mysqld]
@@ -157,6 +157,7 @@ pid-file=/var/run/mariadb/mariadb.pid
 其中：
 - `中括号` 里面的部分称为 `section`，译作节、区、段。
 - 每一个 section 内，都是 key=value 形成的键值对，`key` 称为 `option` 选项。  
+
 ## 2.1. configparser 模块
 &emsp;&emsp;configparser 模块的 ConfigParser 类就是用来操作 ini 文件的。可以将 section 当做 key，section 存储着键值对组成的字典，可以把 ini 配置文件当做一个嵌套的字典。默认使用的是有序字典。  
 
