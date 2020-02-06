@@ -321,7 +321,7 @@ class MyClass(A,B,...):pass
 ```
 
 &emsp;&emsp;Python 中的继承关系，分为多继承和单继承，如图所示：
-![duojicheng](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/duojicheng.png)  
+![duojicheng](../Photo/duojicheng.png)  
 ## 7.1. 多继承弊端
 &emsp;&emsp;多继承很好的模拟了世界，因为事物很少是单一继承，但是舍弃简单，必然引入复杂性，带来了冲突。举个简单的例子：如果一个孩子继承了来自父母双方的特称，那么到底眼睛像爸爸还是妈妈呢，孩子究竟像谁多一点呢？
 
@@ -366,7 +366,7 @@ print(MyClass.mro())  # [<class '__main__.MyClass'>, <class '__main__.D'>, <clas
 
 ## 7.4. Mixin
 从一个需求开始了解 Mixin。现有如下继承关系：  
-![Mixin](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/Mixin-1.png)  
+![Mixin](../Photo/Mixin-1.png)  
 假设已经有了三个类：
 
 ```python
@@ -393,7 +393,7 @@ class Monkey(Animal):
 > Python 中如果采用上面的方式定义抽象方法，子类可以不实现，但是到子类使用该方法的时候才会报错。  
 
 &emsp;&emsp;Animal 类是抽象基类，基类的方法可以不具体实现，因为它未必适合所有子类，在子类中一般需要重写。Human 类和 Monkey 类属于 Animal 的子类，现在需要为 Human 类添加说话的功能，该怎么办呢？如果在 Humman 类上直接添加，虽然可以，但是却违反了 OCP 原则，所以我们只能继承了  
-![Mixin-2](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/Mixin-2.png)
+![Mixin-2](../Photo/Mixin-2.png)
 
 下面对代码进行改写
 

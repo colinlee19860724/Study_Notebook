@@ -318,7 +318,7 @@ Out: True
 ## 3.2. 并集
 &emsp;&emsp;将集合 A 和集合 B 所有元素合并在一起，组成的集合称为集合 A 和集合 B 的 __并集__
 
-![union](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/union.png)
+![union](../Photo/union.png)
 
 ```python
 s.union(*others) --> new set object   # 把多个集合和集合 s 进行合并，返回一个新的集合对象，使用 | 表示
@@ -329,7 +329,7 @@ s.update(*others) --> None            # 把 *others 个可迭代可 hash 对象�
 ## 3.3. 交集
 &emsp;&emsp;集合 A 和集合 B，由所有属于 A 且属于 B 的元素组成的集合称为 __交集__。
 
-![intersection](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/intersection.png)
+![intersection](../Photo/intersection.png)
 
 ```python
 s.intersection(*others) --> new set object   # 返回多个集合的交集，使用 & 表示
@@ -340,7 +340,7 @@ s.intersection_update(*others) --> None      # 获取多个集合的交集，就
 ## 3.4. 差集
 &emsp;&emsp;集合 A 和 B，由所有属于 A 且不属于 B 的元素组成的集合称为 __差集__。
 
-![difference](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/difference.png)
+![difference](../Photo/difference.png)
 
 ```python
 s.difference(*others) --> new set object    # 返回集合 s 和其他多个集合的差集，使用 - 表示
@@ -351,7 +351,7 @@ s.difference_update(*others) --> None       # 返回集合 s 和其他多个集�
 ## 3.5. 对称差集
 &emsp;&emsp;不属于集合 A 和集合 B 交集的其他元素组成的集合，数学表达式为：`(A-B) U(B-A)`。
 
-![symmetric_differece](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/symmetric_differece.png)
+![symmetric_differece](../Photo/symmetric_differece.png)
 
 ```python
 s.symmetric_difference(other) --> new set object   # 返回和另一个集合的对称差集，使用 ^ 表示

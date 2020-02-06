@@ -122,7 +122,7 @@ def partial(func, *args, **keywords):
 ```
 
 上面是偏函数的原码注释，如果不是很理解，请看下图
-![partial](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/partial.png)
+![partial](../Photo/partial.png)
 
 ## 3.3. functools.warps 实现分析
 现在我们在来看一下 functools.warps 函数的原码实现，前面我们已经说明了，它是用来拷贝函数签名信息的装饰器，它在内部是使用了偏函数实现的。

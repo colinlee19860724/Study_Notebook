@@ -31,7 +31,7 @@ Celery 的主要特点：
 3. 快速：一个单进程的 celery 每分钟可处理上百万个任务
 4. 灵活： 几乎 celery 的各个组件都可以被扩展及自定制
 
-![celery](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/celery.png)
+![celery](../Photo/celery.png)
 
 根据前面的介绍，我们可以得出如下流程图：
 1. 用户应用程序将任务(已经在 celery app 中注册的) 放入 Broker 中。

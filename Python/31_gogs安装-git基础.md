@@ -234,7 +234,7 @@ Git 的本地版本库中存了很多东西，其中最重要的就是称为 sta
 - 工作区：一个 git 项目的根目录(仓库的主目录，我们之前执行 git init 的目录) 就是一个工作区；  
 - 版本库：在工作区有一个隐藏目录.git，是 Git 的版本库。  
 它们的关系如下图：  
-![gitrepo](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/gitrepo.png)  
+![gitrepo](../Photo/gitrepo.png)  
 还记得我们提交文件时的两步吗？
 - git add 添加文件，实际上就是把文件修改添加到暂存区
 - git commit 提交修改，实际上就是把暂存区的所有内容提交到当前分支

@@ -32,7 +32,8 @@ open(['file', "mode='r'", 'buffering=-1', 'encoding=None', 'errors=None', 'newli
 
 ```
 
--`file`：要打开的文件名(默认为当前路径，否则要指定绝对路径)。
+- `file`：要打开的文件名(默认为当前路径，否则要指定绝对路径)。
+
 - `mode`：表示打开文件的格式。
 - `buffering`: 设置缓冲区的大小(二进制模式和文本模式不同)
 - `encoding`：打开文件的编码格式(文本模式)
@@ -369,20 +370,22 @@ f.close()
 
 ```python
 In : with open('123.txt','r+') as f:
-     ...:     f.read()
-     ...:
+...:     f.read()
+...:
 
 In : f.closed
 Out: True
 
-​```或者：
+```
 
-​```PYTHON
+或者：
+
+```python
 In : f = open('123.txt','r+')
 
 In : with f:
-     ...:     f.read()
-     ...:
+...:     f.read()
+...:
 
 In : f.closed
 Out: True
@@ -422,7 +425,7 @@ fd.name：        # 文件名称
 
 > 使用前需要先进行导入，from io import StringIO  
 
-​```python
+```python
 In : from io import StringIO
 
 In : s = StringIO()   # 实例化一个 StringIO 对象用于读写，相当于 f = open('123.txt','r+')
@@ -440,9 +443,11 @@ In : s.readline()
 Out: '123'
 `
 
-​```getvalue()`: 获取全部内容，跟文件指针没有关系.
+```
 
-​```python
+getvalue()`: 获取全部内容，跟文件指针没有关系.
+
+```python
 In : from io import StringIO
 
 In : s = StringIO()

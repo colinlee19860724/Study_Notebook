@@ -383,9 +383,9 @@ Out: os.stat_result(st_mode=16877, st_ino=67533402, st_dev=2050, st_nlink=2, st_
 ```python
 Path.open(mode='r',buffering=-1,encoding=None,errors=None,newline=None)
 
-​```例：
+```例：
 
-​```python
+```python
 In : p5  
 Out: PosixPath('/tmp/123')
 
@@ -565,8 +565,8 @@ Change: 2017-03-09 18:44:33.286738354 +0800
 
 ```python
 In : def func(src,names): 
-     ...:     ig = filter(lambda x: not x.endswith('conf'),names) 
-     ...:     return set(ig)
+...:     ig = filter(lambda x: not x.endswith('conf'),names) 
+...:     return set(ig)
 
 In : os.listdir('old')  
 Out: 

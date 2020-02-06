@@ -362,7 +362,7 @@ conn.close()
 # 4. DBUtils 连接池
 &emsp;&emsp;在 python 编程中可以使用 MySQLdb/pymysql 等模块对数据库的连接及诸如查询 / 插入 / 更新等操作，但是每次连接 mysql 数据库请求时，都是独立的去请求访问，相当浪费资源，而且访问数量达到一定数量时，对 mysql 的性能会产生较大的影响。因此，实际使用中，通常会使用数据库的连接池技术，来访问数据库达到资源复用的目的。
 
-![db_utils](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/dbutils.png)
+![db_utils](../Photo/dbutils.png)
 
 连接池对性能的提升表现在：
 1. 在程序创建连接的时候，可以从一个空闲的连接中获取，不需要重新初始化连接，提升获取连接的速度

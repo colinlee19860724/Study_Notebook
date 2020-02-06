@@ -174,7 +174,7 @@ print(b+daxin)  # Handsome
 
 # 4. Python 的对象模型
 &emsp;&emsp;在 Python 中，任何对象都有类型，可以使用 type() 或者__class__查看。但是类型也是对象及类对象，它也有自己的类型。下图为 Python 中的类型与继承关系：  
-![object](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/object.png)  
+![object](../Photo/object.png)  
 所以新类型的缺省类型都是 type(可以使用元类来改变)
 - 特殊类型 type 是所有对象的缺省类型，也包括 type 自己。但它又是一个对象，因此从 object 继承。
 - 特殊类型 object 是继承树的顶层，它是 Python 所有类型的最终基类。  

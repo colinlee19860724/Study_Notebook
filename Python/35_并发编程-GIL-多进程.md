@@ -32,7 +32,7 @@ PS：为了防止多线程并发执行机器码。
 
 ## 1.2. GIL 与 thread lock  
 &emsp;&emsp;GIL 保护的是解释器级的数据，保护用户自己的数据则需要自己加锁处理，如下图举例：
-![gil](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/gil.png)  
+![gil](../Photo/gil.png)  
 首先：在一个进程内的所有线程数据是共享的，由于 GIL 的存在，统一时刻只能一个线程在运行。
 1. 线程 1 拿到 GIL 锁，加载 count 数据，准备修改的时候，被 CPU 进行调度
 2. 线程 2 拿到 GIL 锁，加载 count 数据(此时没有被修改), 然后修改，保存，这时 count 的数据已经被修改了

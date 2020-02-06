@@ -9,7 +9,7 @@
 # 1. ORM
 Object-Relational Mapping，把关系数据库的表结构映射到对象上。使用面向对象的方式来操作数据库。 
 
-![orm](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/orm.png)  
+![orm](../Photo/orm.png)  
 下面是一个关系模型与 Python 对象之间的映射关系：
 - table   -->  class    : 表映射为类
 - row     -->  object   : 行映射为实例

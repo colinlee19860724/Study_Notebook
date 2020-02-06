@@ -18,7 +18,7 @@
 &emsp;&emsp;后来为了打破这个局面，出现了一套全球通用协议族，叫做互联网协议，互联网协议包含了上百种协议标准，但是最重要的两个协议是 TCP 和 IP 协议，所以，大家把互联网的协议简称 TCP/IP 协议。  
 &emsp;&emsp;通信的时候，双方必须知道对方的标识，好比发邮件必须知道对方的邮件地址。互联网上每个计算机的唯一标识就是 IP 地址，是由 4 个点分十进制数组成（例如：12.21.21.41）。  
 &emsp;&emsp;下面是 TCP/IP 协议分层：  
-![tcp/ip](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/tcp_ip.png)  
+![tcp/ip](../Photo/tcp_ip.png)  
 &emsp;&emsp;TCP/UDP 协议则是建立在 IP 协议之上的。TCP 协议负责在两台计算机之间建立可靠连接，保证数据包按顺序到达。TCP 协议会 `通过握手建立连接，然后，对每个 IP 包编号，确保对方按顺序收到，如果包丢掉了，就自动重发`。相对于 TCP(面向连接) 来说，UDP 则是面向无连接的协议，`使用 UDP 协议时，不需要建立连接，只需要知道对方的 IP 地址和端口号，就可以直接发数据包`。但是，能不能到达就不知道了。虽然用 UDP 传输数据不可靠，但它的优点是和 TCP 比，速度快，对于不要求可靠到达的数据，就可以使用 UDP 协议。  
 &emsp;&emsp;许多常用的更高级的协议都是建立在 TCP 协议基础上的，比如用于浏览器的 HTTP 协议、发送邮件的 SMTP 协议等。  
 &emsp;&emsp;一个 IP 包除了包含要传输的数据外，还包含源 IP 地址和目标 IP 地址，源端口和目标端口。那么端口有什么作用呢？在两台计算机通信时，只发 IP 地址是不够的，因为同一台计算机上跑着多个网络程序。一个 IP 包来了之后，到底是交给浏览器还是 QQ，就需要端口号来区分。每个网络程序都向操作系统申请唯一的端口号，这样，两个进程在两台计算机之间建立网络连接就需要各自的 IP 地址和各自的端口号。
@@ -29,7 +29,7 @@
 &emsp;&emsp;socket 库是一个底层的用于网络通信的库，使用它我们可以便捷的进行网络交互的开发，下面以 socket 库为例，想要使用需要先引入 `import socket`  
 ## 3.1. 通信流程
 我们先来了解一下，python 的 socket 的通讯流程:  
-![tcp_socket](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/tcpsocket.png)  
+![tcp_socket](../Photo/tcpsocket.png)  
 服务端：
 1. 创建 Socket 对象
 2. 绑定 IP 地址 Address 和端口 Port，使用 bind 方法，IPv4 地址为一个二元组('IP',Port)，`一个 TCP 端口只能被绑定一次`
@@ -362,7 +362,7 @@ __不是 server 端直接发送，client 端直接接收__
     - 操作系统把从网卡接收到的数据存入操作系统缓存中去，供应用程序读取
     - 应用程序直接从操作系统缓存中将数据读出，然后进行处理  
 整个过程如图：  
-![nianbao](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/nianbao.png)  
+![nianbao](../Photo/nianbao.png)  
 __`发生黏包的本质问题是对端不知道我们发送数据的总长度，如果能否让对方提前知道，那么就不会发生粘包现象`__。根据 TCP 报文的格式得到启发：
 1. 发送真正的数据前，需要预先发送本次传送的报文大小（增加报头）
 2. 报头的长度必须是固定的

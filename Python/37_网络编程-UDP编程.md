@@ -11,7 +11,7 @@ UDP 是面向无连接的协议，`使用 UDP 协议时，不需要建立连接�
 
 # 2. UDP 通信流程
 我们先来了解一下，python 的 socket 的通讯流程:  
-![tcp_socket](https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/udpsocket.png)  
+![tcp_socket](../Photo/udpsocket.png)  
 服务端：
 1. 创建 Socket 对象
 2. 绑定 IP 地址 Address 和端口 Port，使用 bind 方法，IPv4 地址为一个二元组('IP',Port)，`一个 UDP 端口只能被绑定一次`
