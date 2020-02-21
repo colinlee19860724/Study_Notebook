@@ -26,8 +26,8 @@ reduce(function, sequence[, initial]) -> value
 # 普通版
 In : sum = 0
 In : for i in range(1,101):
-...:     sum += i
-...:
+   :     sum += i
+   :
 In : print(sum)
 5050
 
@@ -52,16 +52,16 @@ partial(func, *args, **keywords) - 返回一个新的被 partial 函数包装过
 
 ```python
 In : import functools
-...: import inspect
-...:
-...:
-...: def add(x, y):
-...:     return x + y
-...:
-...:
-...: new_add = functools.partial(add,1)
-...: print(new_add)
-...:
+   : import inspect
+   :
+   :
+   : def add(x, y):
+   :     return x + y
+   :
+   :
+   : new_add = functools.partial(add,1)
+   : print(new_add)
+   :
 functools.partial(<function add at 0x000002798C757840>, 1)
 
 In :
@@ -249,10 +249,10 @@ functools.lru_cache(maxsize=128, typed=False)
 In : import functools
 
 In : @functools.lru_cache()
-...: def add(x: int, y: int) -> int:
-...:     time.sleep(2)
-...:     return x + y
-...:
+   : def add(x: int, y: int) -> int:
+   :     time.sleep(2)
+   :     return x + y
+   :
 
 In : import time
 

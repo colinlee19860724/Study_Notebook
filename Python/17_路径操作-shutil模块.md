@@ -107,10 +107,10 @@ Out: PosixPath('/etc/sysconfig/network-scripts')
 In : p2 / 'ifcfg-eth0'
 Out: PosixPath('/etc/sysconfig/network-scripts/ifcfg-eth0')
 
-In : p2 /p1  
+In : p2 / p1  
 Out: PosixPath('/etc/sysconfig/network-scripts/a/b/c')
 
-In : '/root' /p2
+In : '/root' / p2
 Out: PosixPath('/etc/sysconfig/network-scripts')
 
 ```
@@ -276,7 +276,7 @@ Out: PosixPath('/home/python/py368/hosts')
 - `rmdir()`: 删除空目录(没有提供目录为空的方法)
 - `touch(mode=0o666，exist_ok=False)`: 创建一个文件
     * `mode`: 文件的属性，默认为 666
-    * `exist_ok`: 在 3.5 版本加入，False 时，路径不存在，抛出 FileExistsError;True 时，异常将被忽略
+    * `exist_ok`: 在 3.5 版本加入，False 时，路径不存在，抛出 FileExistsError；True 时，异常将被忽略
 
 ```python
 In : p = Path('/tmp','hello.py')  
@@ -306,24 +306,24 @@ Out: 'file:///etc/hosts'
 ```
 
 - `mkdir(mode=0o777,parents=False,exist_ok=False)`: 创建一个目录  
-	- `parents`：是否创建父目录，True 等同于 `mkdir -p`, False 时，父目录不存在曝出 FileNotFoundError  
-	- `exist_ok`: 在 3.5 版本加入，False 时，路径存在，抛出 FileExistsError;True 时，异常将被忽略  
+	- `parents`：是否创建父目录，True 等同于 `mkdir -p`, False 时，父目录不存在曝出 `FileNotFoundError`  
+	- `exist_ok`: 在 3.5 版本加入，False 时，路径存在，抛出 `FileExistsError`;True 时，异常将被忽略  
 
 - `iterdir()`: 迭代当前目录，不递归。  
 
 ```python
 In : for x in p4.parents[0].iterdir(): 
-...:     if x.is_dir(): 
-...:         flag = False 
-...:         for _ in x.iterdir(): 
-...:             flag = True 
-...:             break 
-...:         print('dir: {} , is {}'.format(x,'not empty ' if flag else 'empt
-...: y' )) 
-...:     elif x.is_file(): 
-...:         print('{} is a file'.format(x)) 
-...:     else: 
-...:         print('other file')
+   :     if x.is_dir(): 
+   :         flag = False 
+   :         for _ in x.iterdir(): 
+   :             flag = True 
+   :             break 
+   :         print('dir: {} , is {}'.format(x,'not empty ' if flag else 'empt
+   : y' )) 
+   :     elif x.is_file(): 
+   :         print('{} is a file'.format(x)) 
+   :     else: 
+   :         print('other file')
 
 ```
 
@@ -383,7 +383,9 @@ Out: os.stat_result(st_mode=16877, st_ino=67533402, st_dev=2050, st_nlink=2, st_
 ```python
 Path.open(mode='r',buffering=-1,encoding=None,errors=None,newline=None)
 
-```例：
+```
+
+例：
 
 ```python
 In : p5  
@@ -476,7 +478,7 @@ In :
 
 ```
 
--`shutil.copyfile(fsrc,fdes)`: 复制文件，我们只需要传入文件名称即可进行复制，不用自行预先打开，等于创建一个新的文件，把老文件写入到新文件中然后关闭，新创建的文件权限和属主等信息遵循操作系统规定(本质上还是调用 copyfileobj)
+- `shutil.copyfile(fsrc, fdes)`: 复制文件，我们只需要传入文件名称即可进行复制，不用自行预先打开，等于创建一个新的文件，把老文件写入到新文件中然后关闭，新创建的文件权限和属主等信息遵循操作系统规定(本质上还是调用 copyfileobj)
 
 ```python
 
@@ -488,7 +490,7 @@ In :
 
 ```
 
--`shutil.copymode(src,des)`: 复制文件权限，既把 src 文件的权限复制给 des 文件，只改变权限，不改变其他比如属组，内容等(des 文件必须存在)
+- `shutil.copymode(src, des)`: 复制文件权限，既把 src 文件的权限复制给 des 文件，只改变权限，不改变其他比如属组，内容等(des 文件必须存在)
 
 ```python
 
@@ -553,8 +555,8 @@ Change: 2017-03-09 18:44:33.286738354 +0800
 ```
 
 - `shutil.copy(src,des)`: 复制文件的同时复制权限信息，等同于执行了如下命令:
-      1. __shutil.copyfile(src,dest,follow_symlinks=True)__ 
-          2. __shutil.copymode(src,dest,follow_symlinks=True)__
+    1. __shutil.copyfile(src,dest,follow_symlinks=True)__ 
+    2. __shutil.copymode(src,dest,follow_symlinks=True)__
 
 - `shutil.copy2(src,des)`: 比 copy 对了全部原数据，但需要平台支持，等同于执行了如下命令:
     1. __shutil.copyfile(src,dest,follow_symlinks=True)__ 
@@ -565,8 +567,8 @@ Change: 2017-03-09 18:44:33.286738354 +0800
 
 ```python
 In : def func(src,names): 
-...:     ig = filter(lambda x: not x.endswith('conf'),names) 
-...:     return set(ig)
+   :     ig = filter(lambda x: not x.endswith('conf'),names) 
+   :     return set(ig)
 
 In : os.listdir('old')  
 Out: 

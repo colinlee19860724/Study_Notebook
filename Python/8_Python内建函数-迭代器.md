@@ -17,8 +17,8 @@ In : id(a)
 Out: 9330656
 
 In : def b(): 
-...:     return a 
-...:
+   :     return a 
+   :
 
 In : id(b)
 Out: 139701663500624

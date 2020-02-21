@@ -43,14 +43,14 @@ def add(x, y):
 
 ```python
 In : def add(x, y):
-...:     """
-...:     This function used to add something
-...:     :param x: int object
-...:     :param y: int object
-...:     :return: int object
-...:     """
-...:     return x + y
-...:
+   :     """
+   :     This function used to add something
+   :     :param x: int object
+   :     :param y: int object
+   :     :return: int object
+   :     """
+   :     return x + y
+   :
 
 In : help(add)
 Help on function add in module __main__:
@@ -102,8 +102,8 @@ def add(x: int, y: int) -> int:
 
 ```python
 In : def add(x: int, y: int) -> int:
-...:     return x + y
-...:
+   :     return x + y
+   :
 
 In : add.__annotations__
 Out: {'x': int, 'y': int, 'return': int}
@@ -165,13 +165,13 @@ _VAR_KEYWORD           = _ParameterKind.VAR_KEYWORD           # 可变关键字�
 
 ```python
 In : import inspect
-...:
-...: def add(x: int, y: int) -> int:
-...:     return x + y
-...:
-...: sig = inspect.signature(add)
-...: params = sig.parameters
-...: print(params)
+   :
+   : def add(x: int, y: int) -> int:
+   :     return x + y
+   :
+   : sig = inspect.signature(add)
+   : params = sig.parameters
+   : print(params)
 OrderedDict([('x', <Parameter "x:int">), ('y', <Parameter "y:int">)])
 
 In : params['x'].annotation

@@ -108,8 +108,8 @@ In :
 In : f = open('123.txt')
 
 In : for i in f:
-...:     print(i,end='')
-...:
+   :     print(i,end='')
+   :
 hello
 world
 my
@@ -370,8 +370,8 @@ f.close()
 
 ```python
 In : with open('123.txt','r+') as f:
-...:     f.read()
-...:
+   :     f.read()
+   :
 
 In : f.closed
 Out: True
@@ -384,8 +384,8 @@ Out: True
 In : f = open('123.txt','r+')
 
 In : with f:
-...:     f.read()
-...:
+   :     f.read()
+   :
 
 In : f.closed
 Out: True
