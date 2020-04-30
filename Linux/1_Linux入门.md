@@ -19,6 +19,7 @@
   3. __低成本__：开源工作者都是在幕后默默且无偿地付出劳动成果，为美好的世界贡献一份力量，因此使用开源社区推动的软件项目可以节省大量的人力、物力和财力。
   4. __更透明__：没有哪个笨蛋会把木马、后门等放到开放的源代码中，这样无疑是把自己的罪行暴露在阳光之下。  
   
+
 &emsp;&emsp;世界上的开源许可证，大概有上百种，常用的有 6 个，下面一图读懂主要的开源协议：  
 
 <img alt="一图读懂主要的开源协议" src="https://github.com/colinlee19860724/Study_Notebook/raw/master/Photo/openSourceLicenses.png" width="700" align=middle />
@@ -102,7 +103,7 @@ y = x + 200            // 切换回用户空间
 -----------------------------------------------------
 # 1.6. systemd 初始化进程
 &emsp;&emsp;Linux 操作系统的开机过程是这样的，即从 BIOS 开始，然后进入 Boot Loader，再加载系统内核，然后内核进行初始化，最后启动初始化进程。初始化进程作为 Linux 系统的第一个进程，它需要完成 Linux 系统中相关的初始化工作，为用户提供合适的工作环境。红帽 RHEL 7 系统已经替换掉了熟悉的初始化进程服务 System V init，正式采用全新的 systemd 初始化进程服务。systemd 初始化进程服务采用了并发启动机制，开机速度得到了不小的提升。  
- 
+
 **systemd 与 System V init 的区别以及作用**
 
 | System V init 运行级别 | systemd 目标名称  | 作用 |
@@ -342,17 +343,17 @@ Change: 2019-03-19 00:56:19.553934247 +0800
 10. `hexdump`命令一般用来查看“二进制”文件的十六进制编码，但实际上它能查看任何文件，而不只限于二进制文件。  
 
 11. `sz` 和 `rz` 命令  
-&emsp;&emsp;`rz`，`sz` 是 Linux/Unix 同 Windows 进行 ZModem 文件传输的命令行工具，对传输的数据会进行核查，并且有很好的传输性能。使用起来更是非常方便，但前提是 Windows 端需要支持 ZModem 的 telnet/ssh 客户端（比如 SecureCRT、Xshell 等）。注意：该方法的传输速度比较慢，推荐用于中小文件的传输，如配置文件等。  
+&emsp;&emsp;`rz`，`sz` 是 Linux/Unix 同 Windows 进行 ZModem 文件传输的命令行工具，对传输的数据会进行核查，并且有很好的传输性能。使用起来更是非常方便，但前提是 Windows 端需要支持 ZModem 的 telnet/ssh 客户端（比如 SecureCRT、Xshell 等）。注意：该方法的传输速度比较慢，推荐用于中小文件的传输，如配置文件等，如需传输大文件建议使用 FTP 方式。  
 
 - `sz`：将 Linux/Unix 中选定的文件发送（send）到本地 Windows 机器:  
 
-```linux
+```bash
 # 发送文件 filename1 filename2 … 至本地机器 
 sz filename1 filename2 … 
-```  
+```
 - `rz`：客户端会弹出一个文件选择窗口，从本地 windows 选择(可多选)好文件后上传到服务器 (receive)  
 
-```linux
+```bash
 # 以二进制文件接收覆盖，强制发送方转义所有控制字符
 rz –be
 ```
