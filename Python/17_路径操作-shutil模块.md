@@ -125,7 +125,6 @@ Out: PosixPath('/etc/sysconfig/network-scripts')
 In : p2.parts
 Out: ('/', 'etc', 'sysconfig', 'network-scripts')
 
-
 ```
 `joinpath(*other)`：在 Path 对象中使用当前操作系统的路径分隔符分割并追加多个字符串。 
 

@@ -203,10 +203,14 @@ In : f.write('colin')
 Out: 5
 
 In : !cat 123.txt
+
 In : f.write('\n')   # 遇到换行符的时候并没有刷入磁盘
 Out: 1
+
 In : !cat 123.txt  
+
 In : f = open('123.txt','w+',1)   # 指定缓冲区的大小为 1(行)
+
 In : f.write('colin')
 Out: 5
 
@@ -214,12 +218,12 @@ In : f.write(' hello')
 Out: 6
 
 In : !cat 123.txt    # 没有遇到换行符，所以不会刷入磁盘
+
 In : f.write('\n')   # 遇到换行符，然后刷入磁盘
 Out: 1
+
 In : !cat 123.txt
 colin hello
-
-In :
 
 ```
 
